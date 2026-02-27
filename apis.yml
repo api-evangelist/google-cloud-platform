@@ -1,0 +1,179 @@
+name: Google Cloud Platform
+description: Google Cloud Platform enables developers to build, test, and deploy applications on Google's highly-scalable and reliable infrastructure
+image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+tags:
+- Cloud Computing
+- Infrastructure
+- Platform as a Service
+- API Management
+created: '2024-01-15'
+modified: '2024-01-15'
+url: https://cloud.google.com
+specificationVersion: '0.16'
+apis:
+- name: Google Compute Engine API
+  description: Creates and runs virtual machines on Google Cloud Platform
+  image: https://cloud.google.com/images/products/compute-engine.png
+  humanUrl: https://cloud.google.com/compute/
+  baseUrl: https://compute.googleapis.com
+  tags:
+  - Virtual Machines
+  - Compute
+  - Infrastructure
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/compute/docs/reference/rest/v1
+  - type: OpenAPI
+    url: https://compute.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/compute/pricing
+  - type: Console
+    url: https://console.cloud.google.com/compute
+- name: Google Cloud Storage API
+  description: Store and retrieve any amount of data at any time from anywhere on the web
+  image: https://cloud.google.com/images/products/storage.png
+  humanUrl: https://cloud.google.com/storage/
+  baseUrl: https://storage.googleapis.com
+  tags:
+  - Object Storage
+  - Storage
+  - Files
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: OpenAPI
+    url: https://storage.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: Console
+    url: https://console.cloud.google.com/storage
+- name: Google Cloud Functions API
+  description: Execute your code in response to events without managing servers
+  image: https://cloud.google.com/images/products/functions.png
+  humanUrl: https://cloud.google.com/functions/
+  baseUrl: https://cloudfunctions.googleapis.com
+  tags:
+  - Serverless
+  - Functions
+  - Event-Driven
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/functions/docs/reference/rest
+  - type: OpenAPI
+    url: https://cloudfunctions.googleapis.com/$discovery/rest?version=v2
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/functions/pricing
+  - type: Console
+    url: https://console.cloud.google.com/functions
+- name: Google Kubernetes Engine API
+  description: Deploy, manage, and scale containerized applications using Kubernetes
+  image: https://cloud.google.com/images/products/kubernetes-engine.png
+  humanUrl: https://cloud.google.com/kubernetes-engine/
+  baseUrl: https://container.googleapis.com
+  tags:
+  - Kubernetes
+  - Containers
+  - Orchestration
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/kubernetes-engine/docs/reference/rest
+  - type: OpenAPI
+    url: https://container.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/kubernetes-engine/pricing
+  - type: Console
+    url: https://console.cloud.google.com/kubernetes
+- name: Google BigQuery API
+  description: Fast, economical and fully managed enterprise data warehouse for large-scale data analytics
+  image: https://cloud.google.com/images/products/bigquery.png
+  humanUrl: https://cloud.google.com/bigquery/
+  baseUrl: https://bigquery.googleapis.com
+  tags:
+  - Data Warehouse
+  - Analytics
+  - Big Data
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/bigquery/docs/reference/rest
+  - type: OpenAPI
+    url: https://bigquery.googleapis.com/$discovery/rest?version=v2
+  - type: Authentication
+    url: https://cloud.google.com/bigquery/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/bigquery/pricing
+  - type: Console
+    url: https://console.cloud.google.com/bigquery
+- name: Google Cloud Pub/Sub API
+  description: Messaging and ingestion for event-driven systems and streaming analytics
+  image: https://cloud.google.com/images/products/pubsub.png
+  humanUrl: https://cloud.google.com/pubsub/
+  baseUrl: https://pubsub.googleapis.com
+  tags:
+  - Messaging
+  - Event Streaming
+  - Pub/Sub
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/pubsub/docs/reference/rest
+  - type: OpenAPI
+    url: https://pubsub.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/pubsub/pricing
+  - type: Console
+    url: https://console.cloud.google.com/cloudpubsub
+- name: Google Cloud Vision API
+  description: Derive insights from images with machine learning
+  image: https://cloud.google.com/images/products/vision.png
+  humanUrl: https://cloud.google.com/vision/
+  baseUrl: https://vision.googleapis.com
+  tags:
+  - Machine Learning
+  - Computer Vision
+  - AI
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/vision/docs/reference/rest
+  - type: OpenAPI
+    url: https://vision.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/vision/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/vision.googleapis.com
+include:
+- name: Google Cloud API Common Resources
+  url: https://cloud.google.com/apis/design/resources
+maintainers:
+- name: Google Cloud Platform
+  email: cloud-support@google.com
+  url: https://cloud.google.com/support
+common:
+- type: Getting Started
+  url: https://cloud.google.com/docs/get-started
+- type: Authentication Guide
+  url: https://cloud.google.com/docs/authentication
+- type: API Console
+  url: https://console.cloud.google.com/apis
+- type: Status Page
+  url: https://status.cloud.google.com/
+- type: Terms of Service
+  url: https://cloud.google.com/terms
+- type: Privacy Policy
+  url: https://cloud.google.com/privacy
+- type: Support
+  url: https://cloud.google.com/support
+- type: Blog
+  url: https://cloud.google.com/blog
+- type: GitHub Organization
+  url: https://github.com/GoogleCloudPlatform
