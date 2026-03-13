@@ -1,0 +1,412 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "gcp": "https://cloud.google.com/resource-manager/reference/rest/v3/",
+    "gcpiam": "https://cloud.google.com/iam/docs/reference/rest/v1/",
+    "gcptags": "https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys/",
+    "crm": "https://cloudresourcemanager.googleapis.com/v3/",
+    "iam": "https://iam.googleapis.com/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+
+    "Project": {
+      "@id": "gcp:projects",
+      "@context": {
+        "name": {
+          "@id": "gcp:projects#name",
+          "@type": "xsd:string"
+        },
+        "projectId": {
+          "@id": "gcp:projects#projectId",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "parent": {
+          "@id": "gcp:projects#parent",
+          "@type": "@id"
+        },
+        "state": {
+          "@id": "gcp:projects#state",
+          "@type": "xsd:string"
+        },
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "deleteTime": {
+          "@id": "gcp:projects#deleteTime",
+          "@type": "xsd:dateTime"
+        },
+        "etag": {
+          "@id": "gcp:projects#etag",
+          "@type": "xsd:string"
+        },
+        "labels": {
+          "@id": "gcp:projects#labels",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "Folder": {
+      "@id": "gcp:folders",
+      "@context": {
+        "name": {
+          "@id": "gcp:folders#name",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "parent": {
+          "@id": "gcp:folders#parent",
+          "@type": "@id"
+        },
+        "state": {
+          "@id": "gcp:folders#state",
+          "@type": "xsd:string"
+        },
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "deleteTime": {
+          "@id": "gcp:folders#deleteTime",
+          "@type": "xsd:dateTime"
+        },
+        "etag": {
+          "@id": "gcp:folders#etag",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Organization": {
+      "@id": "gcp:organizations",
+      "@context": {
+        "name": {
+          "@id": "gcp:organizations#name",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "directoryCustomerId": {
+          "@id": "gcp:organizations#directoryCustomerId",
+          "@type": "xsd:string"
+        },
+        "state": {
+          "@id": "gcp:organizations#state",
+          "@type": "xsd:string"
+        },
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "deleteTime": {
+          "@id": "gcp:organizations#deleteTime",
+          "@type": "xsd:dateTime"
+        },
+        "etag": {
+          "@id": "gcp:organizations#etag",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "IamPolicy": {
+      "@id": "gcpiam:Policy",
+      "@context": {
+        "version": {
+          "@id": "gcpiam:Policy#version",
+          "@type": "xsd:integer"
+        },
+        "bindings": {
+          "@id": "gcpiam:Policy#bindings",
+          "@container": "@set"
+        },
+        "etag": {
+          "@id": "gcpiam:Policy#etag",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Binding": {
+      "@id": "gcpiam:Binding",
+      "@context": {
+        "role": {
+          "@id": "gcpiam:Binding#role",
+          "@type": "xsd:string"
+        },
+        "members": {
+          "@id": "gcpiam:Binding#members",
+          "@container": "@set"
+        },
+        "condition": {
+          "@id": "gcpiam:Binding#condition",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Condition": {
+      "@id": "gcpiam:Expr",
+      "@context": {
+        "expression": {
+          "@id": "gcpiam:Expr#expression",
+          "@type": "xsd:string"
+        },
+        "title": {
+          "@id": "gcpiam:Expr#title",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "gcpiam:Expr#description",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "TagKey": {
+      "@id": "gcptags:TagKey",
+      "@context": {
+        "name": {
+          "@id": "gcptags:TagKey#name",
+          "@type": "xsd:string"
+        },
+        "parent": {
+          "@id": "gcptags:TagKey#parent",
+          "@type": "@id"
+        },
+        "shortName": {
+          "@id": "gcptags:TagKey#shortName",
+          "@type": "xsd:string"
+        },
+        "namespacedName": {
+          "@id": "gcptags:TagKey#namespacedName",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string"
+        },
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "TagValue": {
+      "@id": "gcptags:TagValue",
+      "@context": {
+        "name": {
+          "@id": "gcptags:TagValue#name",
+          "@type": "xsd:string"
+        },
+        "parent": {
+          "@id": "gcptags:TagValue#parent",
+          "@type": "@id"
+        },
+        "shortName": {
+          "@id": "gcptags:TagValue#shortName",
+          "@type": "xsd:string"
+        },
+        "namespacedName": {
+          "@id": "gcptags:TagValue#namespacedName",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string"
+        },
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "TagBinding": {
+      "@id": "gcptags:TagBinding",
+      "@context": {
+        "name": {
+          "@id": "gcptags:TagBinding#name",
+          "@type": "xsd:string"
+        },
+        "parent": {
+          "@id": "gcptags:TagBinding#parent",
+          "@type": "@id"
+        },
+        "tagValue": {
+          "@id": "gcptags:TagBinding#tagValue",
+          "@type": "@id"
+        },
+        "tagValueNamespacedName": {
+          "@id": "gcptags:TagBinding#tagValueNamespacedName",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ResourceHierarchy": {
+      "@id": "gcp:ResourceHierarchy",
+      "@context": {
+        "organization": {
+          "@id": "gcp:ResourceHierarchy#organization",
+          "@type": "@id"
+        },
+        "folders": {
+          "@id": "gcp:ResourceHierarchy#folders",
+          "@container": "@set"
+        },
+        "projects": {
+          "@id": "gcp:ResourceHierarchy#projects",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "CloudService": {
+      "@id": "schema:WebAPI",
+      "@context": {
+        "serviceName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "serviceEndpoint": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "documentation": {
+          "@id": "schema:documentation",
+          "@type": "@id"
+        },
+        "provider": {
+          "@id": "schema:provider",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "BillingAccount": {
+      "@id": "gcp:BillingAccount",
+      "@context": {
+        "name": {
+          "@id": "gcp:BillingAccount#name",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "open": {
+          "@id": "gcp:BillingAccount#open",
+          "@type": "xsd:boolean"
+        },
+        "masterBillingAccount": {
+          "@id": "gcp:BillingAccount#masterBillingAccount",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ServiceAccount": {
+      "@id": "gcpiam:ServiceAccount",
+      "@context": {
+        "name": {
+          "@id": "gcpiam:ServiceAccount#name",
+          "@type": "xsd:string"
+        },
+        "email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "displayName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "uniqueId": {
+          "@id": "gcpiam:ServiceAccount#uniqueId",
+          "@type": "xsd:string"
+        },
+        "disabled": {
+          "@id": "gcpiam:ServiceAccount#disabled",
+          "@type": "xsd:boolean"
+        },
+        "description": {
+          "@id": "dcterms:description",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "projectId": {
+      "@id": "gcp:projects#projectId",
+      "@type": "xsd:string"
+    },
+    "displayName": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "dcterms:description",
+      "@type": "xsd:string"
+    },
+    "createTime": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "updateTime": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    },
+    "state": {
+      "@id": "gcp:state",
+      "@type": "xsd:string"
+    },
+    "labels": {
+      "@id": "gcp:labels",
+      "@container": "@index"
+    },
+    "parent": {
+      "@id": "gcp:parent",
+      "@type": "@id"
+    },
+    "etag": {
+      "@id": "gcp:etag",
+      "@type": "xsd:string"
+    }
+  }
+}

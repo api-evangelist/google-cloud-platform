@@ -1,0 +1,655 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/google-cloud-platform/json-schema/gcp-project-schema.json",
+  "title": "Google Cloud Platform Project Schema",
+  "description": "JSON Schema defining the core data models for Google Cloud Platform resource hierarchy including projects, folders, organizations, labels, IAM policies, and tags. Based on the Cloud Resource Manager API v3.",
+  "type": "object",
+  "$defs": {
+    "Project": {
+      "type": "object",
+      "title": "GCP Project",
+      "description": "A Google Cloud Platform project is the base-level organizing entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud resources. Projects are required to use most Google Cloud services and are associated with billing accounts.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique resource name of the project. Assigned by the server in the format projects/{project_number}. The project number is a unique identifier assigned by Google Cloud.",
+          "pattern": "^projects/[0-9]+$",
+          "readOnly": true,
+          "examples": [
+            "projects/123456789012"
+          ]
+        },
+        "parent": {
+          "type": "string",
+          "description": "The resource name of the parent resource in the Google Cloud resource hierarchy. Must be either an organization or a folder. Required when creating a project.",
+          "pattern": "^(organizations|folders)/[0-9]+$",
+          "examples": [
+            "organizations/987654321",
+            "folders/123456789"
+          ]
+        },
+        "projectId": {
+          "type": "string",
+          "description": "The unique, user-assigned identifier of the project. Must be 6 to 30 lowercase ASCII letters, digits, or hyphens. Must start with a letter and cannot end with a hyphen. Project IDs are globally unique and immutable once assigned. They cannot be reused even after project deletion.",
+          "pattern": "^[a-z][a-z0-9-]{4,28}[a-z0-9]$",
+          "minLength": 6,
+          "maxLength": 30,
+          "examples": [
+            "my-gcp-project",
+            "production-app-2024",
+            "dev-team-backend"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "description": "The project lifecycle state. ACTIVE indicates the project is usable. DELETE_REQUESTED indicates the project has been marked for deletion and is in the 30-day grace period.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "DELETE_REQUESTED"
+          ],
+          "readOnly": true,
+          "default": "ACTIVE"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "An optional user-assigned display name for the project. Used for identification in the Google Cloud Console and other interfaces. Does not need to be unique.",
+          "maxLength": 30,
+          "examples": [
+            "My GCP Project",
+            "Production Backend"
+          ]
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the project was created. Server-assigned. Uses RFC 3339 format.",
+          "readOnly": true,
+          "examples": [
+            "2024-01-15T10:30:00.000Z"
+          ]
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the project was last modified. Server-assigned. Uses RFC 3339 format.",
+          "readOnly": true,
+          "examples": [
+            "2024-06-20T14:45:00.000Z"
+          ]
+        },
+        "deleteTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the delete request was sent. Only present when the project is in DELETE_REQUESTED state. Server-assigned.",
+          "readOnly": true
+        },
+        "etag": {
+          "type": "string",
+          "description": "A checksum computed by the server based on the current value of the project resource. Used for optimistic concurrency control to prevent simultaneous updates from overwriting each other.",
+          "readOnly": true
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false
+    },
+    "Folder": {
+      "type": "object",
+      "title": "GCP Folder",
+      "description": "A folder in the Google Cloud resource hierarchy. Folders provide an additional grouping mechanism and isolation boundary between projects. They can model organizational structure such as departments, teams, applications, or environments. Folders can be nested up to 10 levels deep under an organization.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique resource name of the folder. Assigned by the server in the format folders/{folder_id}.",
+          "pattern": "^folders/[0-9]+$",
+          "readOnly": true,
+          "examples": [
+            "folders/123456789"
+          ]
+        },
+        "parent": {
+          "type": "string",
+          "description": "The resource name of the folder's parent. Can be an organization or another folder.",
+          "pattern": "^(organizations|folders)/[0-9]+$",
+          "examples": [
+            "organizations/987654321",
+            "folders/111222333"
+          ]
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The folder's display name. Must be distinct from all other folders that share its parent. Must start and end with a letter or digit. May contain letters, digits, spaces, hyphens and underscores.",
+          "maxLength": 30,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9 _-]{0,28}[a-zA-Z0-9]$|^[a-zA-Z0-9]$",
+          "examples": [
+            "Engineering",
+            "Production Environment",
+            "Team-Alpha"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "description": "The lifecycle state of the folder. Output only.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "DELETE_REQUESTED"
+          ],
+          "readOnly": true,
+          "default": "ACTIVE"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the folder was created. Server-assigned.",
+          "readOnly": true
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the folder was last modified. Server-assigned.",
+          "readOnly": true
+        },
+        "deleteTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the delete request was sent. Only present in DELETE_REQUESTED state.",
+          "readOnly": true
+        },
+        "etag": {
+          "type": "string",
+          "description": "A checksum for optimistic concurrency control.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "parent",
+        "displayName"
+      ],
+      "additionalProperties": false
+    },
+    "Organization": {
+      "type": "object",
+      "title": "GCP Organization",
+      "description": "The root node in the Google Cloud resource hierarchy. An organization represents a company or business entity and is tied to a Google Workspace or Cloud Identity account. Organizations are automatically provisioned when a Google Workspace or Cloud Identity account is created and cannot be created or deleted through the API.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The resource name of the organization in the format organizations/{organization_id}.",
+          "pattern": "^organizations/[0-9]+$",
+          "readOnly": true,
+          "examples": [
+            "organizations/987654321"
+          ]
+        },
+        "displayName": {
+          "type": "string",
+          "description": "A human-readable string referring to the organization. Derived from the associated Google Workspace or Cloud Identity account.",
+          "readOnly": true,
+          "examples": [
+            "Example Corporation",
+            "Acme Inc"
+          ]
+        },
+        "directoryCustomerId": {
+          "type": "string",
+          "description": "The unique identifier for the associated Google Workspace or Cloud Identity customer account. This is the G Suite customer ID.",
+          "readOnly": true,
+          "examples": [
+            "C01abc123"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "description": "The organization lifecycle state.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "DELETE_REQUESTED"
+          ],
+          "readOnly": true,
+          "default": "ACTIVE"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the organization was created.",
+          "readOnly": true
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the organization was last modified.",
+          "readOnly": true
+        },
+        "deleteTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the delete request was sent.",
+          "readOnly": true
+        },
+        "etag": {
+          "type": "string",
+          "description": "A checksum for optimistic concurrency control.",
+          "readOnly": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "Labels": {
+      "type": "object",
+      "title": "Resource Labels",
+      "description": "User-defined key-value pairs associated with a Google Cloud resource. Labels are used to organize resources, filter results, and manage billing. A maximum of 256 labels can be associated with a resource.",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_-]{0,62}$",
+        "description": "Label keys must be 1-63 characters, begin with a lowercase letter, and contain only lowercase letters, numeric characters, underscores, and dashes."
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z0-9_-]{0,63}$",
+        "description": "Label values must be 0-63 characters and contain only lowercase letters, numeric characters, underscores, and dashes."
+      },
+      "maxProperties": 256,
+      "examples": [
+        {
+          "env": "production",
+          "team": "backend",
+          "cost-center": "cc-1234"
+        },
+        {
+          "app": "web-frontend",
+          "version": "v2"
+        }
+      ]
+    },
+    "IamPolicy": {
+      "type": "object",
+      "title": "IAM Policy",
+      "description": "An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings. A binding binds one or more members to a single role.",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "description": "Specifies the format of the policy. Valid values are 0, 1, and 3. Version 3 is required to support conditional role bindings.",
+          "enum": [
+            0,
+            1,
+            3
+          ],
+          "default": 0
+        },
+        "bindings": {
+          "type": "array",
+          "description": "Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied.",
+          "items": {
+            "$ref": "#/$defs/Binding"
+          }
+        },
+        "auditConfigs": {
+          "type": "array",
+          "description": "Specifies cloud audit logging configuration for this policy.",
+          "items": {
+            "$ref": "#/$defs/AuditConfig"
+          }
+        },
+        "etag": {
+          "type": "string",
+          "description": "etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle.",
+          "contentEncoding": "base64"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Binding": {
+      "type": "object",
+      "title": "IAM Binding",
+      "description": "Associates members, or principals, with a role.",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "The role that is assigned to the list of members. For example, roles/resourcemanager.organizationViewer, roles/editor, or roles/owner.",
+          "pattern": "^roles/[a-zA-Z.]+$",
+          "examples": [
+            "roles/editor",
+            "roles/viewer",
+            "roles/resourcemanager.projectCreator",
+            "roles/resourcemanager.folderAdmin"
+          ]
+        },
+        "members": {
+          "type": "array",
+          "description": "Specifies the principals requesting access for a Google Cloud resource. Each member can be a user account, service account, Google group, or domain.",
+          "items": {
+            "type": "string",
+            "pattern": "^(user|serviceAccount|group|domain|allUsers|allAuthenticatedUsers):.*$",
+            "examples": [
+              "user:alice@example.com",
+              "serviceAccount:my-sa@project.iam.gserviceaccount.com",
+              "group:admins@example.com",
+              "domain:example.com"
+            ]
+          }
+        },
+        "condition": {
+          "$ref": "#/$defs/Condition"
+        }
+      },
+      "required": [
+        "role",
+        "members"
+      ],
+      "additionalProperties": false
+    },
+    "Condition": {
+      "type": "object",
+      "title": "IAM Condition",
+      "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional IAM policies that restrict when and how a binding is applied.",
+      "properties": {
+        "expression": {
+          "type": "string",
+          "description": "Textual representation of the expression in Common Expression Language syntax.",
+          "examples": [
+            "request.time < timestamp('2025-01-01T00:00:00Z')",
+            "resource.type == 'cloudresourcemanager.googleapis.com/Project'"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "An optional title for the expression, a short string describing its purpose.",
+          "maxLength": 100,
+          "examples": [
+            "Expires January 2025",
+            "Projects only"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "An optional description of the expression providing additional context.",
+          "maxLength": 256
+        },
+        "location": {
+          "type": "string",
+          "description": "An optional string indicating the location of the expression for error reporting."
+        }
+      },
+      "required": [
+        "expression"
+      ],
+      "additionalProperties": false
+    },
+    "AuditConfig": {
+      "type": "object",
+      "title": "Audit Config",
+      "description": "Specifies the audit configuration for a service. The configuration determines which permission types are logged and what identities are exempted from logging.",
+      "properties": {
+        "service": {
+          "type": "string",
+          "description": "Specifies a service that will be enabled for audit logging. For example, cloudresourcemanager.googleapis.com.",
+          "examples": [
+            "cloudresourcemanager.googleapis.com",
+            "allServices"
+          ]
+        },
+        "auditLogConfigs": {
+          "type": "array",
+          "description": "The configuration for logging of each type of permission.",
+          "items": {
+            "$ref": "#/$defs/AuditLogConfig"
+          }
+        }
+      },
+      "required": [
+        "service"
+      ],
+      "additionalProperties": false
+    },
+    "AuditLogConfig": {
+      "type": "object",
+      "title": "Audit Log Config",
+      "description": "Provides the configuration for logging a type of permissions.",
+      "properties": {
+        "logType": {
+          "type": "string",
+          "description": "The log type that this config enables.",
+          "enum": [
+            "LOG_TYPE_UNSPECIFIED",
+            "ADMIN_READ",
+            "DATA_WRITE",
+            "DATA_READ"
+          ]
+        },
+        "exemptedMembers": {
+          "type": "array",
+          "description": "Specifies the identities that do not cause logging for this type of permission. Follows the same format as Binding.members.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TagKey": {
+      "type": "object",
+      "title": "Tag Key",
+      "description": "A tag key used to group tag values. Tag keys define namespaces for organizing resources. They are created under an organization and can be used across the resource hierarchy.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The resource name in the format tagKeys/{tag_key_id}.",
+          "pattern": "^tagKeys/[0-9]+$",
+          "readOnly": true
+        },
+        "parent": {
+          "type": "string",
+          "description": "The resource name of the parent organization.",
+          "pattern": "^organizations/[0-9]+$"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "The user-friendly short name. Must be unique within the same parent organization.",
+          "maxLength": 256,
+          "examples": [
+            "environment",
+            "cost-center",
+            "team"
+          ]
+        },
+        "namespacedName": {
+          "type": "string",
+          "description": "The namespaced name in the form {organization_id}/{shortName}.",
+          "readOnly": true,
+          "examples": [
+            "987654321/environment"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "User-assigned description of the tag key.",
+          "maxLength": 256
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the tag key was created.",
+          "readOnly": true
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the tag key was last modified.",
+          "readOnly": true
+        },
+        "etag": {
+          "type": "string",
+          "description": "Entity tag for optimistic concurrency control.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "parent",
+        "shortName"
+      ],
+      "additionalProperties": false
+    },
+    "TagValue": {
+      "type": "object",
+      "title": "Tag Value",
+      "description": "A tag value belonging to a tag key. Tag values represent specific labels that can be attached to resources through tag bindings.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The resource name in the format tagValues/{tag_value_id}.",
+          "pattern": "^tagValues/[0-9]+$",
+          "readOnly": true
+        },
+        "parent": {
+          "type": "string",
+          "description": "The resource name of the parent tag key.",
+          "pattern": "^tagKeys/[0-9]+$"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "The user-friendly short name. Must be unique within the parent tag key.",
+          "maxLength": 256,
+          "examples": [
+            "production",
+            "staging",
+            "development"
+          ]
+        },
+        "namespacedName": {
+          "type": "string",
+          "description": "The namespaced name in the form {organization_id}/{tagKeyShortName}/{shortName}.",
+          "readOnly": true,
+          "examples": [
+            "987654321/environment/production"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "User-assigned description of the tag value.",
+          "maxLength": 256
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the tag value was created.",
+          "readOnly": true
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the tag value was last modified.",
+          "readOnly": true
+        },
+        "etag": {
+          "type": "string",
+          "description": "Entity tag for optimistic concurrency control.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "parent",
+        "shortName"
+      ],
+      "additionalProperties": false
+    },
+    "TagBinding": {
+      "type": "object",
+      "title": "Tag Binding",
+      "description": "A tag binding associates a tag value with a Google Cloud resource. It represents the link between the tag taxonomy and actual cloud resources.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The resource name of the tag binding.",
+          "readOnly": true
+        },
+        "parent": {
+          "type": "string",
+          "description": "The full resource name of the cloud resource the tag value is bound to.",
+          "examples": [
+            "//cloudresourcemanager.googleapis.com/projects/123456789012"
+          ]
+        },
+        "tagValue": {
+          "type": "string",
+          "description": "The resource name of the tag value in the format tagValues/{tag_value_id}.",
+          "pattern": "^tagValues/[0-9]+$"
+        },
+        "tagValueNamespacedName": {
+          "type": "string",
+          "description": "The namespaced name of the tag value.",
+          "readOnly": true,
+          "examples": [
+            "987654321/environment/production"
+          ]
+        }
+      },
+      "required": [
+        "parent",
+        "tagValue"
+      ],
+      "additionalProperties": false
+    },
+    "ResourceHierarchy": {
+      "type": "object",
+      "title": "Resource Hierarchy",
+      "description": "Represents the complete Google Cloud resource hierarchy structure. The hierarchy is: Organization -> Folder(s) -> Project(s). Organizations are the root, folders provide intermediate grouping, and projects contain actual resources.",
+      "properties": {
+        "organization": {
+          "$ref": "#/$defs/Organization"
+        },
+        "folders": {
+          "type": "array",
+          "description": "The folders in this hierarchy level.",
+          "items": {
+            "$ref": "#/$defs/Folder"
+          }
+        },
+        "projects": {
+          "type": "array",
+          "description": "The projects in this hierarchy level.",
+          "items": {
+            "$ref": "#/$defs/Project"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "project": {
+      "$ref": "#/$defs/Project"
+    },
+    "folder": {
+      "$ref": "#/$defs/Folder"
+    },
+    "organization": {
+      "$ref": "#/$defs/Organization"
+    },
+    "labels": {
+      "$ref": "#/$defs/Labels"
+    },
+    "iamPolicy": {
+      "$ref": "#/$defs/IamPolicy"
+    },
+    "tagKey": {
+      "$ref": "#/$defs/TagKey"
+    },
+    "tagValue": {
+      "$ref": "#/$defs/TagValue"
+    },
+    "tagBinding": {
+      "$ref": "#/$defs/TagBinding"
+    },
+    "resourceHierarchy": {
+      "$ref": "#/$defs/ResourceHierarchy"
+    }
+  },
+  "additionalProperties": false
+}
