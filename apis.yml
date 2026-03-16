@@ -1,15 +1,17 @@
+aid: google-cloud-platform
 name: Google Cloud Platform
 description: Google Cloud Platform enables developers to build, test, and deploy applications on Google's highly-scalable and reliable infrastructure
 image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+url: https://cloud.google.com
+created: '2024-01-15'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 tags:
 - Cloud Computing
 - Infrastructure
 - Platform as a Service
 - API Management
-created: '2024-01-15'
-modified: '2026-03-03'
-url: https://cloud.google.com
-specificationVersion: '0.16'
 artifacts:
   - type: OpenAPI
     url: openapi/cloud-resource-manager-openapi.yml
@@ -1026,10 +1028,7 @@ include:
 - name: Google Cloud API Common Resources
   url: https://cloud.google.com/apis/design/resources
 maintainers:
-- name: Google Cloud Platform
-  email: cloud-support@google.com
-  url: https://cloud.google.com/support
-- name: Kin Lane
+- FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
