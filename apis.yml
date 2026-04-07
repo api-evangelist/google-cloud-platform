@@ -3,32 +3,27 @@ name: Google Cloud Platform
 description: >-
   Google Cloud Platform enables developers to build, test, and deploy applications
   on Google's highly-scalable and reliable infrastructure.
-image: 
-  https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
 url: https://cloud.google.com
 created: '2024-01-15'
 modified: '2026-03-16'
 specificationVersion: '0.19'
 type: Index
 tags:
+  - API Management
   - Cloud Computing
   - Infrastructure
   - Platform as a Service
-  - API Management
 artifacts:
   - type: OpenAPI
     url: openapi/cloud-resource-manager-openapi.yml
-    description: OpenAPI 3.1.0 specification for the Cloud Resource Manager API 
-      covering projects, folders, organizations, tags, and IAM policies
+    description: OpenAPI 3.1.0 specification for the Cloud Resource Manager API covering projects, folders, organizations, tags, and IAM policies
   - type: JSON Schema
     url: json-schema/gcp-project-schema.json
-    description: JSON Schema (2020-12) defining core GCP resource hierarchy 
-      models including projects, folders, organizations, labels, IAM policies, 
-      and tags
+    description: JSON Schema (2020-12) defining core GCP resource hierarchy models including projects, folders, organizations, labels, IAM policies, and tags
   - type: JSON-LD Context
     url: json-ld/google-cloud-platform-context.jsonld
-    description: JSON-LD context providing linked data semantics for Google 
-      Cloud Platform resource hierarchy entities
+    description: JSON-LD context providing linked data semantics for Google Cloud Platform resource hierarchy entities
 apis:
   - name: Google Compute Engine API
     description: >-
@@ -37,9 +32,9 @@ apis:
     humanUrl: https://cloud.google.com/compute/
     baseUrl: https://compute.googleapis.com
     tags:
-      - Virtual Machines
       - Compute
       - Infrastructure
+      - Virtual Machines
     properties:
       - type: Documentation
         url: https://cloud.google.com/compute/docs/reference/rest/v1
@@ -66,9 +61,9 @@ apis:
     humanUrl: https://cloud.google.com/storage/
     baseUrl: https://storage.googleapis.com
     tags:
+      - Files
       - Object Storage
       - Storage
-      - Files
     properties:
       - type: Documentation
         url: https://cloud.google.com/storage/docs/json_api
@@ -95,9 +90,9 @@ apis:
     humanUrl: https://cloud.google.com/functions/
     baseUrl: https://cloudfunctions.googleapis.com
     tags:
-      - Serverless
-      - Functions
       - Event-Driven
+      - Functions
+      - Serverless
     properties:
       - type: Documentation
         url: https://cloud.google.com/functions/docs/reference/rest
@@ -124,8 +119,8 @@ apis:
     humanUrl: https://cloud.google.com/kubernetes-engine/
     baseUrl: https://container.googleapis.com
     tags:
-      - Kubernetes
       - Containers
+      - Kubernetes
       - Orchestration
     properties:
       - type: Documentation
@@ -154,9 +149,9 @@ apis:
     humanUrl: https://cloud.google.com/bigquery/
     baseUrl: https://bigquery.googleapis.com
     tags:
-      - Data Warehouse
       - Analytics
       - Big Data
+      - Data Warehouse
     properties:
       - type: Documentation
         url: https://cloud.google.com/bigquery/docs/reference/rest
@@ -183,8 +178,8 @@ apis:
     humanUrl: https://cloud.google.com/pubsub/
     baseUrl: https://pubsub.googleapis.com
     tags:
-      - Messaging
       - Event Streaming
+      - Messaging
       - Pub/Sub
     properties:
       - type: Documentation
@@ -212,9 +207,9 @@ apis:
     humanUrl: https://cloud.google.com/vision/
     baseUrl: https://vision.googleapis.com
     tags:
-      - Machine Learning
-      - Computer Vision
       - AI
+      - Computer Vision
+      - Machine Learning
     properties:
       - type: Documentation
         url: https://cloud.google.com/vision/docs/reference/rest
@@ -240,9 +235,9 @@ apis:
     humanUrl: https://cloud.google.com/vertex-ai/
     baseUrl: https://aiplatform.googleapis.com
     tags:
-      - Machine Learning
       - AI
       - Generative AI
+      - Machine Learning
       - MLOps
     properties:
       - type: Documentation
@@ -256,8 +251,7 @@ apis:
       - type: Console
         url: https://console.cloud.google.com/vertex-ai
       - type: Getting Started
-        url: 
-          https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform
+        url: https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform
       - type: SDKs
         url: https://cloud.google.com/vertex-ai/docs/reference/libraries
       - type: Quotas
@@ -272,9 +266,9 @@ apis:
     humanUrl: https://cloud.google.com/natural-language/
     baseUrl: https://language.googleapis.com
     tags:
-      - Natural Language Processing
-      - Machine Learning
       - AI
+      - Machine Learning
+      - Natural Language Processing
       - Text Analysis
     properties:
       - type: Documentation
@@ -286,8 +280,7 @@ apis:
       - type: Pricing
         url: https://cloud.google.com/natural-language/pricing
       - type: Console
-        url: 
-          https://console.cloud.google.com/apis/library/language.googleapis.com
+        url: https://console.cloud.google.com/apis/library/language.googleapis.com
       - type: Getting Started
         url: https://cloud.google.com/natural-language/docs/quickstarts
       - type: SDKs
@@ -301,10 +294,10 @@ apis:
     humanUrl: https://cloud.google.com/speech-to-text/
     baseUrl: https://speech.googleapis.com
     tags:
-      - Speech Recognition
-      - Machine Learning
       - AI
       - Audio
+      - Machine Learning
+      - Speech Recognition
     properties:
       - type: Documentation
         url: https://cloud.google.com/speech-to-text/docs/reference/rest
@@ -330,10 +323,10 @@ apis:
     humanUrl: https://cloud.google.com/translate/
     baseUrl: https://translate.googleapis.com
     tags:
-      - Translation
-      - Machine Learning
       - AI
       - Language
+      - Machine Learning
+      - Translation
     properties:
       - type: Documentation
         url: https://cloud.google.com/translate/docs/reference/rest
@@ -344,8 +337,7 @@ apis:
       - type: Pricing
         url: https://cloud.google.com/translate/pricing
       - type: Console
-        url: 
-          https://console.cloud.google.com/apis/library/translate.googleapis.com
+        url: https://console.cloud.google.com/apis/library/translate.googleapis.com
       - type: Getting Started
         url: https://cloud.google.com/translate/docs/quickstarts
       - type: SDKs
@@ -359,9 +351,9 @@ apis:
     humanUrl: https://cloud.google.com/run/
     baseUrl: https://run.googleapis.com
     tags:
-      - Serverless
-      - Containers
       - Compute
+      - Containers
+      - Serverless
     properties:
       - type: Documentation
         url: https://cloud.google.com/run/docs/reference/rest
@@ -388,11 +380,11 @@ apis:
     humanUrl: https://cloud.google.com/sql/
     baseUrl: https://sqladmin.googleapis.com
     tags:
-      - Relational Database
+      - Managed Database
       - MySQL
       - PostgreSQL
+      - Relational Database
       - SQL Server
-      - Managed Database
     properties:
       - type: Documentation
         url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
@@ -420,10 +412,10 @@ apis:
     humanUrl: https://cloud.google.com/spanner/
     baseUrl: https://spanner.googleapis.com
     tags:
-      - Relational Database
       - Distributed Database
-      - NewSQL
       - Global Database
+      - NewSQL
+      - Relational Database
     properties:
       - type: Documentation
         url: https://cloud.google.com/spanner/docs/reference/rest
@@ -451,8 +443,8 @@ apis:
     humanUrl: https://cloud.google.com/firestore/
     baseUrl: https://firestore.googleapis.com
     tags:
-      - NoSQL
       - Document Database
+      - NoSQL
       - Real-Time
       - Serverless
     properties:
@@ -480,10 +472,10 @@ apis:
     humanUrl: https://cloud.google.com/bigtable/
     baseUrl: https://bigtableadmin.googleapis.com
     tags:
+      - Analytics
+      - Big Data
       - NoSQL
       - Wide Column Store
-      - Big Data
-      - Analytics
     properties:
       - type: Documentation
         url: https://cloud.google.com/bigtable/docs/reference/admin/rest
@@ -510,10 +502,10 @@ apis:
     humanUrl: https://cloud.google.com/iam/
     baseUrl: https://iam.googleapis.com
     tags:
-      - Identity
       - Access Management
-      - Security
       - Authorization
+      - Identity
+      - Security
     properties:
       - type: Documentation
         url: https://cloud.google.com/iam/docs/reference/rest
@@ -540,8 +532,8 @@ apis:
     baseUrl: https://dns.googleapis.com
     tags:
       - DNS
-      - Networking
       - Domain Management
+      - Networking
     properties:
       - type: Documentation
         url: https://cloud.google.com/dns/docs/reference/rest/v1
@@ -600,10 +592,10 @@ apis:
     humanUrl: https://cloud.google.com/monitoring/
     baseUrl: https://monitoring.googleapis.com
     tags:
-      - Monitoring
-      - Metrics
-      - Observability
       - Alerting
+      - Metrics
+      - Monitoring
+      - Observability
     properties:
       - type: Documentation
         url: https://cloud.google.com/monitoring/api/ref_v3/rest
@@ -631,10 +623,10 @@ apis:
     humanUrl: https://cloud.google.com/dataflow/
     baseUrl: https://dataflow.googleapis.com
     tags:
-      - Streaming Analytics
+      - Apache Beam
       - Batch Processing
       - Data Pipeline
-      - Apache Beam
+      - Streaming Analytics
     properties:
       - type: Documentation
         url: https://cloud.google.com/dataflow/docs/reference/rest
@@ -662,8 +654,8 @@ apis:
     humanUrl: https://cloud.google.com/dataproc/
     baseUrl: https://dataproc.googleapis.com
     tags:
-      - Apache Spark
       - Apache Hadoop
+      - Apache Spark
       - Batch Processing
       - Big Data
     properties:
@@ -693,10 +685,10 @@ apis:
     humanUrl: https://cloud.google.com/kms/
     baseUrl: https://cloudkms.googleapis.com
     tags:
+      - Cryptography
       - Encryption
       - Key Management
       - Security
-      - Cryptography
     properties:
       - type: Documentation
         url: https://cloud.google.com/kms/docs/reference/rest
@@ -721,9 +713,9 @@ apis:
     humanUrl: https://cloud.google.com/secret-manager/
     baseUrl: https://secretmanager.googleapis.com
     tags:
+      - Configuration Management
       - Secrets
       - Security
-      - Configuration Management
     properties:
       - type: Documentation
         url: https://cloud.google.com/secret-manager/docs/reference/rest
@@ -751,10 +743,10 @@ apis:
     humanUrl: https://cloud.google.com/artifact-registry/
     baseUrl: https://artifactregistry.googleapis.com
     tags:
-      - Container Registry
-      - Package Management
-      - DevOps
       - CI/CD
+      - Container Registry
+      - DevOps
+      - Package Management
     properties:
       - type: Documentation
         url: https://cloud.google.com/artifact-registry/docs/reference/rest
@@ -780,10 +772,10 @@ apis:
     humanUrl: https://cloud.google.com/build/
     baseUrl: https://cloudbuild.googleapis.com
     tags:
-      - CI/CD
       - Build
-      - DevOps
+      - CI/CD
       - Continuous Integration
+      - DevOps
     properties:
       - type: Documentation
         url: https://cloud.google.com/build/docs/api/reference/rest
@@ -809,16 +801,15 @@ apis:
     humanUrl: https://cloud.google.com/resource-manager/
     baseUrl: https://cloudresourcemanager.googleapis.com
     tags:
-      - Resource Management
-      - Projects
-      - Organizations
       - Governance
+      - Organizations
+      - Projects
+      - Resource Management
     properties:
       - type: Documentation
         url: https://cloud.google.com/resource-manager/reference/rest
       - type: OpenAPI
-        url: 
-          https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v3
+        url: https://cloudresourcemanager.googleapis.com/$discovery/rest?version=v3
       - type: OpenAPI
         url: openapi/cloud-resource-manager-openapi.yml
       - type: JSON Schema
@@ -832,8 +823,7 @@ apis:
       - type: Console
         url: https://console.cloud.google.com/cloud-resource-manager
       - type: Getting Started
-        url: 
-          https://cloud.google.com/resource-manager/docs/creating-managing-projects
+        url: https://cloud.google.com/resource-manager/docs/creating-managing-projects
       - type: SDKs
         url: https://cloud.google.com/resource-manager/docs/apis
       - type: Release Notes
@@ -845,9 +835,9 @@ apis:
     humanUrl: https://cloud.google.com/tasks/
     baseUrl: https://cloudtasks.googleapis.com
     tags:
-      - Task Queue
-      - Distributed Systems
       - Asynchronous Processing
+      - Distributed Systems
+      - Task Queue
     properties:
       - type: Documentation
         url: https://cloud.google.com/tasks/docs/reference/rest
@@ -875,9 +865,9 @@ apis:
     humanUrl: https://cloud.google.com/scheduler/
     baseUrl: https://cloudscheduler.googleapis.com
     tags:
-      - Scheduling
-      - Cron Jobs
       - Automation
+      - Cron Jobs
+      - Scheduling
     properties:
       - type: Documentation
         url: https://cloud.google.com/scheduler/docs/reference/rest
@@ -902,10 +892,10 @@ apis:
     humanUrl: https://cloud.google.com/text-to-speech/
     baseUrl: https://texttospeech.googleapis.com
     tags:
-      - Speech Synthesis
-      - Machine Learning
       - AI
       - Audio
+      - Machine Learning
+      - Speech Synthesis
     properties:
       - type: Documentation
         url: https://cloud.google.com/text-to-speech/docs/reference/rest
@@ -916,8 +906,7 @@ apis:
       - type: Pricing
         url: https://cloud.google.com/text-to-speech/pricing
       - type: Console
-        url: 
-          https://console.cloud.google.com/apis/library/texttospeech.googleapis.com
+        url: https://console.cloud.google.com/apis/library/texttospeech.googleapis.com
       - type: Getting Started
         url: https://cloud.google.com/text-to-speech/docs/quickstart-protocol
       - type: SDKs
@@ -959,9 +948,9 @@ apis:
     humanUrl: https://cloud.google.com/workflows/
     baseUrl: https://workflows.googleapis.com
     tags:
-      - Workflow Orchestration
       - Automation
       - Serverless
+      - Workflow Orchestration
     properties:
       - type: Documentation
         url: https://cloud.google.com/workflows/docs/reference/rest
@@ -987,10 +976,10 @@ apis:
     humanUrl: https://cloud.google.com/deploy/
     baseUrl: https://clouddeploy.googleapis.com
     tags:
-      - Continuous Delivery
-      - DevOps
-      - Deployment
       - CI/CD
+      - Continuous Delivery
+      - Deployment
+      - DevOps
     properties:
       - type: Documentation
         url: https://cloud.google.com/deploy/docs/api/reference/rest
@@ -1016,14 +1005,13 @@ apis:
     humanUrl: https://cloud.google.com/dialogflow/
     baseUrl: https://dialogflow.googleapis.com
     tags:
-      - Conversational AI
-      - Chatbots
-      - Natural Language Understanding
       - AI
+      - Chatbots
+      - Conversational AI
+      - Natural Language Understanding
     properties:
       - type: Documentation
-        url: 
-          https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3-overview
+        url: https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3-overview
       - type: OpenAPI
         url: https://dialogflow.googleapis.com/$discovery/rest?version=v3
       - type: Authentication
@@ -1031,8 +1019,7 @@ apis:
       - type: Pricing
         url: https://cloud.google.com/dialogflow/pricing
       - type: Console
-        url: 
-          https://console.cloud.google.com/apis/library/dialogflow.googleapis.com
+        url: https://console.cloud.google.com/apis/library/dialogflow.googleapis.com
       - type: Getting Started
         url: https://cloud.google.com/dialogflow/cx/docs/quick/setup
       - type: SDKs
@@ -1048,13 +1035,12 @@ apis:
     baseUrl: https://dlp.googleapis.com
     tags:
       - Data Loss Prevention
-      - Security
-      - Privacy
       - Data Protection
+      - Privacy
+      - Security
     properties:
       - type: Documentation
-        url: 
-          https://cloud.google.com/sensitive-data-protection/docs/reference/rest
+        url: https://cloud.google.com/sensitive-data-protection/docs/reference/rest
       - type: OpenAPI
         url: https://dlp.googleapis.com/$discovery/rest?version=v2
       - type: Authentication
@@ -1066,11 +1052,9 @@ apis:
       - type: Getting Started
         url: https://cloud.google.com/sensitive-data-protection/docs/quickstart
       - type: SDKs
-        url: 
-          https://cloud.google.com/sensitive-data-protection/docs/reference/libraries
+        url: https://cloud.google.com/sensitive-data-protection/docs/reference/libraries
       - type: Release Notes
-        url: 
-          https://cloud.google.com/sensitive-data-protection/docs/release-notes
+        url: https://cloud.google.com/sensitive-data-protection/docs/release-notes
   - name: Google Cloud Memorystore for Redis API
     description: >-
       Fully managed in-memory data store service for Redis providing sub-millisecond
@@ -1079,10 +1063,10 @@ apis:
     humanUrl: https://cloud.google.com/memorystore/
     baseUrl: https://redis.googleapis.com
     tags:
-      - Redis
-      - In-Memory Database
       - Caching
+      - In-Memory Database
       - Managed Database
+      - Redis
     properties:
       - type: Documentation
         url: https://cloud.google.com/memorystore/docs/redis/reference/rest

@@ -27,27 +27,31 @@ security:
   - oauth2:
       - https://www.googleapis.com/auth/cloud-platform.read-only
 tags:
-  - name: Projects
-    description: >-
-      Manage Google Cloud projects. A project is the base-level organizing
-      entity in Google Cloud and is required to use most Google Cloud services.
-      Projects contain resources and are associated with billing accounts.
   - name: Folders
     description: >-
       Manage Google Cloud folders. Folders provide an additional grouping
       mechanism and isolation boundary between projects. They can be used to
       model organizational structure, departments, teams, or environments.
+  - name: Operations
+    description: >-
+      Long-running operations returned by Resource Manager API methods. Some
+      methods return an Operation resource to track the progress of
+      asynchronous requests.
   - name: Organizations
     description: >-
       Manage Google Cloud organizations. An organization is the root node in
       the Google Cloud resource hierarchy, typically representing a company or
       business entity. Organizations are tied to a Google Workspace or Cloud
       Identity account.
-  - name: Operations
+  - name: Projects
     description: >-
-      Long-running operations returned by Resource Manager API methods. Some
-      methods return an Operation resource to track the progress of
-      asynchronous requests.
+      Manage Google Cloud projects. A project is the base-level organizing
+      entity in Google Cloud and is required to use most Google Cloud services.
+      Projects contain resources and are associated with billing accounts.
+  - name: TagBindings
+    description: >-
+      Manage tag bindings that associate tag values with Google Cloud resources.
+      Tag bindings connect tag values to specific resources in the hierarchy.
   - name: TagKeys
     description: >-
       Manage tag keys used to organize and categorize Google Cloud resources.
@@ -57,10 +61,6 @@ tags:
     description: >-
       Manage tag values associated with tag keys. Tag values are the specific
       labels that can be bound to resources through tag bindings.
-  - name: TagBindings
-    description: >-
-      Manage tag bindings that associate tag values with Google Cloud resources.
-      Tag bindings connect tag values to specific resources in the hierarchy.
 paths:
   /v3/projects:
     get:
