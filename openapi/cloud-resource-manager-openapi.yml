@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Google Cloud Resource Manager API
+  title: Google Cloud Platform Google Cloud Resource Manager API
   description: >-
     Programmatically manage Google Cloud projects, folders, and organizations.
     The Cloud Resource Manager API enables you to create, read, update, and
@@ -65,7 +65,7 @@ paths:
   /v3/projects:
     get:
       operationId: cloudresourcemanager.projects.list
-      summary: List projects
+      summary: Google Cloud Platform List projects
       description: >-
         Lists projects that are direct children of the specified parent
         resource. Projects are listed in alphabetical order by display name.
@@ -138,7 +138,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     post:
       operationId: cloudresourcemanager.projects.create
-      summary: Create a project
+      summary: Google Cloud Platform Create a project
       description: >-
         Creates a new project resource under the specified parent. The parent
         must be an organization or folder. The caller must have the
@@ -188,7 +188,7 @@ paths:
   /v3/projects/{projectId}:
     get:
       operationId: cloudresourcemanager.projects.get
-      summary: Get a project
+      summary: Google Cloud Platform Get a project
       description: >-
         Retrieves the project identified by the specified name, such as
         projects/123 or projects/my-project-id. The caller must have the
@@ -231,7 +231,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     patch:
       operationId: cloudresourcemanager.projects.patch
-      summary: Update a project
+      summary: Google Cloud Platform Update a project
       description: >-
         Updates the display name and labels of the project identified by the
         specified name. Changes to the project are not reflected immediately
@@ -294,7 +294,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     delete:
       operationId: cloudresourcemanager.projects.delete
-      summary: Delete a project
+      summary: Google Cloud Platform Delete a project
       description: >-
         Marks the project identified by the specified name to be deleted. This
         method sets the project lifecycle state to DELETE_REQUESTED. The
@@ -340,7 +340,7 @@ paths:
   /v3/projects/{projectId}:undelete:
     post:
       operationId: cloudresourcemanager.projects.undelete
-      summary: Undelete a project
+      summary: Google Cloud Platform Undelete a project
       description: >-
         Restores the project identified by the specified name. A project can
         only be restored within the 30-day grace period after deletion. The
@@ -399,7 +399,7 @@ paths:
   /v3/projects/{resource}:getIamPolicy:
     post:
       operationId: cloudresourcemanager.projects.getIamPolicy
-      summary: Get project IAM policy
+      summary: Google Cloud Platform Get project IAM policy
       description: >-
         Returns the IAM access control policy for the specified project. The
         caller must have the resourcemanager.projects.getIamPolicy permission
@@ -443,7 +443,7 @@ paths:
   /v3/projects/{resource}:setIamPolicy:
     post:
       operationId: cloudresourcemanager.projects.setIamPolicy
-      summary: Set project IAM policy
+      summary: Google Cloud Platform Set project IAM policy
       description: >-
         Sets the IAM access control policy for the specified project, replacing
         any existing policy. The caller must have the
@@ -493,7 +493,7 @@ paths:
   /v3/projects:search:
     get:
       operationId: cloudresourcemanager.projects.search
-      summary: Search projects
+      summary: Google Cloud Platform Search projects
       description: >-
         Search for projects that the caller has the
         resourcemanager.projects.get permission on. Projects can be filtered
@@ -542,7 +542,7 @@ paths:
   /v3/folders:
     get:
       operationId: cloudresourcemanager.folders.list
-      summary: List folders
+      summary: Google Cloud Platform List folders
       description: >-
         Lists the folders that are direct descendants of the specified parent
         resource. The caller must have the resourcemanager.folders.list
@@ -605,7 +605,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     post:
       operationId: cloudresourcemanager.folders.create
-      summary: Create a folder
+      summary: Google Cloud Platform Create a folder
       description: >-
         Creates a folder in the resource hierarchy under the specified parent.
         The parent can be an organization or another folder. The caller must
@@ -648,7 +648,7 @@ paths:
   /v3/folders/{folderId}:
     get:
       operationId: cloudresourcemanager.folders.get
-      summary: Get a folder
+      summary: Google Cloud Platform Get a folder
       description: >-
         Retrieves a folder identified by the specified resource name. The
         caller must have the resourcemanager.folders.get permission on the
@@ -689,7 +689,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     patch:
       operationId: cloudresourcemanager.folders.patch
-      summary: Update a folder
+      summary: Google Cloud Platform Update a folder
       description: >-
         Updates a folder, changing its display name. Changes to the folder
         display name are not immediately reflected and may take several minutes
@@ -750,7 +750,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     delete:
       operationId: cloudresourcemanager.folders.delete
-      summary: Delete a folder
+      summary: Google Cloud Platform Delete a folder
       description: >-
         Requests deletion of a folder. The folder is moved into the
         DELETE_REQUESTED state and enters a 30-day grace period. During this
@@ -796,7 +796,7 @@ paths:
   /v3/folders/{folderId}:undelete:
     post:
       operationId: cloudresourcemanager.folders.undelete
-      summary: Undelete a folder
+      summary: Google Cloud Platform Undelete a folder
       description: >-
         Cancels the deletion request for a folder. This method can only be
         called within the 30-day grace period. The caller must have the
@@ -844,7 +844,7 @@ paths:
   /v3/folders/{folderId}:move:
     post:
       operationId: cloudresourcemanager.folders.move
-      summary: Move a folder
+      summary: Google Cloud Platform Move a folder
       description: >-
         Moves a folder under a new resource parent. The folder can be moved
         to another folder or to the organization root. The caller must have
@@ -894,7 +894,7 @@ paths:
   /v3/folders:search:
     get:
       operationId: cloudresourcemanager.folders.search
-      summary: Search folders
+      summary: Google Cloud Platform Search folders
       description: >-
         Search for folders that match specified filter criteria. The caller
         must have the resourcemanager.folders.get permission on the returned
@@ -942,7 +942,7 @@ paths:
   /v3/organizations/{organizationId}:
     get:
       operationId: cloudresourcemanager.organizations.get
-      summary: Get an organization
+      summary: Google Cloud Platform Get an organization
       description: >-
         Fetches an organization resource identified by the specified resource
         name, such as organizations/12345. The caller must have the
@@ -986,7 +986,7 @@ paths:
   /v3/organizations:search:
     get:
       operationId: cloudresourcemanager.organizations.search
-      summary: Search organizations
+      summary: Google Cloud Platform Search organizations
       description: >-
         Searches for organizations that the caller has the
         resourcemanager.organizations.get permission on. Organizations can be
@@ -1035,7 +1035,7 @@ paths:
   /v3/organizations/{resource}:getIamPolicy:
     post:
       operationId: cloudresourcemanager.organizations.getIamPolicy
-      summary: Get organization IAM policy
+      summary: Google Cloud Platform Get organization IAM policy
       description: >-
         Gets the access control policy for an organization resource. The
         caller must have the resourcemanager.organizations.getIamPolicy
@@ -1077,7 +1077,7 @@ paths:
   /v3/organizations/{resource}:setIamPolicy:
     post:
       operationId: cloudresourcemanager.organizations.setIamPolicy
-      summary: Set organization IAM policy
+      summary: Google Cloud Platform Set organization IAM policy
       description: >-
         Sets the access control policy on an organization resource, replacing
         any existing policy. The caller must have the
@@ -1126,7 +1126,7 @@ paths:
   /v3/{name}:
     get:
       operationId: cloudresourcemanager.operations.get
-      summary: Get a long-running operation
+      summary: Google Cloud Platform Get a long-running operation
       description: >-
         Gets the latest state of a long-running operation. Clients can use
         this method to poll the operation result at intervals.
@@ -1161,7 +1161,7 @@ paths:
   /v3/tagKeys:
     get:
       operationId: cloudresourcemanager.tagKeys.list
-      summary: List tag keys
+      summary: Google Cloud Platform List tag keys
       description: >-
         Lists all tag keys under a specified parent resource. The parent can
         be an organization. The caller must have the
@@ -1209,7 +1209,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     post:
       operationId: cloudresourcemanager.tagKeys.create
-      summary: Create a tag key
+      summary: Google Cloud Platform Create a tag key
       description: >-
         Creates a new tag key under the specified parent. The tag key short
         name must be unique within the parent. The caller must have the
@@ -1251,7 +1251,7 @@ paths:
   /v3/tagValues:
     get:
       operationId: cloudresourcemanager.tagValues.list
-      summary: List tag values
+      summary: Google Cloud Platform List tag values
       description: >-
         Lists all tag values for a specified tag key. The caller must have
         the resourcemanager.tagValues.list permission on the parent tag key.
@@ -1298,7 +1298,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     post:
       operationId: cloudresourcemanager.tagValues.create
-      summary: Create a tag value
+      summary: Google Cloud Platform Create a tag value
       description: >-
         Creates a tag value as a child of the specified tag key. The caller
         must have the resourcemanager.tagValues.create permission on the
@@ -1340,7 +1340,7 @@ paths:
   /v3/tagBindings:
     get:
       operationId: cloudresourcemanager.tagBindings.list
-      summary: List tag bindings
+      summary: Google Cloud Platform List tag bindings
       description: >-
         Lists the tag bindings that are applied to the specified resource.
         The caller must have the appropriate permission on the resource.
@@ -1388,7 +1388,7 @@ paths:
                 $ref: '#/components/schemas/Status'
     post:
       operationId: cloudresourcemanager.tagBindings.create
-      summary: Create a tag binding
+      summary: Google Cloud Platform Create a tag binding
       description: >-
         Creates a tag binding between a tag value and a cloud resource. The
         caller must have the appropriate tag permission on the resource and
@@ -1844,10 +1844,10 @@ components:
           items:
             type: string
           examples:
-            - - user:alice@example.com
-              - serviceAccount:my-sa@project.iam.gserviceaccount.com
-              - group:admins@example.com
-              - domain:example.com
+            -   - user:alice@example.com
+                - serviceAccount:my-sa@project.iam.gserviceaccount.com
+                - group:admins@example.com
+                - domain:example.com
         condition:
           $ref: '#/components/schemas/Expr'
     Expr:
