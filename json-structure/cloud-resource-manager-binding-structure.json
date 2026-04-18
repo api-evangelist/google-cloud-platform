@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Binding",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array"
+    }
+  }
+}

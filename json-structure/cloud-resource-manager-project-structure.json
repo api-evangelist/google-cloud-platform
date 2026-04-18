@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "string"
+    },
+    "projectId": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "createTime": {
+      "type": "string"
+    },
+    "updateTime": {
+      "type": "string"
+    },
+    "deleteTime": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "labels": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Organization",
+  "type": "object",
+  "description": "The root node in the resource hierarchy to which a particular entity's resources belong. An organization is tied to a Google Workspace or Cloud Identity account. Organizations cannot be created or deleted through the API; they are automatically provisioned when a Google Workspace or Cloud Identity account is created.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the organization in the form organizations/{organization_id}. Output only."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "A human-readable string that refers to the organization in the Google Cloud Console. This field is output only and derived from the associated Google Workspace or Cloud Identity account."
+    },
+    "directoryCustomerId": {
+      "type": "string",
+      "description": "The unique identifier for the Google Workspace or Cloud Identity account associated with this organization. Output only."
+    },
+    "state": {
+      "type": "string",
+      "description": "The organization lifecycle state. Output only."
+    },
+    "createTime": {
+      "type": "string",
+      "description": "Timestamp when the organization was created. Output only."
+    },
+    "updateTime": {
+      "type": "string",
+      "description": "Timestamp when the organization was last modified. Output only."
+    },
+    "deleteTime": {
+      "type": "string",
+      "description": "Timestamp of when the delete request was sent. Output only."
+    },
+    "etag": {
+      "type": "string",
+      "description": "A checksum computed by the server based on the current value of the organization resource."
+    }
+  }
+}

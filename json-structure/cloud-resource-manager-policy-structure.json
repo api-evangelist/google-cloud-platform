@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Policy",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "integer"
+    },
+    "bindings": {
+      "type": "array"
+    },
+    "etag": {
+      "type": "string"
+    }
+  }
+}

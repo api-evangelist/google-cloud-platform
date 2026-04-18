@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListTagBindingsResponse",
+  "type": "object",
+  "description": "Response message for listing tag bindings.",
+  "properties": {
+    "tagBindings": {
+      "type": "array",
+      "description": "The list of tag bindings."
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token for the next page of results."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expr",
+  "type": "object",
+  "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.",
+  "properties": {
+    "expression": {
+      "type": "string",
+      "description": "The CEL expression string. Example: request.time < timestamp(\"2024-01-01T00:00:00Z\")."
+    },
+    "title": {
+      "type": "string",
+      "description": "An optional title for the expression."
+    },
+    "description": {
+      "type": "string",
+      "description": "An optional description of the expression."
+    },
+    "location": {
+      "type": "string",
+      "description": "An optional string indicating the location of the expression for error reporting."
+    }
+  }
+}

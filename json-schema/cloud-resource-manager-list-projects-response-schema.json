@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListProjectsResponse",
+  "type": "object",
+  "description": "Response message for listing projects.",
+  "properties": {
+    "projects": {
+      "type": "array",
+      "description": "The list of projects under the specified parent."
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token to retrieve the next page of results. Empty if there are no more results."
+    }
+  }
+}

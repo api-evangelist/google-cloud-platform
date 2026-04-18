@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Folder",
+  "type": "object",
+  "description": "A folder in the Google Cloud resource hierarchy. Folders can contain projects and other folders, allowing users to group resources and apply policies hierarchically. Folders can be up to 10 levels deep.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the folder in the form folders/{folder_id}. Output only."
+    },
+    "parent": {
+      "type": "string",
+      "description": "The resource name of the folder's parent. Can be an organization or another folder in the form organizations/{org_id} or folders/{folder_id}."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The folder's display name. A folder's display name must be distinct from all other folders that share its parent. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores, and can be no longer than 30 characters."
+    },
+    "state": {
+      "type": "string",
+      "description": "The lifecycle state of the folder. Output only."
+    },
+    "createTime": {
+      "type": "string",
+      "description": "Timestamp of when the folder was created. Output only."
+    },
+    "updateTime": {
+      "type": "string",
+      "description": "Timestamp of when the folder was last modified. Output only."
+    },
+    "deleteTime": {
+      "type": "string",
+      "description": "Timestamp of when the delete request was sent. Output only."
+    },
+    "etag": {
+      "type": "string",
+      "description": "A checksum computed by the server based on the current value of the folder resource."
+    }
+  }
+}

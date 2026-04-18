@@ -1,0 +1,12 @@
+{
+  "name": "Example Title",
+  "parent": "example_value",
+  "projectId": "500123",
+  "state": "example_value",
+  "displayName": "example_value",
+  "createTime": "example_value",
+  "updateTime": "example_value",
+  "deleteTime": "example_value",
+  "etag": "example_value",
+  "labels": "example_value"
+}

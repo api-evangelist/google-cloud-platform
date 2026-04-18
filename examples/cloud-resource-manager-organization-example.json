@@ -1,0 +1,10 @@
+{
+  "name": "Example Title",
+  "displayName": "example_value",
+  "directoryCustomerId": "500123",
+  "state": "example_value",
+  "createTime": "example_value",
+  "updateTime": "example_value",
+  "deleteTime": "example_value",
+  "etag": "example_value"
+}

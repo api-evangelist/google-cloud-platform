@@ -1,0 +1,14 @@
+name: google-cloud-platform API Vocabulary
+provider: google-cloud-platform
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 28
+schemas: 24
+tags:
+- Folders
+- Operations
+- Organizations
+- Projects
+- TagBindings
+- TagKeys
+- TagValues

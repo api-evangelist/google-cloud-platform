@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TagValue",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "string"
+    },
+    "shortName": {
+      "type": "string"
+    },
+    "namespacedName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "createTime": {
+      "type": "string"
+    },
+    "updateTime": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    }
+  }
+}

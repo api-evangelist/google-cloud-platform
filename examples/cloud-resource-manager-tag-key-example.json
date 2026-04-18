@@ -1,0 +1,10 @@
+{
+  "name": "Example Title",
+  "parent": "example_value",
+  "shortName": "example_value",
+  "namespacedName": "example_value",
+  "description": "A sample description.",
+  "createTime": "example_value",
+  "updateTime": "example_value",
+  "etag": "example_value"
+}

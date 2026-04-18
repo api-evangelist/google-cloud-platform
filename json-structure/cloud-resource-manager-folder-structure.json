@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Folder",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "createTime": {
+      "type": "string"
+    },
+    "updateTime": {
+      "type": "string"
+    },
+    "deleteTime": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    }
+  }
+}

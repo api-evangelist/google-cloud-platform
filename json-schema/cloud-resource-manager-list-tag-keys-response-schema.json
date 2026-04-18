@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListTagKeysResponse",
+  "type": "object",
+  "description": "Response message for listing tag keys.",
+  "properties": {
+    "tagKeys": {
+      "type": "array",
+      "description": "The list of tag keys."
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token for the next page of results."
+    }
+  }
+}

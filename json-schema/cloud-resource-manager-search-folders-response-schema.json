@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchFoldersResponse",
+  "type": "object",
+  "description": "Response message for searching folders.",
+  "properties": {
+    "folders": {
+      "type": "array",
+      "description": "The list of folders matching the search criteria."
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token for the next page of results."
+    }
+  }
+}

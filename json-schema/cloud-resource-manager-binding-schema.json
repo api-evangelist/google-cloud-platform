@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Binding",
+  "type": "object",
+  "description": "Associates members with a role.",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer."
+    },
+    "members": {
+      "type": "array",
+      "description": "The identities requesting access. Supports user, serviceAccount, group, and domain members."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TagBinding",
+  "type": "object",
+  "description": "A tag binding associates a tag value with a Google Cloud resource. Tag bindings represent the link between organization taxonomy (tag keys and values) and actual cloud resources.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the tag binding in the form tagBindings/{tag_binding_id}. Output only."
+    },
+    "parent": {
+      "type": "string",
+      "description": "The full resource name of the resource the tag value is bound to. Example: //cloudresourcemanager.googleapis.com/projects/123."
+    },
+    "tagValue": {
+      "type": "string",
+      "description": "The resource name of the tag value in the form tagValues/{tag_value_id}."
+    },
+    "tagValueNamespacedName": {
+      "type": "string",
+      "description": "The namespaced name of the tag value in the form {parentNamespace}/{tagKeyShortName}/{tagValueShortName}. Output only."
+    }
+  }
+}

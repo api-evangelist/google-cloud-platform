@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Status",
+  "type": "object",
+  "description": "The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "description": "The status code, which should be an enum value of google.rpc.Code."
+    },
+    "message": {
+      "type": "string",
+      "description": "A developer-facing error message in English."
+    },
+    "details": {
+      "type": "array",
+      "description": "A list of messages that carry the error details."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchProjectsResponse",
+  "type": "object",
+  "description": "Response message for searching projects.",
+  "properties": {
+    "projects": {
+      "type": "array",
+      "description": "The list of projects matching the search criteria."
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token for the next page of results."
+    }
+  }
+}
