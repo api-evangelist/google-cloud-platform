@@ -1,0 +1,435 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Google Cloud Platform
+providerId: google-cloud-platform
+publisherName: Google Cloud Platform
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - API Management
+  - Cloud Computing
+  - Infrastructure
+  - Platform as a Service
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Google Cloud Platform API surface. Provides a FOCUS-aligned
+  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Google Cloud Platform
+  ServiceCategory: Developer Tools / API
+  ProviderName: Google Cloud Platform
+  PublisherName: Google Cloud Platform
+  InvoiceIssuerName: Google Cloud Platform
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Google Compute Engine API
+    baseURL: https://compute.googleapis.com
+    tags:
+      - Compute
+      - Infrastructure
+      - Virtual Machines
+    serviceName: Google Compute Engine API
+    serviceCategory: API
+  - name: Google Cloud Storage API
+    baseURL: https://storage.googleapis.com
+    tags:
+      - Files
+      - Object Storage
+      - Storage
+    serviceName: Google Cloud Storage API
+    serviceCategory: API
+  - name: Google Cloud Functions API
+    baseURL: https://cloudfunctions.googleapis.com
+    tags:
+      - Event-Driven
+      - Functions
+      - Serverless
+    serviceName: Google Cloud Functions API
+    serviceCategory: API
+  - name: Google Kubernetes Engine API
+    baseURL: https://container.googleapis.com
+    tags:
+      - Containers
+      - Kubernetes
+      - Orchestration
+    serviceName: Google Kubernetes Engine API
+    serviceCategory: API
+  - name: Google BigQuery API
+    baseURL: https://bigquery.googleapis.com
+    tags:
+      - Analytics
+      - Big Data
+      - Data Warehouse
+    serviceName: Google BigQuery API
+    serviceCategory: API
+  - name: Google Cloud Pub/Sub API
+    baseURL: https://pubsub.googleapis.com
+    tags:
+      - Event Streaming
+      - Messaging
+      - Pub/Sub
+    serviceName: Google Cloud Pub/Sub API
+    serviceCategory: API
+  - name: Google Cloud Vision API
+    baseURL: https://vision.googleapis.com
+    tags:
+      - AI
+      - Computer Vision
+      - Machine Learning
+    serviceName: Google Cloud Vision API
+    serviceCategory: API
+  - name: Google Cloud Vertex AI API
+    baseURL: https://aiplatform.googleapis.com
+    tags:
+      - AI
+      - Generative AI
+      - Machine Learning
+      - MLOps
+    serviceName: Google Cloud Vertex AI API
+    serviceCategory: API
+  - name: Google Cloud Natural Language API
+    baseURL: https://language.googleapis.com
+    tags:
+      - AI
+      - Machine Learning
+      - Natural Language Processing
+      - Text Analysis
+    serviceName: Google Cloud Natural Language API
+    serviceCategory: API
+  - name: Google Cloud Speech-to-Text API
+    baseURL: https://speech.googleapis.com
+    tags:
+      - AI
+      - Audio
+      - Machine Learning
+      - Speech Recognition
+    serviceName: Google Cloud Speech-to-Text API
+    serviceCategory: API
+  - name: Google Cloud Translation API
+    baseURL: https://translate.googleapis.com
+    tags:
+      - AI
+      - Language
+      - Machine Learning
+      - Translation
+    serviceName: Google Cloud Translation API
+    serviceCategory: API
+  - name: Google Cloud Run API
+    baseURL: https://run.googleapis.com
+    tags:
+      - Compute
+      - Containers
+      - Serverless
+    serviceName: Google Cloud Run API
+    serviceCategory: API
+  - name: Google Cloud SQL Admin API
+    baseURL: https://sqladmin.googleapis.com
+    tags:
+      - Managed Database
+      - MySQL
+      - PostgreSQL
+      - Relational Database
+      - SQL Server
+    serviceName: Google Cloud SQL Admin API
+    serviceCategory: API
+  - name: Google Cloud Spanner API
+    baseURL: https://spanner.googleapis.com
+    tags:
+      - Distributed Database
+      - Global Database
+      - NewSQL
+      - Relational Database
+    serviceName: Google Cloud Spanner API
+    serviceCategory: API
+  - name: Google Cloud Firestore API
+    baseURL: https://firestore.googleapis.com
+    tags:
+      - Document Database
+      - NoSQL
+      - Real-Time
+      - Serverless
+    serviceName: Google Cloud Firestore API
+    serviceCategory: API
+  - name: Google Cloud Bigtable Admin API
+    baseURL: https://bigtableadmin.googleapis.com
+    tags:
+      - Analytics
+      - Big Data
+      - NoSQL
+      - Wide Column Store
+    serviceName: Google Cloud Bigtable Admin API
+    serviceCategory: API
+  - name: Google Cloud IAM API
+    baseURL: https://iam.googleapis.com
+    tags:
+      - Access Management
+      - Authorization
+      - Identity
+      - Security
+    serviceName: Google Cloud IAM API
+    serviceCategory: API
+  - name: Google Cloud DNS API
+    baseURL: https://dns.googleapis.com
+    tags:
+      - DNS
+      - Domain Management
+      - Networking
+    serviceName: Google Cloud DNS API
+    serviceCategory: API
+  - name: Google Cloud Logging API
+    baseURL: https://logging.googleapis.com
+    tags:
+      - Logging
+      - Monitoring
+      - Observability
+      - Operations
+    serviceName: Google Cloud Logging API
+    serviceCategory: API
+  - name: Google Cloud Monitoring API
+    baseURL: https://monitoring.googleapis.com
+    tags:
+      - Alerting
+      - Metrics
+      - Monitoring
+      - Observability
+    serviceName: Google Cloud Monitoring API
+    serviceCategory: API
+  - name: Google Cloud Dataflow API
+    baseURL: https://dataflow.googleapis.com
+    tags:
+      - Apache Beam
+      - Batch Processing
+      - Data Pipeline
+      - Streaming Analytics
+    serviceName: Google Cloud Dataflow API
+    serviceCategory: API
+  - name: Google Cloud Dataproc API
+    baseURL: https://dataproc.googleapis.com
+    tags:
+      - Apache Hadoop
+      - Apache Spark
+      - Batch Processing
+      - Big Data
+    serviceName: Google Cloud Dataproc API
+    serviceCategory: API
+  - name: Google Cloud Key Management Service API
+    baseURL: https://cloudkms.googleapis.com
+    tags:
+      - Cryptography
+      - Encryption
+      - Key Management
+      - Security
+    serviceName: Google Cloud Key Management Service API
+    serviceCategory: API
+  - name: Google Cloud Secret Manager API
+    baseURL: https://secretmanager.googleapis.com
+    tags:
+      - Configuration Management
+      - Secrets
+      - Security
+    serviceName: Google Cloud Secret Manager API
+    serviceCategory: API
+  - name: Google Cloud Artifact Registry API
+    baseURL: https://artifactregistry.googleapis.com
+    tags:
+      - CI/CD
+      - Container Registry
+      - DevOps
+      - Package Management
+    serviceName: Google Cloud Artifact Registry API
+    serviceCategory: API
+  - name: Google Cloud Build API
+    baseURL: https://cloudbuild.googleapis.com
+    tags:
+      - Build
+      - CI/CD
+      - Continuous Integration
+      - DevOps
+    serviceName: Google Cloud Build API
+    serviceCategory: API
+  - name: Google Cloud Resource Manager API
+    baseURL: https://cloudresourcemanager.googleapis.com
+    tags:
+      - Governance
+      - Organizations
+      - Projects
+      - Resource Management
+    serviceName: Google Cloud Resource Manager API
+    serviceCategory: API
+  - name: Google Cloud Tasks API
+    baseURL: https://cloudtasks.googleapis.com
+    tags:
+      - Asynchronous Processing
+      - Distributed Systems
+      - Task Queue
+    serviceName: Google Cloud Tasks API
+    serviceCategory: API
+  - name: Google Cloud Scheduler API
+    baseURL: https://cloudscheduler.googleapis.com
+    tags:
+      - Automation
+      - Cron Jobs
+      - Scheduling
+    serviceName: Google Cloud Scheduler API
+    serviceCategory: API
+  - name: Google Cloud Text-to-Speech API
+    baseURL: https://texttospeech.googleapis.com
+    tags:
+      - AI
+      - Audio
+      - Machine Learning
+      - Speech Synthesis
+    serviceName: Google Cloud Text-to-Speech API
+    serviceCategory: API
+  - name: Google Cloud API Gateway API
+    baseURL: https://apigateway.googleapis.com
+    tags:
+      - API Gateway
+      - API Management
+      - Security
+    serviceName: Google Cloud API Gateway API
+    serviceCategory: API
+  - name: Google Cloud Workflows API
+    baseURL: https://workflows.googleapis.com
+    tags:
+      - Automation
+      - Serverless
+      - Workflow Orchestration
+    serviceName: Google Cloud Workflows API
+    serviceCategory: API
+  - name: Google Cloud Deploy API
+    baseURL: https://clouddeploy.googleapis.com
+    tags:
+      - CI/CD
+      - Continuous Delivery
+      - Deployment
+      - DevOps
+    serviceName: Google Cloud Deploy API
+    serviceCategory: API
+  - name: Google Dialogflow CX API
+    baseURL: https://dialogflow.googleapis.com
+    tags:
+      - AI
+      - Chatbots
+      - Conversational AI
+      - Natural Language Understanding
+    serviceName: Google Dialogflow CX API
+    serviceCategory: API
+  - name: Google Cloud Sensitive Data Protection API
+    baseURL: https://dlp.googleapis.com
+    tags:
+      - Data Loss Prevention
+      - Data Protection
+      - Privacy
+      - Security
+    serviceName: Google Cloud Sensitive Data Protection API
+    serviceCategory: API
+  - name: Google Cloud Memorystore for Redis API
+    baseURL: https://redis.googleapis.com
+    tags:
+      - Caching
+      - In-Memory Database
+      - Managed Database
+      - Redis
+    serviceName: Google Cloud Memorystore for Redis API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
