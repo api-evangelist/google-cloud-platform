@@ -4,468 +4,223 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Google Cloud Platform
 providerId: google-cloud-platform
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - API Management
-  - Cloud Computing
-  - Infrastructure
-  - Platform as a Service
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Cloud Platform
+  - IaaS
+  - PaaS
+  - Google Cloud
+  - Multi-Product
+description: Google Cloud is a multi-product platform priced per service rather than per overall tier.
+  Most services follow Pay-As-You-Go list prices documented on per-service pricing pages, with optional
+  Committed Use Discounts (CUDs - 1y or 3y) and Sustained Use Discounts (SUDs) layered on top. New customers
+  receive $300 of free trial credit (90 days) and an Always Free tier provides perpetual zero-cost quotas
+  for representative services.
+sources:
+  - https://cloud.google.com/pricing
+  - https://cloud.google.com/free
+  - https://cloud.google.com/pricing/list
 plans:
-  - id: google-cloud-platform-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Google Cloud Platform API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: google-cloud-platform-overview
+    name: Platform Pricing Overview
+    type: pay-as-you-go
+    description: Default Pay-As-You-Go list pricing for all Google Cloud services. Prices vary per service,
+      region, and SKU; consult the per-service pricing page or use the Pricing Calculator for an exact
+      quote.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
-          - https://bigquery.googleapis.com
-          - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
-          - https://bigquery.googleapis.com
-          - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Google Compute Engine API
-      - name: Google Cloud Storage API
-      - name: Google Cloud Functions API
-      - name: Google Kubernetes Engine API
-      - name: Google BigQuery API
-      - name: Google Cloud Pub/Sub API
-      - name: Google Cloud Vision API
-      - name: Google Cloud Vertex AI API
-  - id: google-cloud-platform-pro
-    name: Professional
-    type: paid
-    description: Production tier for Google Cloud Platform. Provides higher quotas, priority support,
-      and access to the broader API portfolio. Pricing placeholder; align with the provider's pricing
-      page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
-          - https://bigquery.googleapis.com
-          - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
-          - https://bigquery.googleapis.com
-          - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Per-service usage
+        description: Each Google Cloud service is metered with its own SKUs and unit prices
+        name: per_service_usage
         type: metered
-        metric: requests
+        metric: varies
         limit: -1
+        timeFrame: usage
+        geo: global
+        domains:
+          - https://cloud.google.com
+        unit: 1
+        price: see vendor pricing calculator
+        userMultiplied: false
+    elements:
+      - name: Compute Engine
+      - name: Cloud Storage
+      - name: BigQuery
+      - name: Cloud SQL / AlloyDB / Spanner
+      - name: Cloud Run / Cloud Functions / GKE
+      - name: Vertex AI / Gemini API
+      - name: Networking + Load Balancing
+      - name: Operations (Logging / Monitoring / Trace)
+  - id: google-cloud-platform-free-trial
+    name: Free Trial
+    type: freemium
+    description: 90-day free trial for new customers with USD 300 in promotional credit usable across
+      most GCP services. Credit is consumed against PAYG list prices.
+    entries:
+      - label: Trial credit
+        description: One-time promotional credit for new accounts
+        name: trial_credit
+        type: flat
+        metric: USD
+        limit: 300
+        timeFrame: usage
+        geo: global
+        domains:
+          - https://cloud.google.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Trial duration
+        description: Maximum trial period
+        name: trial_duration
+        type: quota
+        metric: day
+        limit: 90
+        timeFrame: usage
+        geo: global
+        domains:
+          - https://cloud.google.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Access to all GCP services
+      - name: Auto-stops at credit exhaustion or 90 days
+  - id: google-cloud-platform-always-free
+    name: Always Free
+    type: freemium
+    description: Perpetual zero-cost monthly quotas across representative services (subject to per-service
+      caveats and US-region restrictions for some quotas).
+    entries:
+      - label: Compute Engine e2-micro
+        description: One non-preemptible e2-micro per month in eligible US regions
+        name: free_compute
+        type: quota
+        metric: instance-month
+        limit: 1
+        timeFrame: month
+        geo: US
+        domains:
+          - https://compute.googleapis.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Cloud Storage standard
+        description: 5 GB-month of standard storage in US multi-region
+        name: free_storage
+        type: quota
+        metric: GB
+        limit: 5
+        timeFrame: month
+        geo: US
+        domains:
+          - https://storage.googleapis.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: BigQuery query
+        description: 1 TB of on-demand query bytes per month
+        name: free_bq_query
+        type: quota
+        metric: TB
+        limit: 1
         timeFrame: month
         geo: global
         domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
           - https://bigquery.googleapis.com
-          - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '0.00'
         userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Google Compute Engine API
-      - name: Google Cloud Storage API
-      - name: Google Cloud Functions API
-      - name: Google Kubernetes Engine API
-      - name: Google BigQuery API
-      - name: Google Cloud Pub/Sub API
-      - name: Google Cloud Vision API
-      - name: Google Cloud Vertex AI API
-      - name: Google Cloud Natural Language API
-      - name: Google Cloud Speech-to-Text API
-      - name: Google Cloud Translation API
-      - name: Google Cloud Run API
-      - name: Google Cloud SQL Admin API
-      - name: Google Cloud Spanner API
-      - name: Google Cloud Firestore API
-      - name: Google Cloud Bigtable Admin API
-      - name: Google Cloud IAM API
-      - name: Google Cloud DNS API
-      - name: Google Cloud Logging API
-      - name: Google Cloud Monitoring API
-      - name: Google Cloud Dataflow API
-      - name: Google Cloud Dataproc API
-      - name: Google Cloud Key Management Service API
-      - name: Google Cloud Secret Manager API
-      - name: Google Cloud Artifact Registry API
-      - name: Google Cloud Build API
-      - name: Google Cloud Resource Manager API
-      - name: Google Cloud Tasks API
-      - name: Google Cloud Scheduler API
-      - name: Google Cloud Text-to-Speech API
-      - name: Google Cloud API Gateway API
-      - name: Google Cloud Workflows API
-      - name: Google Cloud Deploy API
-      - name: Google Dialogflow CX API
-      - name: Google Cloud Sensitive Data Protection API
-      - name: Google Cloud Memorystore for Redis API
-  - id: google-cloud-platform-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Google Cloud Platform. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+      - label: BigQuery storage
+        description: 10 GB of active storage per month
+        name: free_bq_storage
         type: quota
-        metric: requests
-        limit: -1
+        metric: GB
+        limit: 10
         timeFrame: month
-        geo: configurable
+        geo: global
         domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
           - https://bigquery.googleapis.com
-          - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
         unit: 1
-        price: custom
+        price: '0.00'
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
+      - label: Pub/Sub
+        description: 10 GB of message ingress per month
+        name: free_pubsub
+        type: quota
+        metric: GB
+        limit: 10
+        timeFrame: month
+        geo: global
         domains:
-          - https://compute.googleapis.com
-          - https://storage.googleapis.com
-          - https://cloudfunctions.googleapis.com
-          - https://container.googleapis.com
-          - https://bigquery.googleapis.com
           - https://pubsub.googleapis.com
-          - https://vision.googleapis.com
-          - https://aiplatform.googleapis.com
-          - https://language.googleapis.com
-          - https://speech.googleapis.com
-          - https://translate.googleapis.com
-          - https://run.googleapis.com
-          - https://sqladmin.googleapis.com
-          - https://spanner.googleapis.com
-          - https://firestore.googleapis.com
-          - https://bigtableadmin.googleapis.com
-          - https://iam.googleapis.com
-          - https://dns.googleapis.com
-          - https://logging.googleapis.com
-          - https://monitoring.googleapis.com
-          - https://dataflow.googleapis.com
-          - https://dataproc.googleapis.com
-          - https://cloudkms.googleapis.com
-          - https://secretmanager.googleapis.com
-          - https://artifactregistry.googleapis.com
-          - https://cloudbuild.googleapis.com
-          - https://cloudresourcemanager.googleapis.com
-          - https://cloudtasks.googleapis.com
-          - https://cloudscheduler.googleapis.com
-          - https://texttospeech.googleapis.com
-          - https://apigateway.googleapis.com
-          - https://workflows.googleapis.com
-          - https://clouddeploy.googleapis.com
-          - https://dialogflow.googleapis.com
-          - https://dlp.googleapis.com
-          - https://redis.googleapis.com
         unit: 1
-        price: custom
+        price: '0.00'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Google Compute Engine API
-      - name: Google Cloud Storage API
-      - name: Google Cloud Functions API
-      - name: Google Kubernetes Engine API
-      - name: Google BigQuery API
-      - name: Google Cloud Pub/Sub API
-      - name: Google Cloud Vision API
-      - name: Google Cloud Vertex AI API
-      - name: Google Cloud Natural Language API
-      - name: Google Cloud Speech-to-Text API
-      - name: Google Cloud Translation API
-      - name: Google Cloud Run API
-      - name: Google Cloud SQL Admin API
-      - name: Google Cloud Spanner API
-      - name: Google Cloud Firestore API
-      - name: Google Cloud Bigtable Admin API
-      - name: Google Cloud IAM API
-      - name: Google Cloud DNS API
-      - name: Google Cloud Logging API
-      - name: Google Cloud Monitoring API
-      - name: Google Cloud Dataflow API
-      - name: Google Cloud Dataproc API
-      - name: Google Cloud Key Management Service API
-      - name: Google Cloud Secret Manager API
-      - name: Google Cloud Artifact Registry API
-      - name: Google Cloud Build API
-      - name: Google Cloud Resource Manager API
-      - name: Google Cloud Tasks API
-      - name: Google Cloud Scheduler API
-      - name: Google Cloud Text-to-Speech API
-      - name: Google Cloud API Gateway API
-      - name: Google Cloud Workflows API
-      - name: Google Cloud Deploy API
-      - name: Google Dialogflow CX API
-      - name: Google Cloud Sensitive Data Protection API
-      - name: Google Cloud Memorystore for Redis API
+      - name: Always-free monthly quotas across many services
+      - name: Continues after trial credit is consumed
+  - id: google-cloud-platform-committed-use
+    name: Committed Use Discount
+    type: subscription
+    description: 1-year or 3-year commitments to a specific resource SKU and region in exchange for a
+      discounted rate. Resource-based CUDs apply to Compute Engine, GKE, Cloud SQL, Spanner, etc.; spend-based
+      CUDs apply to Compute Engine and Cloud Run.
+    entries:
+      - label: 1-year commit
+        description: Discount for 1-year resource or spend commitment
+        name: cud_1y
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        domains:
+          - https://cloud.google.com
+        unit: 1
+        price: see CUD pricing
+        userMultiplied: false
+      - label: 3-year commit
+        description: Discount for 3-year resource or spend commitment (deeper discount)
+        name: cud_3y
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        domains:
+          - https://cloud.google.com
+        unit: 1
+        price: see CUD pricing
+        userMultiplied: false
+    elements:
+      - name: Resource-based CUDs
+      - name: Spend-based CUDs
+      - name: Auto-renew available
+  - id: google-cloud-platform-enterprise-agreement
+    name: Enterprise Agreement
+    type: enterprise
+    description: Negotiated enterprise contract with custom pricing, volume discounts, premium support,
+      and dedicated account management. Sold by Google Cloud field sales.
+    entries:
+      - label: Negotiated contract
+        description: Custom enterprise commercial terms
+        name: enterprise_contract
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: year
+        geo: global
+        domains:
+          - https://cloud.google.com
+        unit: 1
+        price: contact sales
+        userMultiplied: false
+    elements:
+      - name: Custom volume discounts
+      - name: Premium / Enhanced / Standard support tiers
+      - name: Dedicated account management
+      - name: Marketplace private offers
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
