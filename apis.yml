@@ -1075,6 +1075,8 @@ apis:
 include:
   - name: Google Cloud API Common Resources
     url: https://cloud.google.com/apis/design/resources
+integrations:
+  - name: Become a Partner
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
@@ -1180,3 +1182,5 @@ common:
         description: Monitor GCP resources and applications with Datadog's native integration.
       - name: Slack
         description: Receive GCP alerts and notifications directly in Slack channels.
+  - type: Integrations
+    url: https://cloud.google.com/marketplace
