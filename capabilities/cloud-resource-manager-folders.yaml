@@ -1,0 +1,412 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Platform Google Cloud Resource Manager API — Folders
+  description: 'Google Cloud Platform Google Cloud Resource Manager API — Folders. 8 operations. Lead operation: Google Cloud
+    Platform List Folders. Self-contained Naftiko capability covering one Google Cloud Platform business surface.'
+  tags:
+  - Google Cloud Platform
+  - Folders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_PLATFORM_API_KEY: GOOGLE_CLOUD_PLATFORM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-resource-manager-folders
+    baseUri: https://cloudresourcemanager.googleapis.com
+    description: Google Cloud Platform Google Cloud Resource Manager API — Folders business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: v3-folders
+      path: /v3/folders
+      operations:
+      - name: cloudresourcemanagerfolderslist
+        method: GET
+        description: Google Cloud Platform List Folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parent
+          in: query
+          type: string
+          description: The name of the parent resource whose folders are to be listed. Must be of the form folders/{folder_id}
+            or organizations/{org_id}.
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+          description: Maximum number of folders to return.
+        - name: pageToken
+          in: query
+          type: string
+          description: Pagination token from a previous list call.
+        - name: showDeleted
+          in: query
+          type: boolean
+          description: Indicate that folders in the DELETE_REQUESTED state should also be returned.
+      - name: cloudresourcemanagerfolderscreate
+        method: POST
+        description: Google Cloud Platform Create a Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-folders-folderId
+      path: /v3/folders/{folderId}
+      operations:
+      - name: cloudresourcemanagerfoldersget
+        method: GET
+        description: Google Cloud Platform Get a Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          description: The resource name of the folder to retrieve.
+          required: true
+      - name: cloudresourcemanagerfolderspatch
+        method: PATCH
+        description: Google Cloud Platform Update a Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          description: The resource name of the folder to update.
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+          description: Fields to be updated. Only the display_name field can be updated.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: cloudresourcemanagerfoldersdelete
+        method: DELETE
+        description: Google Cloud Platform Delete a Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          description: The resource name of the folder to delete.
+          required: true
+    - name: v3-folders-folderId}:move
+      path: /v3/folders/{folderId}:move
+      operations:
+      - name: cloudresourcemanagerfoldersmove
+        method: POST
+        description: Google Cloud Platform Move a Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          description: The resource name of the folder to move.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-folders-folderId}:undelete
+      path: /v3/folders/{folderId}:undelete
+      operations:
+      - name: cloudresourcemanagerfoldersundelete
+        method: POST
+        description: Google Cloud Platform Undelete a Folder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: folderId
+          in: path
+          type: string
+          description: The resource name of the folder to undelete.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v3-folders:search
+      path: /v3/folders:search
+      operations:
+      - name: cloudresourcemanagerfolderssearch
+        method: GET
+        description: Google Cloud Platform Search Folders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: 'Search criteria used to select folders. The supported filter fields are displayName, parent, and state.
+            Example: displayName=Engineering.'
+        - name: pageSize
+          in: query
+          type: integer
+          description: Maximum number of folders to return.
+        - name: pageToken
+          in: query
+          type: string
+          description: Pagination token from a previous search call.
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_PLATFORM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-resource-manager-folders-rest
+    port: 8080
+    description: REST adapter for Google Cloud Platform Google Cloud Resource Manager API — Folders. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/folders
+      name: v3-folders
+      description: REST surface for v3-folders.
+      operations:
+      - method: GET
+        name: cloudresourcemanagerfolderslist
+        description: Google Cloud Platform List Folders
+        call: cloud-resource-manager-folders.cloudresourcemanagerfolderslist
+        with:
+          parent: rest.parent
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+          showDeleted: rest.showDeleted
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: cloudresourcemanagerfolderscreate
+        description: Google Cloud Platform Create a Folder
+        call: cloud-resource-manager-folders.cloudresourcemanagerfolderscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/folders/{folderid}
+      name: v3-folders-folderid
+      description: REST surface for v3-folders-folderId.
+      operations:
+      - method: GET
+        name: cloudresourcemanagerfoldersget
+        description: Google Cloud Platform Get a Folder
+        call: cloud-resource-manager-folders.cloudresourcemanagerfoldersget
+        with:
+          folderId: rest.folderId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: cloudresourcemanagerfolderspatch
+        description: Google Cloud Platform Update a Folder
+        call: cloud-resource-manager-folders.cloudresourcemanagerfolderspatch
+        with:
+          folderId: rest.folderId
+          updateMask: rest.updateMask
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: cloudresourcemanagerfoldersdelete
+        description: Google Cloud Platform Delete a Folder
+        call: cloud-resource-manager-folders.cloudresourcemanagerfoldersdelete
+        with:
+          folderId: rest.folderId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/folders/folderid-move
+      name: v3-folders-folderid-move
+      description: REST surface for v3-folders-folderId}:move.
+      operations:
+      - method: POST
+        name: cloudresourcemanagerfoldersmove
+        description: Google Cloud Platform Move a Folder
+        call: cloud-resource-manager-folders.cloudresourcemanagerfoldersmove
+        with:
+          folderId: rest.folderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/folders/folderid-undelete
+      name: v3-folders-folderid-undelete
+      description: REST surface for v3-folders-folderId}:undelete.
+      operations:
+      - method: POST
+        name: cloudresourcemanagerfoldersundelete
+        description: Google Cloud Platform Undelete a Folder
+        call: cloud-resource-manager-folders.cloudresourcemanagerfoldersundelete
+        with:
+          folderId: rest.folderId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v3/folders-search
+      name: v3-folders-search
+      description: REST surface for v3-folders:search.
+      operations:
+      - method: GET
+        name: cloudresourcemanagerfolderssearch
+        description: Google Cloud Platform Search Folders
+        call: cloud-resource-manager-folders.cloudresourcemanagerfolderssearch
+        with:
+          query: rest.query
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-resource-manager-folders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Platform Google Cloud Resource Manager API — Folders. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: google-cloud-platform-list-folders
+      description: Google Cloud Platform List Folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-resource-manager-folders.cloudresourcemanagerfolderslist
+      with:
+        parent: tools.parent
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        showDeleted: tools.showDeleted
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-create-folder
+      description: Google Cloud Platform Create a Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-resource-manager-folders.cloudresourcemanagerfolderscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-get-folder
+      description: Google Cloud Platform Get a Folder
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-resource-manager-folders.cloudresourcemanagerfoldersget
+      with:
+        folderId: tools.folderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-update-folder
+      description: Google Cloud Platform Update a Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-resource-manager-folders.cloudresourcemanagerfolderspatch
+      with:
+        folderId: tools.folderId
+        updateMask: tools.updateMask
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-delete-folder
+      description: Google Cloud Platform Delete a Folder
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-resource-manager-folders.cloudresourcemanagerfoldersdelete
+      with:
+        folderId: tools.folderId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-move-folder
+      description: Google Cloud Platform Move a Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-resource-manager-folders.cloudresourcemanagerfoldersmove
+      with:
+        folderId: tools.folderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-undelete-folder
+      description: Google Cloud Platform Undelete a Folder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-resource-manager-folders.cloudresourcemanagerfoldersundelete
+      with:
+        folderId: tools.folderId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-search-folders
+      description: Google Cloud Platform Search Folders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-resource-manager-folders.cloudresourcemanagerfolderssearch
+      with:
+        query: tools.query
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.

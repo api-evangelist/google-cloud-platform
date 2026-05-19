@@ -1,0 +1,128 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Platform Google Cloud Resource Manager API — TagKeys
+  description: 'Google Cloud Platform Google Cloud Resource Manager API — TagKeys. 2 operations. Lead operation: Google Cloud
+    Platform List Tag Keys. Self-contained Naftiko capability covering one Google Cloud Platform business surface.'
+  tags:
+  - Google Cloud Platform
+  - TagKeys
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_PLATFORM_API_KEY: GOOGLE_CLOUD_PLATFORM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-resource-manager-tagkeys
+    baseUri: https://cloudresourcemanager.googleapis.com
+    description: Google Cloud Platform Google Cloud Resource Manager API — TagKeys business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: v3-tagKeys
+      path: /v3/tagKeys
+      operations:
+      - name: cloudresourcemanagertagkeyslist
+        method: GET
+        description: Google Cloud Platform List Tag Keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parent
+          in: query
+          type: string
+          description: The resource name of the parent. Must be of the form organizations/{org_id}.
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+          description: Maximum number of tag keys to return.
+        - name: pageToken
+          in: query
+          type: string
+          description: Pagination token from a previous list call.
+      - name: cloudresourcemanagertagkeyscreate
+        method: POST
+        description: Google Cloud Platform Create a Tag Key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_PLATFORM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-resource-manager-tagkeys-rest
+    port: 8080
+    description: REST adapter for Google Cloud Platform Google Cloud Resource Manager API — TagKeys. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v3/tagkeys
+      name: v3-tagkeys
+      description: REST surface for v3-tagKeys.
+      operations:
+      - method: GET
+        name: cloudresourcemanagertagkeyslist
+        description: Google Cloud Platform List Tag Keys
+        call: cloud-resource-manager-tagkeys.cloudresourcemanagertagkeyslist
+        with:
+          parent: rest.parent
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: cloudresourcemanagertagkeyscreate
+        description: Google Cloud Platform Create a Tag Key
+        call: cloud-resource-manager-tagkeys.cloudresourcemanagertagkeyscreate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-resource-manager-tagkeys-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Platform Google Cloud Resource Manager API — TagKeys. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: google-cloud-platform-list-tag
+      description: Google Cloud Platform List Tag Keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-resource-manager-tagkeys.cloudresourcemanagertagkeyslist
+      with:
+        parent: tools.parent
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-platform-create-tag
+      description: Google Cloud Platform Create a Tag Key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-resource-manager-tagkeys.cloudresourcemanagertagkeyscreate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
