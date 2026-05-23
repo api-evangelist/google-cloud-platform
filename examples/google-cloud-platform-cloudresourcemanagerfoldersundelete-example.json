@@ -1,0 +1,66 @@
+{
+  "operationId": "cloudresourcemanager.folders.undelete",
+  "method": "POST",
+  "path": "/v3/folders/{folderId}:undelete",
+  "summary": "Google Cloud Platform Undelete a Folder",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersUndeleteRequestExample",
+      "example": {}
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersUndelete200Example",
+      "example": {
+        "name": "Example Title",
+        "parent": "example_value",
+        "displayName": "example_value",
+        "state": "STATE_UNSPECIFIED",
+        "createTime": "2026-01-15T10:30:00Z",
+        "updateTime": "2026-01-15T10:30:00Z",
+        "deleteTime": "2026-01-15T10:30:00Z",
+        "etag": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersUndelete401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersUndelete403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersUndelete404Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

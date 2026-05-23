@@ -1,0 +1,63 @@
+{
+  "operationId": "cloudresourcemanager.folders.delete",
+  "method": "DELETE",
+  "path": "/v3/folders/{folderId}",
+  "summary": "Google Cloud Platform Delete a Folder",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersDelete200Example",
+      "example": {
+        "name": "Example Title",
+        "metadata": "example_value",
+        "done": true,
+        "error": {
+          "code": 10,
+          "message": "example_value",
+          "details": [
+            {}
+          ]
+        },
+        "response": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersDelete401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersDelete403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersDelete404Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

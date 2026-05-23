@@ -1,0 +1,75 @@
+{
+  "operationId": "cloudresourcemanager.projects.setIamPolicy",
+  "method": "POST",
+  "path": "/v3/projects/{resource}:setIamPolicy",
+  "summary": "Google Cloud Platform Set Project Iam Policy",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSetiampolicyRequestExample",
+      "example": {
+        "policy": {
+          "version": 10,
+          "bindings": [
+            {}
+          ],
+          "etag": "example_value"
+        },
+        "updateMask": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSetiampolicy200Example",
+      "example": {
+        "version": 10,
+        "bindings": [
+          {
+            "role": "example_value",
+            "members": {}
+          }
+        ],
+        "etag": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSetiampolicy400Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSetiampolicy401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSetiampolicy403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

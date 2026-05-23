@@ -1,0 +1,53 @@
+{
+  "operationId": "cloudresourcemanager.folders.search",
+  "method": "GET",
+  "path": "/v3/folders:search",
+  "summary": "Google Cloud Platform Search Folders",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersSearch200Example",
+      "example": {
+        "folders": [
+          {
+            "name": "Example Title",
+            "parent": "example_value",
+            "displayName": "example_value",
+            "state": "STATE_UNSPECIFIED",
+            "createTime": "2026-01-15T10:30:00Z",
+            "updateTime": "2026-01-15T10:30:00Z",
+            "deleteTime": "2026-01-15T10:30:00Z",
+            "etag": "example_value"
+          }
+        ],
+        "nextPageToken": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersSearch400Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersSearch401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

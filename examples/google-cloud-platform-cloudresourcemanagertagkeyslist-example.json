@@ -1,0 +1,53 @@
+{
+  "operationId": "cloudresourcemanager.tagKeys.list",
+  "method": "GET",
+  "path": "/v3/tagKeys",
+  "summary": "Google Cloud Platform List Tag Keys",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagkeysList200Example",
+      "example": {
+        "tagKeys": [
+          {
+            "name": "Example Title",
+            "parent": "example_value",
+            "shortName": "example_value",
+            "namespacedName": "example_value",
+            "description": "A sample description.",
+            "createTime": "2026-01-15T10:30:00Z",
+            "updateTime": "2026-01-15T10:30:00Z",
+            "etag": "example_value"
+          }
+        ],
+        "nextPageToken": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagkeysList401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagkeysList403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

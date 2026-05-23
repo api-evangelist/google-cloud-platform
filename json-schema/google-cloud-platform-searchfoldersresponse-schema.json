@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchFoldersResponse",
+  "title": "SearchFoldersResponse",
+  "type": "object",
+  "description": "Response message for searching folders.",
+  "properties": {
+    "folders": {
+      "type": "array",
+      "description": "The list of folders matching the search criteria.",
+      "items": {
+        "$ref": "#/components/schemas/Folder"
+      },
+      "example": []
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token for the next page of results.",
+      "example": "example_value"
+    }
+  }
+}

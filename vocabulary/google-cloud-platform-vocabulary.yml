@@ -1,0 +1,26 @@
+name: Google Cloud Platform Domain Vocabulary
+provider: Google Cloud Platform
+providerId: google-cloud-platform
+description: Tag-derived vocabulary for the Google Cloud Platform API surface; sourced from openapi/ tags.
+terms:
+- term: Folders
+  description: Manage Google Cloud folders. Folders provide an additional grouping mechanism and isolation boundary between
+    projects. They can be used to model organizational structure, departments, teams, or environments.
+- term: Operations
+  description: Long-running operations returned by Resource Manager API methods. Some methods return an Operation resource
+    to track the progress of asynchronous requests.
+- term: Organizations
+  description: Manage Google Cloud organizations. An organization is the root node in the Google Cloud resource hierarchy,
+    typically representing a company or business entity. Organizations are tied to a Google Workspace or Cloud Identity account.
+- term: Projects
+  description: Manage Google Cloud projects. A project is the base-level organizing entity in Google Cloud and is required
+    to use most Google Cloud services. Projects contain resources and are associated with billing accounts.
+- term: TagBindings
+  description: Manage tag bindings that associate tag values with Google Cloud resources. Tag bindings connect tag values
+    to specific resources in the hierarchy.
+- term: TagKeys
+  description: Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace for tag
+    values that can be attached to resources.
+- term: TagValues
+  description: Manage tag values associated with tag keys. Tag values are the specific labels that can be bound to resources
+    through tag bindings.

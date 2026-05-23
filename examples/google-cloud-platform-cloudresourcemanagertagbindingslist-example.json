@@ -1,0 +1,49 @@
+{
+  "operationId": "cloudresourcemanager.tagBindings.list",
+  "method": "GET",
+  "path": "/v3/tagBindings",
+  "summary": "Google Cloud Platform List Tag Bindings",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsList200Example",
+      "example": {
+        "tagBindings": [
+          {
+            "name": "Example Title",
+            "parent": "example_value",
+            "tagValue": "example_value",
+            "tagValueNamespacedName": "example_value"
+          }
+        ],
+        "nextPageToken": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsList401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsList403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

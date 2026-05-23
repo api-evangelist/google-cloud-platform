@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Organization",
+  "title": "Organization",
+  "type": "object",
+  "description": "The root node in the resource hierarchy to which a particular entity's resources belong. An organization is tied to a Google Workspace or Cloud Identity account. Organizations cannot be created or deleted through the API; they are automatically provisioned when a Google Workspace or Cloud Identity account is created.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the organization in the form organizations/{organization_id}. Output only.",
+      "readOnly": true,
+      "examples": [
+        "organizations/987654321"
+      ]
+    },
+    "displayName": {
+      "type": "string",
+      "description": "A human-readable string that refers to the organization in the Google Cloud Console. This field is output only and derived from the associated Google Workspace or Cloud Identity account.",
+      "readOnly": true,
+      "examples": [
+        "Example Corp"
+      ]
+    },
+    "directoryCustomerId": {
+      "type": "string",
+      "description": "The unique identifier for the Google Workspace or Cloud Identity account associated with this organization. Output only.",
+      "readOnly": true,
+      "example": "500123"
+    },
+    "state": {
+      "type": "string",
+      "description": "The organization lifecycle state. Output only.",
+      "readOnly": true,
+      "enum": [
+        "STATE_UNSPECIFIED",
+        "ACTIVE",
+        "DELETE_REQUESTED"
+      ],
+      "example": "STATE_UNSPECIFIED"
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the organization was created. Output only.",
+      "readOnly": true,
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the organization was last modified. Output only.",
+      "readOnly": true,
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "deleteTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the delete request was sent. Output only.",
+      "readOnly": true,
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "etag": {
+      "type": "string",
+      "description": "A checksum computed by the server based on the current value of the organization resource.",
+      "readOnly": true,
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "operationId": "cloudresourcemanager.organizations.get",
+  "method": "GET",
+  "path": "/v3/organizations/{organizationId}",
+  "summary": "Google Cloud Platform Get an Organization",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGet200Example",
+      "example": {
+        "name": "Example Title",
+        "displayName": "example_value",
+        "directoryCustomerId": "500123",
+        "state": "STATE_UNSPECIFIED",
+        "createTime": "2026-01-15T10:30:00Z",
+        "updateTime": "2026-01-15T10:30:00Z",
+        "deleteTime": "2026-01-15T10:30:00Z",
+        "etag": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGet401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGet403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGet404Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

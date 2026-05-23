@@ -1,0 +1,71 @@
+{
+  "operationId": "cloudresourcemanager.folders.move",
+  "method": "POST",
+  "path": "/v3/folders/{folderId}:move",
+  "summary": "Google Cloud Platform Move a Folder",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersMoveRequestExample",
+      "example": {
+        "destinationParent": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersMove200Example",
+      "example": {
+        "name": "Example Title",
+        "metadata": "example_value",
+        "done": true,
+        "error": {
+          "code": 10,
+          "message": "example_value",
+          "details": [
+            {}
+          ]
+        },
+        "response": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersMove400Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersMove401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerFoldersMove403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

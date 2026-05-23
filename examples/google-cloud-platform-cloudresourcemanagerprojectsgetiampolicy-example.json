@@ -1,0 +1,58 @@
+{
+  "operationId": "cloudresourcemanager.projects.getIamPolicy",
+  "method": "POST",
+  "path": "/v3/projects/{resource}:getIamPolicy",
+  "summary": "Google Cloud Platform Get Project Iam Policy",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsGetiampolicyRequestExample",
+      "example": {
+        "options": {
+          "requestedPolicyVersion": 10
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsGetiampolicy200Example",
+      "example": {
+        "version": 10,
+        "bindings": [
+          {
+            "role": "example_value",
+            "members": {}
+          }
+        ],
+        "etag": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsGetiampolicy401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsGetiampolicy403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

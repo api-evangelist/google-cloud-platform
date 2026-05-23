@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchOrganizationsResponse",
+  "title": "SearchOrganizationsResponse",
+  "type": "object",
+  "description": "Response message for searching organizations.",
+  "properties": {
+    "organizations": {
+      "type": "array",
+      "description": "The list of organizations matching the search criteria.",
+      "items": {
+        "$ref": "#/components/schemas/Organization"
+      },
+      "example": []
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "Pagination token for the next page of results.",
+      "example": "example_value"
+    }
+  }
+}

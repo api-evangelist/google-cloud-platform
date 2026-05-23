@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SetIamPolicyRequest",
+  "title": "SetIamPolicyRequest",
+  "type": "object",
+  "description": "Request message for SetIamPolicy method.",
+  "properties": {
+    "policy": {
+      "$ref": "#/components/schemas/Policy"
+    },
+    "updateMask": {
+      "type": "string",
+      "description": "A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.",
+      "example": "example_value"
+    }
+  },
+  "required": [
+    "policy"
+  ]
+}

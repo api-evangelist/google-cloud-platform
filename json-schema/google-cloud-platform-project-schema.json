@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Project",
+  "title": "Project",
+  "type": "object",
+  "description": "A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. Projects are the base-level organizing entity and are required to use service-level resources.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unique resource name of the project in the form projects/{project_number}. Output only.",
+      "readOnly": true,
+      "examples": [
+        "projects/123456789"
+      ]
+    },
+    "parent": {
+      "type": "string",
+      "description": "The resource name of the parent in the form folders/{folder_id} or organizations/{organization_id}. Required when creating a project.",
+      "examples": [
+        "folders/123456789",
+        "organizations/987654321"
+      ]
+    },
+    "projectId": {
+      "type": "string",
+      "description": "The unique, user-assigned identifier of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter and cannot end with a hyphen. Project IDs are immutable and cannot be reused once assigned.",
+      "pattern": "^[a-z][a-z0-9-]{4,28}[a-z0-9]$",
+      "examples": [
+        "my-gcp-project",
+        "production-app-2024"
+      ]
+    },
+    "state": {
+      "type": "string",
+      "description": "The project lifecycle state. Output only.",
+      "readOnly": true,
+      "enum": [
+        "STATE_UNSPECIFIED",
+        "ACTIVE",
+        "DELETE_REQUESTED"
+      ],
+      "examples": [
+        "ACTIVE"
+      ]
+    },
+    "displayName": {
+      "type": "string",
+      "description": "A user-assigned display name for the project. This field is optional and has a maximum length of 30 characters. Display names are used for identification purposes and do not need to be unique.",
+      "maxLength": 30,
+      "examples": [
+        "My GCP Project"
+      ]
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the project was created. Output only. Uses RFC 3339 format.",
+      "readOnly": true,
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the project was last modified. Output only. Uses RFC 3339 format.",
+      "readOnly": true,
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "deleteTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of when the delete request was sent. Only present when the project is in DELETE_REQUESTED state. Output only.",
+      "readOnly": true,
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "etag": {
+      "type": "string",
+      "description": "A checksum computed by the server based on the current value of the project resource. Used for optimistic concurrency control.",
+      "readOnly": true,
+      "example": "example_value"
+    },
+    "labels": {
+      "type": "object",
+      "description": "User-defined labels associated with the project. Label keys must be between 1 and 63 characters, and label values must be between 0 and 63 characters. Both keys and values can contain lowercase letters, numeric characters, underscores, and dashes. A maximum of 256 labels can be associated with a project.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "examples": [
+        {
+          "env": "production",
+          "team": "backend"
+        }
+      ]
+    }
+  }
+}

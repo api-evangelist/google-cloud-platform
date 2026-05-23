@@ -1,0 +1,78 @@
+{
+  "operationId": "cloudresourcemanager.tagValues.create",
+  "method": "POST",
+  "path": "/v3/tagValues",
+  "summary": "Google Cloud Platform Create a Tag Value",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagvaluesCreateRequestExample",
+      "example": {
+        "name": "Example Title",
+        "parent": "example_value",
+        "shortName": "example_value",
+        "namespacedName": "example_value",
+        "description": "A sample description.",
+        "createTime": "2026-01-15T10:30:00Z",
+        "updateTime": "2026-01-15T10:30:00Z",
+        "etag": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagvaluesCreate200Example",
+      "example": {
+        "name": "Example Title",
+        "metadata": "example_value",
+        "done": true,
+        "error": {
+          "code": 10,
+          "message": "example_value",
+          "details": [
+            {}
+          ]
+        },
+        "response": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagvaluesCreate400Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagvaluesCreate401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagvaluesCreate403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

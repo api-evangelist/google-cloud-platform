@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Operation",
+  "title": "Operation",
+  "type": "object",
+  "description": "Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The server-assigned name, which is only unique within the same service. Used to poll for the operation status.",
+      "example": "Example Title"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Service-specific metadata associated with the operation.",
+      "additionalProperties": true,
+      "example": "example_value"
+    },
+    "done": {
+      "type": "boolean",
+      "description": "If true, the operation is complete and either error or response is available.",
+      "example": true
+    },
+    "error": {
+      "$ref": "#/components/schemas/Status"
+    },
+    "response": {
+      "type": "object",
+      "description": "The normal response of the operation. Contains the result on success.",
+      "additionalProperties": true,
+      "example": "example_value"
+    }
+  }
+}

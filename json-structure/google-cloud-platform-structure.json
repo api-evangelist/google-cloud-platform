@@ -1,0 +1,412 @@
+{
+  "provider": "Google Cloud Platform",
+  "providerId": "google-cloud-platform",
+  "kind": "json-structure",
+  "description": "Structural overview of the Google Cloud Platform API surface; extracted from openapi/.",
+  "schemaCount": 24,
+  "operationCount": 28,
+  "schemas": [
+    {
+      "name": "Project",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "Folder",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Organization",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "TagKey",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "TagValue",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "TagBinding",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Policy",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Binding",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Expr",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Operation",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Status",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ListProjectsResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SearchProjectsResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListFoldersResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SearchFoldersResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "SearchOrganizationsResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListTagKeysResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListTagValuesResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListTagBindingsResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "UndeleteProjectRequest",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "UndeleteFolderRequest",
+      "type": "object",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "MoveFolderRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "destinationParent"
+      ]
+    },
+    {
+      "name": "GetIamPolicyRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SetIamPolicyRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "policy"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/v3/projects",
+      "operationId": "cloudresourcemanager.projects.list",
+      "summary": "Google Cloud Platform List Projects",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/projects",
+      "operationId": "cloudresourcemanager.projects.create",
+      "summary": "Google Cloud Platform Create a Project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/projects/{projectId}",
+      "operationId": "cloudresourcemanager.projects.get",
+      "summary": "Google Cloud Platform Get a Project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v3/projects/{projectId}",
+      "operationId": "cloudresourcemanager.projects.delete",
+      "summary": "Google Cloud Platform Delete a Project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/v3/projects/{projectId}",
+      "operationId": "cloudresourcemanager.projects.patch",
+      "summary": "Google Cloud Platform Update a Project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/projects/{projectId}:undelete",
+      "operationId": "cloudresourcemanager.projects.undelete",
+      "summary": "Google Cloud Platform Undelete a Project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/projects/{resource}:getIamPolicy",
+      "operationId": "cloudresourcemanager.projects.getIamPolicy",
+      "summary": "Google Cloud Platform Get Project Iam Policy",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/projects/{resource}:setIamPolicy",
+      "operationId": "cloudresourcemanager.projects.setIamPolicy",
+      "summary": "Google Cloud Platform Set Project Iam Policy",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/projects:search",
+      "operationId": "cloudresourcemanager.projects.search",
+      "summary": "Google Cloud Platform Search Projects",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/folders",
+      "operationId": "cloudresourcemanager.folders.list",
+      "summary": "Google Cloud Platform List Folders",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/folders",
+      "operationId": "cloudresourcemanager.folders.create",
+      "summary": "Google Cloud Platform Create a Folder",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/folders/{folderId}",
+      "operationId": "cloudresourcemanager.folders.get",
+      "summary": "Google Cloud Platform Get a Folder",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/v3/folders/{folderId}",
+      "operationId": "cloudresourcemanager.folders.delete",
+      "summary": "Google Cloud Platform Delete a Folder",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/v3/folders/{folderId}",
+      "operationId": "cloudresourcemanager.folders.patch",
+      "summary": "Google Cloud Platform Update a Folder",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/folders/{folderId}:undelete",
+      "operationId": "cloudresourcemanager.folders.undelete",
+      "summary": "Google Cloud Platform Undelete a Folder",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/folders/{folderId}:move",
+      "operationId": "cloudresourcemanager.folders.move",
+      "summary": "Google Cloud Platform Move a Folder",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/folders:search",
+      "operationId": "cloudresourcemanager.folders.search",
+      "summary": "Google Cloud Platform Search Folders",
+      "tags": [
+        "Folders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/organizations/{organizationId}",
+      "operationId": "cloudresourcemanager.organizations.get",
+      "summary": "Google Cloud Platform Get an Organization",
+      "tags": [
+        "Organizations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/organizations:search",
+      "operationId": "cloudresourcemanager.organizations.search",
+      "summary": "Google Cloud Platform Search Organizations",
+      "tags": [
+        "Organizations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/organizations/{resource}:getIamPolicy",
+      "operationId": "cloudresourcemanager.organizations.getIamPolicy",
+      "summary": "Google Cloud Platform Get Organization Iam Policy",
+      "tags": [
+        "Organizations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/organizations/{resource}:setIamPolicy",
+      "operationId": "cloudresourcemanager.organizations.setIamPolicy",
+      "summary": "Google Cloud Platform Set Organization Iam Policy",
+      "tags": [
+        "Organizations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/{name}",
+      "operationId": "cloudresourcemanager.operations.get",
+      "summary": "Google Cloud Platform Get a Long-running Operation",
+      "tags": [
+        "Operations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/tagKeys",
+      "operationId": "cloudresourcemanager.tagKeys.list",
+      "summary": "Google Cloud Platform List Tag Keys",
+      "tags": [
+        "TagKeys"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/tagKeys",
+      "operationId": "cloudresourcemanager.tagKeys.create",
+      "summary": "Google Cloud Platform Create a Tag Key",
+      "tags": [
+        "TagKeys"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/tagValues",
+      "operationId": "cloudresourcemanager.tagValues.list",
+      "summary": "Google Cloud Platform List Tag Values",
+      "tags": [
+        "TagValues"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/tagValues",
+      "operationId": "cloudresourcemanager.tagValues.create",
+      "summary": "Google Cloud Platform Create a Tag Value",
+      "tags": [
+        "TagValues"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v3/tagBindings",
+      "operationId": "cloudresourcemanager.tagBindings.list",
+      "summary": "Google Cloud Platform List Tag Bindings",
+      "tags": [
+        "TagBindings"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v3/tagBindings",
+      "operationId": "cloudresourcemanager.tagBindings.create",
+      "summary": "Google Cloud Platform Create a Tag Binding",
+      "tags": [
+        "TagBindings"
+      ]
+    }
+  ]
+}

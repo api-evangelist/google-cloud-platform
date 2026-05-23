@@ -1,0 +1,74 @@
+{
+  "operationId": "cloudresourcemanager.tagBindings.create",
+  "method": "POST",
+  "path": "/v3/tagBindings",
+  "summary": "Google Cloud Platform Create a Tag Binding",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsCreateRequestExample",
+      "example": {
+        "name": "Example Title",
+        "parent": "example_value",
+        "tagValue": "example_value",
+        "tagValueNamespacedName": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsCreate200Example",
+      "example": {
+        "name": "Example Title",
+        "metadata": "example_value",
+        "done": true,
+        "error": {
+          "code": 10,
+          "message": "example_value",
+          "details": [
+            {}
+          ]
+        },
+        "response": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsCreate400Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsCreate401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerTagbindingsCreate403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

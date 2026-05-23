@@ -1,0 +1,58 @@
+{
+  "operationId": "cloudresourcemanager.organizations.getIamPolicy",
+  "method": "POST",
+  "path": "/v3/organizations/{resource}:getIamPolicy",
+  "summary": "Google Cloud Platform Get Organization Iam Policy",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGetiampolicyRequestExample",
+      "example": {
+        "options": {
+          "requestedPolicyVersion": 10
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGetiampolicy200Example",
+      "example": {
+        "version": 10,
+        "bindings": [
+          {
+            "role": "example_value",
+            "members": {}
+          }
+        ],
+        "etag": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGetiampolicy401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "403",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerOrganizationsGetiampolicy403Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}

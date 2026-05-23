@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Binding",
+  "title": "Binding",
+  "type": "object",
+  "description": "Associates members with a role.",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.",
+      "examples": [
+        "roles/resourcemanager.projectViewer"
+      ]
+    },
+    "members": {
+      "type": "array",
+      "description": "The identities requesting access. Supports user, serviceAccount, group, and domain members.",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        [
+          "user:alice@example.com",
+          "serviceAccount:my-sa@project.iam.gserviceaccount.com",
+          "group:admins@example.com",
+          "domain:example.com"
+        ]
+      ]
+    },
+    "condition": {
+      "$ref": "#/components/schemas/Expr"
+    }
+  }
+}

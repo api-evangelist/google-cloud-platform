@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Policy",
+  "title": "Policy",
+  "type": "object",
+  "description": "An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.",
+  "properties": {
+    "version": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Specifies the format of the policy. Valid values are 0, 1, and 3. Version 3 supports conditional role bindings.",
+      "example": 10
+    },
+    "bindings": {
+      "type": "array",
+      "description": "Associates a list of members to a role, optionally with a condition.",
+      "items": {
+        "$ref": "#/components/schemas/Binding"
+      },
+      "example": []
+    },
+    "etag": {
+      "type": "string",
+      "format": "byte",
+      "description": "etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.",
+      "example": "example_value"
+    }
+  }
+}

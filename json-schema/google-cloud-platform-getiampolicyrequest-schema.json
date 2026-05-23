@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetIamPolicyRequest",
+  "title": "GetIamPolicyRequest",
+  "type": "object",
+  "description": "Request message for GetIamPolicy method.",
+  "properties": {
+    "options": {
+      "type": "object",
+      "description": "Optional options for the request.",
+      "properties": {
+        "requestedPolicyVersion": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3."
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

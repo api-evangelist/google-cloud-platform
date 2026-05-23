@@ -1,0 +1,55 @@
+{
+  "operationId": "cloudresourcemanager.projects.search",
+  "method": "GET",
+  "path": "/v3/projects:search",
+  "summary": "Google Cloud Platform Search Projects",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSearch200Example",
+      "example": {
+        "projects": [
+          {
+            "name": "Example Title",
+            "parent": "example_value",
+            "projectId": "500123",
+            "state": "STATE_UNSPECIFIED",
+            "displayName": "example_value",
+            "createTime": "2026-01-15T10:30:00Z",
+            "updateTime": "2026-01-15T10:30:00Z",
+            "deleteTime": "2026-01-15T10:30:00Z",
+            "etag": "example_value",
+            "labels": "example_value"
+          }
+        ],
+        "nextPageToken": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSearch400Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "CloudresourcemanagerProjectsSearch401Example",
+      "example": {
+        "code": 10,
+        "message": "example_value",
+        "details": [
+          {}
+        ]
+      }
+    }
+  ]
+}
