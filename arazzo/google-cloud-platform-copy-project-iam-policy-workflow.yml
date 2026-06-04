@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Copy Project IAM Policy
+  summary: Read the IAM policy of a source project and apply its bindings to a target project.
+  description: >-
+    Replicates an IAM policy from one project to another. The workflow reads the
+    source project's policy, reads the target project's policy to capture its
+    etag for safe replacement, sets the source bindings on the target with that
+    etag, and re-reads the target to confirm. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: copy-project-iam-policy
+  summary: Copy IAM bindings from a source project onto a target project.
+  description: >-
+    Reads the source policy bindings, captures the target etag, writes the
+    source bindings onto the target, then confirms.
+  inputs:
+    type: object
+    required:
+    - sourceResource
+    - targetResource
+    properties:
+      sourceResource:
+        type: string
+        description: The source project resource, e.g. projects/11111.
+      targetResource:
+        type: string
+        description: The target project resource, e.g. projects/22222.
+  steps:
+  - stepId: getSourcePolicy
+    description: >-
+      Read the source project IAM policy to capture the bindings to copy.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.sourceResource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  - stepId: getTargetPolicy
+    description: >-
+      Read the target project IAM policy to capture its etag for safe
+      replacement.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.targetResource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      etag: $response.body#/etag
+  - stepId: applyPolicy
+    description: >-
+      Write the source bindings onto the target project, passing the target's
+      etag for optimistic concurrency.
+    operationId: cloudresourcemanager.projects.setIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.targetResource
+    requestBody:
+      contentType: application/json
+      payload:
+        policy:
+          version: 3
+          etag: $steps.getTargetPolicy.outputs.etag
+          bindings: $steps.getSourcePolicy.outputs.bindings
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newEtag: $response.body#/etag
+  - stepId: confirmTarget
+    description: >-
+      Re-read the target project policy to confirm the copied bindings.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.targetResource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  outputs:
+    sourceBindings: $steps.getSourcePolicy.outputs.bindings
+    targetBindings: $steps.confirmTarget.outputs.bindings

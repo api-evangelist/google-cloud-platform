@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Audit Folder and Projects
+  summary: Search for a folder, fetch its record, then list the projects directly under it.
+  description: >-
+    Audits a folder and the projects it contains. The workflow searches for a
+    folder by query, fetches the matched folder by its resource id for full
+    metadata, and lists the projects that are direct children of that folder so
+    callers can review the folder and its contents together. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: audit-folder-and-projects
+  summary: Find a folder by query then read it and enumerate its child projects.
+  description: >-
+    Searches for a folder, gets it by id, and lists its child projects.
+  inputs:
+    type: object
+    required:
+    - query
+    - folderId
+    properties:
+      query:
+        type: string
+        description: Folder search query, e.g. displayName=Engineering.
+      folderId:
+        type: string
+        description: The folder resource id to fetch (e.g. 500123).
+  steps:
+  - stepId: searchFolder
+    description: >-
+      Search for the folder and capture the first matching folder resource name.
+    operationId: cloudresourcemanager.folders.search
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: pageSize
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      folderName: $response.body#/folders/0/name
+  - stepId: getFolder
+    description: >-
+      Fetch the full folder record by its resource id.
+    operationId: cloudresourcemanager.folders.get
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      parent: $response.body#/parent
+  - stepId: listChildProjects
+    description: >-
+      List the projects that are direct children of the matched folder.
+    operationId: cloudresourcemanager.projects.list
+    parameters:
+    - name: parent
+      in: query
+      value: $steps.searchFolder.outputs.folderName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projects: $response.body#/projects
+  outputs:
+    folderName: $steps.searchFolder.outputs.folderName
+    state: $steps.getFolder.outputs.state
+    projects: $steps.listChildProjects.outputs.projects

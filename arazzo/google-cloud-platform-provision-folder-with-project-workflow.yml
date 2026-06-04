@@ -1,0 +1,130 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Provision Folder with Project
+  summary: Create a folder, wait for it, then create a project under that folder and wait for it.
+  description: >-
+    Stands up a new environment in one pass. The workflow creates a folder under
+    a parent organization, polls the folder create operation until done and
+    reads the new folder name from the operation response, then creates a
+    project whose parent is that folder and polls the project create operation
+    to completion. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-folder-with-project
+  summary: Create a folder then a project nested inside it, waiting on each operation.
+  description: >-
+    Creates a folder, waits for it, captures its resource name, then creates a
+    project under it and waits for that operation.
+  inputs:
+    type: object
+    required:
+    - organizationParent
+    - folderDisplayName
+    - projectId
+    properties:
+      organizationParent:
+        type: string
+        description: The organization parent for the folder, e.g. organizations/987654321.
+      folderDisplayName:
+        type: string
+        description: The display name for the new folder.
+      projectId:
+        type: string
+        description: The project id to create under the new folder.
+      projectDisplayName:
+        type: string
+        description: An optional display name for the project.
+  steps:
+  - stepId: createFolder
+    description: >-
+      Create the folder under the organization. Returns a long-running
+      Operation whose name is used to poll for completion.
+    operationId: cloudresourcemanager.folders.create
+    requestBody:
+      contentType: application/json
+      payload:
+        parent: $inputs.organizationParent
+        displayName: $inputs.folderDisplayName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollFolder
+    description: >-
+      Poll the folder create operation until done and read the new folder
+      resource name from the operation response.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createFolder.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+      folderName: $response.body#/response/name
+    onSuccess:
+    - name: folderReady
+      type: goto
+      stepId: createProject
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: folderPending
+      type: goto
+      stepId: pollFolder
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: createProject
+    description: >-
+      Create the project under the newly created folder. Returns a long-running
+      Operation whose name is used to poll for completion.
+    operationId: cloudresourcemanager.projects.create
+    requestBody:
+      contentType: application/json
+      payload:
+        projectId: $inputs.projectId
+        parent: $steps.pollFolder.outputs.folderName
+        displayName: $inputs.projectDisplayName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollProject
+    description: >-
+      Poll the project create operation until done.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createProject.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: projectReady
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: projectPending
+      type: goto
+      stepId: pollProject
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  outputs:
+    folderName: $steps.pollFolder.outputs.folderName
+    folderOperation: $steps.createFolder.outputs.operationName
+    projectOperation: $steps.createProject.outputs.operationName

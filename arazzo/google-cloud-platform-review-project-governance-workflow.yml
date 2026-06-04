@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Review Project Governance
+  summary: Fetch a project, read its IAM policy, then list the tag bindings applied to it.
+  description: >-
+    Produces a governance snapshot for a single project. The workflow fetches
+    the project record, reads its IAM policy to capture access bindings, and
+    lists the tag bindings attached to the project's full resource name so
+    callers can review identity and tagging governance in one pass. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: review-project-governance
+  summary: Read a project, its IAM policy, and its tag bindings.
+  description: >-
+    Gets a project, reads its IAM policy, and lists its tag bindings.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - resource
+    - tagBindingParent
+    properties:
+      projectId:
+        type: string
+        description: The project id to review (e.g. my-app-prod-123).
+      resource:
+        type: string
+        description: The project resource for IAM, e.g. projects/12345.
+      tagBindingParent:
+        type: string
+        description: >-
+          The full resource name for tag bindings, e.g.
+          //cloudresourcemanager.googleapis.com/projects/12345.
+  steps:
+  - stepId: getProject
+    description: >-
+      Fetch the project record to confirm it exists and capture its state.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      parent: $response.body#/parent
+  - stepId: getPolicy
+    description: >-
+      Read the project IAM policy to capture its access bindings.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  - stepId: listTagBindings
+    description: >-
+      List the tag bindings attached to the project's full resource name.
+    operationId: cloudresourcemanager.tagBindings.list
+    parameters:
+    - name: parent
+      in: query
+      value: $inputs.tagBindingParent
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tagBindings: $response.body#/tagBindings
+  outputs:
+    state: $steps.getProject.outputs.state
+    bindings: $steps.getPolicy.outputs.bindings
+    tagBindings: $steps.listTagBindings.outputs.tagBindings

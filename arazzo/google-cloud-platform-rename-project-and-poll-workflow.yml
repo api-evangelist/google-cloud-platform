@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Rename Project and Poll Operation
+  summary: Read a project, patch its display name, poll the operation, then confirm the new name.
+  description: >-
+    Updates the display name of an existing project. Because project updates are
+    asynchronous, the patch call returns a long-running Operation whose name is
+    polled with operations.get until done, after which the project is re-read to
+    confirm the new display name. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rename-project-and-poll
+  summary: Rename a Google Cloud project and wait for the operation to complete.
+  description: >-
+    Reads the current display name, patches the project, polls the operation
+    until done, then re-reads to confirm.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - displayName
+    properties:
+      projectId:
+        type: string
+        description: The project id to rename (e.g. my-app-prod-123).
+      displayName:
+        type: string
+        description: The new display name to set on the project.
+  steps:
+  - stepId: getBefore
+    description: >-
+      Read the project to capture the current display name before the change.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      previousName: $response.body#/displayName
+  - stepId: patchProject
+    description: >-
+      Patch the project display name with an update mask scoped to displayName.
+      Returns a long-running Operation whose name is used to poll.
+    operationId: cloudresourcemanager.projects.patch
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: updateMask
+      in: query
+      value: displayName
+    requestBody:
+      contentType: application/json
+      payload:
+        displayName: $inputs.displayName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollOperation
+    description: >-
+      Poll the patch operation by name until the done flag is true.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.patchProject.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: operationComplete
+      type: goto
+      stepId: getAfter
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: stillRunning
+      type: goto
+      stepId: pollOperation
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: getAfter
+    description: >-
+      Re-read the project to confirm the new display name took effect.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newName: $response.body#/displayName
+  outputs:
+    previousName: $steps.getBefore.outputs.previousName
+    newName: $steps.getAfter.outputs.newName
+    operationName: $steps.patchProject.outputs.operationName

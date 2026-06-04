@@ -1,0 +1,83 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Inspect Organization Access
+  summary: Search for an organization, fetch its record, then read its IAM policy.
+  description: >-
+    Audits the access posture of an organization. The workflow searches for an
+    organization by domain, fetches the matched organization by its resource id
+    for full metadata, and reads its IAM policy so callers can review the
+    organization and its top-level access bindings together. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-organization-access
+  summary: Find an organization then read its record and IAM policy.
+  description: >-
+    Searches for an organization, gets it by id, and reads its IAM policy.
+  inputs:
+    type: object
+    required:
+    - query
+    - organizationId
+    properties:
+      query:
+        type: string
+        description: Organization search query, e.g. domain:example.com.
+      organizationId:
+        type: string
+        description: The organization resource id to fetch (e.g. 500123).
+  steps:
+  - stepId: searchOrganization
+    description: >-
+      Search for the organization and capture the first matching resource name.
+    operationId: cloudresourcemanager.organizations.search
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: pageSize
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationName: $response.body#/organizations/0/name
+  - stepId: getOrganization
+    description: >-
+      Fetch the full organization record by its resource id.
+    operationId: cloudresourcemanager.organizations.get
+    parameters:
+    - name: organizationId
+      in: path
+      value: $inputs.organizationId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      displayName: $response.body#/displayName
+      state: $response.body#/state
+  - stepId: getOrgPolicy
+    description: >-
+      Read the IAM policy for the matched organization to review its bindings.
+    operationId: cloudresourcemanager.organizations.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $steps.searchOrganization.outputs.organizationName
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  outputs:
+    organizationName: $steps.searchOrganization.outputs.organizationName
+    displayName: $steps.getOrganization.outputs.displayName
+    bindings: $steps.getOrgPolicy.outputs.bindings

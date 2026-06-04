@@ -1,0 +1,79 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Search and Inspect Project
+  summary: Search for a project, fetch its full record, then read its IAM policy.
+  description: >-
+    Resolves and audits a single project. The workflow searches for a project by
+    query, fetches the matched project by its project id for full metadata, and
+    reads its IAM policy so callers can review both the resource and its access
+    bindings in one pass. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: search-and-inspect-project
+  summary: Find a project by query then read its record and IAM policy.
+  description: >-
+    Searches for a project, gets it by id, and reads its IAM policy.
+  inputs:
+    type: object
+    required:
+    - query
+    properties:
+      query:
+        type: string
+        description: Project search query, e.g. state:ACTIVE displayName:my-app.
+  steps:
+  - stepId: searchProject
+    description: >-
+      Search for the project and capture the first matching project id.
+    operationId: cloudresourcemanager.projects.search
+    parameters:
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: pageSize
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projectId: $response.body#/projects/0/projectId
+      projectName: $response.body#/projects/0/name
+  - stepId: getProject
+    description: >-
+      Fetch the full project record by its project id.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $steps.searchProject.outputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      state: $response.body#/state
+      parent: $response.body#/parent
+  - stepId: getProjectPolicy
+    description: >-
+      Read the IAM policy for the matched project to review its bindings.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $steps.searchProject.outputs.projectName
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  outputs:
+    projectId: $steps.searchProject.outputs.projectId
+    state: $steps.getProject.outputs.state
+    bindings: $steps.getProjectPolicy.outputs.bindings

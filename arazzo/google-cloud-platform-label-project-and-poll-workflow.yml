@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Label Project and Poll Operation
+  summary: Read a project, patch its labels, poll the operation, then confirm the new labels.
+  description: >-
+    Applies organizational labels to a project. Because project updates are
+    asynchronous, the patch call with an updateMask scoped to labels returns a
+    long-running Operation whose name is polled with operations.get until done,
+    after which the project is re-read to confirm the labels. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: label-project-and-poll
+  summary: Set labels on a Google Cloud project and wait for the operation.
+  description: >-
+    Reads the project, patches its labels, polls the operation until done, then
+    re-reads to confirm.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - labels
+    properties:
+      projectId:
+        type: string
+        description: The project id to label (e.g. my-app-prod-123).
+      labels:
+        type: object
+        description: The map of label key/value pairs to set on the project.
+  steps:
+  - stepId: getBefore
+    description: >-
+      Read the project to capture its existing labels before the change.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      previousLabels: $response.body#/labels
+  - stepId: patchLabels
+    description: >-
+      Patch the project labels with an update mask scoped to labels. Returns a
+      long-running Operation whose name is used to poll.
+    operationId: cloudresourcemanager.projects.patch
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    - name: updateMask
+      in: query
+      value: labels
+    requestBody:
+      contentType: application/json
+      payload:
+        labels: $inputs.labels
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollOperation
+    description: >-
+      Poll the patch operation by name until the done flag is true.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.patchLabels.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: operationComplete
+      type: goto
+      stepId: getAfter
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: stillRunning
+      type: goto
+      stepId: pollOperation
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: getAfter
+    description: >-
+      Re-read the project to confirm the new labels took effect.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newLabels: $response.body#/labels
+  outputs:
+    previousLabels: $steps.getBefore.outputs.previousLabels
+    newLabels: $steps.getAfter.outputs.newLabels
+    operationName: $steps.patchLabels.outputs.operationName

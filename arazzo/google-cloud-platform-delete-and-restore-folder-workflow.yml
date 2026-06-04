@@ -1,0 +1,125 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Delete and Restore Folder
+  summary: Mark a folder for deletion, wait for it, then undelete it within the grace period.
+  description: >-
+    Exercises the folder deletion grace period. The workflow reads the folder,
+    marks it for deletion (moving it to DELETE_REQUESTED), polls the delete
+    operation until done, then restores the folder with undelete and polls that
+    operation to completion. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: delete-and-restore-folder
+  summary: Delete a folder then restore it within the grace period.
+  description: >-
+    Marks a folder for deletion, waits for the delete operation, then undeletes
+    it and waits for the restore operation.
+  inputs:
+    type: object
+    required:
+    - folderId
+    properties:
+      folderId:
+        type: string
+        description: The folder resource id to delete and restore (e.g. 500123).
+  steps:
+  - stepId: getFolder
+    description: >-
+      Read the folder to confirm it exists and capture its starting state.
+    operationId: cloudresourcemanager.folders.get
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      startingState: $response.body#/state
+  - stepId: deleteFolder
+    description: >-
+      Mark the folder for deletion. Returns a long-running Operation whose name
+      is used to poll for completion.
+    operationId: cloudresourcemanager.folders.delete
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollDelete
+    description: >-
+      Poll the delete operation by name until the done flag is true.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.deleteFolder.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: deleteComplete
+      type: goto
+      stepId: undeleteFolder
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: deleteRunning
+      type: goto
+      stepId: pollDelete
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: undeleteFolder
+    description: >-
+      Restore the folder from DELETE_REQUESTED within the grace period.
+      Returns a long-running Operation whose name is used to poll.
+    operationId: cloudresourcemanager.folders.undelete
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollUndelete
+    description: >-
+      Poll the undelete operation by name until the done flag is true.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.undeleteFolder.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: undeleteComplete
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: undeleteRunning
+      type: goto
+      stepId: pollUndelete
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  outputs:
+    deleteOperation: $steps.deleteFolder.outputs.operationName
+    undeleteOperation: $steps.undeleteFolder.outputs.operationName

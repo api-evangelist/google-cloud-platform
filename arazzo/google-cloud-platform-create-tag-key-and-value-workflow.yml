@@ -1,0 +1,130 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Create Tag Key and Value
+  summary: Create a tag key, poll the operation, then create a tag value under it and poll again.
+  description: >-
+    Bootstraps a governance tag namespace. The workflow creates a tag key under
+    an organization, polls the returned long-running Operation until done,
+    extracts the new tag key resource name from the operation response, then
+    creates a tag value under that key and polls that operation to completion.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-tag-key-and-value
+  summary: Create a tag key then a child tag value, waiting on each operation.
+  description: >-
+    Creates a tag key, waits for its operation, then creates a tag value under
+    the new key and waits for that operation.
+  inputs:
+    type: object
+    required:
+    - parent
+    - keyShortName
+    - valueShortName
+    properties:
+      parent:
+        type: string
+        description: The parent organization for the tag key, e.g. organizations/987654321.
+      keyShortName:
+        type: string
+        description: The short name of the tag key (e.g. environment).
+      valueShortName:
+        type: string
+        description: The short name of the tag value (e.g. production).
+      keyDescription:
+        type: string
+        description: An optional description for the tag key.
+  steps:
+  - stepId: createTagKey
+    description: >-
+      Create the tag key under the organization. Returns a long-running
+      Operation whose name is used to poll for completion.
+    operationId: cloudresourcemanager.tagKeys.create
+    requestBody:
+      contentType: application/json
+      payload:
+        parent: $inputs.parent
+        shortName: $inputs.keyShortName
+        description: $inputs.keyDescription
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollKey
+    description: >-
+      Poll the tag key create operation until done, then read the new tag key
+      resource name from the operation response.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createTagKey.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+      tagKeyName: $response.body#/response/name
+    onSuccess:
+    - name: keyReady
+      type: goto
+      stepId: createTagValue
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: keyPending
+      type: goto
+      stepId: pollKey
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: createTagValue
+    description: >-
+      Create a tag value as a child of the newly created tag key. Returns a
+      long-running Operation whose name is used to poll for completion.
+    operationId: cloudresourcemanager.tagValues.create
+    requestBody:
+      contentType: application/json
+      payload:
+        parent: $steps.pollKey.outputs.tagKeyName
+        shortName: $inputs.valueShortName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollValue
+    description: >-
+      Poll the tag value create operation until done.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createTagValue.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+      tagValueName: $response.body#/response/name
+    onSuccess:
+    - name: valueReady
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: valuePending
+      type: goto
+      stepId: pollValue
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  outputs:
+    tagKeyName: $steps.pollKey.outputs.tagKeyName
+    tagValueName: $steps.pollValue.outputs.tagValueName

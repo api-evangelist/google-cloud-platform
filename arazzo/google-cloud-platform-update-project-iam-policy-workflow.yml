@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Update Project IAM Policy
+  summary: Read a project IAM policy, add a member binding, and write the policy back with the etag.
+  description: >-
+    Safely modifies a project's IAM policy using the read-modify-write pattern.
+    The workflow first reads the current policy to capture its etag and existing
+    bindings, then writes back a new policy that grants a role to a member while
+    passing the captured etag for optimistic concurrency, and finally re-reads
+    the policy to confirm the change. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-project-iam-policy
+  summary: Grant an IAM role to a member on a project using read-modify-write.
+  description: >-
+    Reads the current project IAM policy, sets a new binding with the captured
+    etag, then re-reads the policy to confirm.
+  inputs:
+    type: object
+    required:
+    - resource
+    - role
+    - member
+    properties:
+      resource:
+        type: string
+        description: The project resource, e.g. projects/12345.
+      role:
+        type: string
+        description: The IAM role to grant, e.g. roles/viewer.
+      member:
+        type: string
+        description: The member to grant the role to, e.g. user:jane@example.com.
+  steps:
+  - stepId: getPolicy
+    description: >-
+      Read the current IAM policy for the project to capture its etag and
+      version for the subsequent set call.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      etag: $response.body#/etag
+      version: $response.body#/version
+  - stepId: setPolicy
+    description: >-
+      Write back a policy granting the role to the member. The captured etag
+      is supplied for optimistic concurrency to avoid clobbering changes.
+    operationId: cloudresourcemanager.projects.setIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        policy:
+          version: 3
+          etag: $steps.getPolicy.outputs.etag
+          bindings:
+          - role: $inputs.role
+            members:
+            - $inputs.member
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newEtag: $response.body#/etag
+  - stepId: confirmPolicy
+    description: >-
+      Re-read the IAM policy to confirm the new binding was persisted.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  outputs:
+    previousEtag: $steps.getPolicy.outputs.etag
+    newEtag: $steps.setPolicy.outputs.newEtag
+    bindings: $steps.confirmPolicy.outputs.bindings

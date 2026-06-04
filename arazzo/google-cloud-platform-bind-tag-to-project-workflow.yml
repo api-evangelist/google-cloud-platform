@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Bind Tag to Project
+  summary: Look up a tag value for a key, create a tag binding to a resource, poll, then list bindings.
+  description: >-
+    Applies a governance tag to a cloud resource. The workflow lists the tag
+    values under a given tag key to resolve the desired value, creates a tag
+    binding attaching that value to a target resource, polls the returned
+    long-running Operation until done, and lists the resource's bindings to
+    confirm. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: bind-tag-to-project
+  summary: Resolve a tag value and bind it to a target resource.
+  description: >-
+    Lists tag values under a key, creates a binding to the resource, waits for
+    the operation, then lists the resource bindings to confirm.
+  inputs:
+    type: object
+    required:
+    - tagKey
+    - targetResource
+    properties:
+      tagKey:
+        type: string
+        description: The tag key whose values to list, e.g. tagKeys/123456.
+      targetResource:
+        type: string
+        description: >-
+          The full resource name to tag, e.g.
+          //cloudresourcemanager.googleapis.com/projects/123.
+  steps:
+  - stepId: listTagValues
+    description: >-
+      List the tag values under the tag key and select the first value to bind.
+    operationId: cloudresourcemanager.tagValues.list
+    parameters:
+    - name: parent
+      in: query
+      value: $inputs.tagKey
+    - name: pageSize
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tagValueName: $response.body#/tagValues/0/name
+  - stepId: createBinding
+    description: >-
+      Create a tag binding attaching the resolved tag value to the target
+      resource. Returns a long-running Operation whose name is used to poll.
+    operationId: cloudresourcemanager.tagBindings.create
+    requestBody:
+      contentType: application/json
+      payload:
+        parent: $inputs.targetResource
+        tagValue: $steps.listTagValues.outputs.tagValueName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollBinding
+    description: >-
+      Poll the tag binding create operation until done.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createBinding.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: bindingReady
+      type: goto
+      stepId: listBindings
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: bindingPending
+      type: goto
+      stepId: pollBinding
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: listBindings
+    description: >-
+      List the tag bindings on the target resource to confirm the new binding.
+    operationId: cloudresourcemanager.tagBindings.list
+    parameters:
+    - name: parent
+      in: query
+      value: $inputs.targetResource
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/tagBindings
+  outputs:
+    tagValueName: $steps.listTagValues.outputs.tagValueName
+    operationName: $steps.createBinding.outputs.operationName
+    bindings: $steps.listBindings.outputs.bindings

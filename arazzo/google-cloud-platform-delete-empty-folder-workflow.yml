@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Delete Empty Folder
+  summary: Confirm a folder has no child projects, then delete it and poll the operation.
+  description: >-
+    Safely decommissions a folder. Because a folder must be empty before it can
+    be deleted, the workflow first lists the projects directly under the folder,
+    branches to end if any projects remain, and only proceeds to delete the
+    folder when it is empty, polling the returned long-running Operation until
+    done. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: delete-empty-folder
+  summary: Delete a folder only if it has no child projects.
+  description: >-
+    Lists child projects, aborts if any remain, otherwise deletes the folder
+    and waits for the operation.
+  inputs:
+    type: object
+    required:
+    - folderId
+    - folderResource
+    properties:
+      folderId:
+        type: string
+        description: The folder resource id to delete (e.g. 500123).
+      folderResource:
+        type: string
+        description: The folder resource name used as the list parent, e.g. folders/500123.
+  steps:
+  - stepId: listChildProjects
+    description: >-
+      List the projects directly under the folder to verify it is empty.
+    operationId: cloudresourcemanager.projects.list
+    parameters:
+    - name: parent
+      in: query
+      value: $inputs.folderResource
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projects: $response.body#/projects
+    onSuccess:
+    - name: folderEmpty
+      type: goto
+      stepId: deleteFolder
+      criteria:
+      - context: $response.body
+        condition: $.projects.length == 0
+        type: jsonpath
+    - name: folderNotEmpty
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.projects.length > 0
+        type: jsonpath
+  - stepId: deleteFolder
+    description: >-
+      Delete the empty folder. Returns a long-running Operation whose name is
+      used to poll for completion.
+    operationId: cloudresourcemanager.folders.delete
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollDelete
+    description: >-
+      Poll the delete operation by name until the done flag is true.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.deleteFolder.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: deleteComplete
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: deleteRunning
+      type: goto
+      stepId: pollDelete
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  outputs:
+    childProjects: $steps.listChildProjects.outputs.projects
+    deleteOperation: $steps.deleteFolder.outputs.operationName

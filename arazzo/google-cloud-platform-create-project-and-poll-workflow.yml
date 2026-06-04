@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Create Project and Poll Operation
+  summary: Create a project, poll the long-running operation until done, then read back the project.
+  description: >-
+    Provisions a new Google Cloud project under a parent folder or organization.
+    Because project creation is asynchronous, the create call returns a
+    long-running Operation whose name is polled with operations.get until the
+    operation reports done, after which the freshly created project is fetched
+    by id to confirm its final state. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-project-and-poll
+  summary: Create a Google Cloud project and wait for the operation to complete.
+  description: >-
+    Submits a project creation request, polls the returned operation until it
+    is done, then retrieves the new project by its project id.
+  inputs:
+    type: object
+    required:
+    - projectId
+    - parent
+    properties:
+      projectId:
+        type: string
+        description: The unique project id to assign (e.g. my-app-prod-123).
+      parent:
+        type: string
+        description: The parent resource, e.g. folders/123456789 or organizations/987654321.
+      displayName:
+        type: string
+        description: A human readable display name for the project.
+  steps:
+  - stepId: createProject
+    description: >-
+      Submit the project creation request. Returns a long-running Operation
+      with a server-assigned name used to poll for completion.
+    operationId: cloudresourcemanager.projects.create
+    requestBody:
+      contentType: application/json
+      payload:
+        projectId: $inputs.projectId
+        parent: $inputs.parent
+        displayName: $inputs.displayName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+      operationDone: $response.body#/done
+  - stepId: pollOperation
+    description: >-
+      Poll the long-running operation by name until the done flag is true.
+      Branches back to itself while the operation is still in progress.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createProject.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+      operationResponse: $response.body#/response
+    onSuccess:
+    - name: operationComplete
+      type: goto
+      stepId: getProject
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: stillRunning
+      type: goto
+      stepId: pollOperation
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: getProject
+    description: >-
+      Fetch the newly created project by its project id to confirm its final
+      state and metadata.
+    operationId: cloudresourcemanager.projects.get
+    parameters:
+    - name: projectId
+      in: path
+      value: $inputs.projectId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projectName: $response.body#/name
+      state: $response.body#/state
+      displayName: $response.body#/displayName
+  outputs:
+    operationName: $steps.createProject.outputs.operationName
+    projectName: $steps.getProject.outputs.projectName
+    state: $steps.getProject.outputs.state

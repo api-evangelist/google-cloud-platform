@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Reset Project IAM Policy
+  summary: Read a project IAM policy, then overwrite it with a single owner binding using the etag.
+  description: >-
+    Resets a project's IAM policy to a known baseline. The workflow reads the
+    current policy to capture its etag, overwrites the policy with a single
+    owner binding while passing the captured etag for optimistic concurrency,
+    and re-reads the policy to confirm the reset. This is useful for reverting a
+    project to a controlled access baseline. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reset-project-iam-policy
+  summary: Overwrite a project IAM policy with a single owner binding.
+  description: >-
+    Reads the current policy etag, sets a baseline owner-only policy, then
+    re-reads to confirm.
+  inputs:
+    type: object
+    required:
+    - resource
+    - ownerMember
+    properties:
+      resource:
+        type: string
+        description: The project resource, e.g. projects/12345.
+      ownerMember:
+        type: string
+        description: The sole owner member to retain, e.g. user:admin@example.com.
+  steps:
+  - stepId: getPolicy
+    description: >-
+      Read the current IAM policy to capture its etag before the overwrite.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      etag: $response.body#/etag
+      previousBindings: $response.body#/bindings
+  - stepId: resetPolicy
+    description: >-
+      Overwrite the policy with a single owner binding, passing the captured
+      etag for optimistic concurrency.
+    operationId: cloudresourcemanager.projects.setIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        policy:
+          version: 3
+          etag: $steps.getPolicy.outputs.etag
+          bindings:
+          - role: roles/owner
+            members:
+            - $inputs.ownerMember
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newEtag: $response.body#/etag
+  - stepId: confirmPolicy
+    description: >-
+      Re-read the policy to confirm only the owner binding remains.
+    operationId: cloudresourcemanager.projects.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  outputs:
+    previousBindings: $steps.getPolicy.outputs.previousBindings
+    newEtag: $steps.resetPolicy.outputs.newEtag
+    bindings: $steps.confirmPolicy.outputs.bindings

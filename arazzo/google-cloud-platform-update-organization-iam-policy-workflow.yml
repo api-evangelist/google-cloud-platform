@@ -1,0 +1,100 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Update Organization IAM Policy
+  summary: Read an organization IAM policy, add a member binding, and write it back with the etag.
+  description: >-
+    Modifies an organization's IAM policy using the read-modify-write pattern.
+    The workflow reads the current organization policy to capture its etag,
+    writes back a new policy granting a role to a member while passing the
+    captured etag for optimistic concurrency, and re-reads the policy to confirm
+    the change. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-organization-iam-policy
+  summary: Grant an IAM role to a member on an organization using read-modify-write.
+  description: >-
+    Reads the current organization IAM policy, sets a new binding with the
+    captured etag, then re-reads the policy to confirm.
+  inputs:
+    type: object
+    required:
+    - resource
+    - role
+    - member
+    properties:
+      resource:
+        type: string
+        description: The organization resource, e.g. organizations/12345.
+      role:
+        type: string
+        description: The IAM role to grant, e.g. roles/resourcemanager.organizationViewer.
+      member:
+        type: string
+        description: The member to grant the role to, e.g. group:admins@example.com.
+  steps:
+  - stepId: getPolicy
+    description: >-
+      Read the current IAM policy for the organization to capture its etag.
+    operationId: cloudresourcemanager.organizations.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      etag: $response.body#/etag
+  - stepId: setPolicy
+    description: >-
+      Write back a policy granting the role to the member, supplying the
+      captured etag for optimistic concurrency.
+    operationId: cloudresourcemanager.organizations.setIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        policy:
+          version: 3
+          etag: $steps.getPolicy.outputs.etag
+          bindings:
+          - role: $inputs.role
+            members:
+            - $inputs.member
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newEtag: $response.body#/etag
+  - stepId: confirmPolicy
+    description: >-
+      Re-read the organization IAM policy to confirm the new binding persisted.
+    operationId: cloudresourcemanager.organizations.getIamPolicy
+    parameters:
+    - name: resource
+      in: path
+      value: $inputs.resource
+    requestBody:
+      contentType: application/json
+      payload:
+        options:
+          requestedPolicyVersion: 3
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      bindings: $response.body#/bindings
+  outputs:
+    previousEtag: $steps.getPolicy.outputs.etag
+    newEtag: $steps.setPolicy.outputs.newEtag
+    bindings: $steps.confirmPolicy.outputs.bindings

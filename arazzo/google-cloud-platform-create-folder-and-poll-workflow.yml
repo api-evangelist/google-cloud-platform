@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Create Folder and Poll Operation
+  summary: Create a folder, poll the long-running operation until done, then read back the folder.
+  description: >-
+    Creates a new folder in the resource hierarchy under a parent organization
+    or folder. Folder creation is asynchronous, so the create call returns a
+    long-running Operation whose name is polled with operations.get until the
+    operation reports done, after which the new folder is fetched by its
+    resource id. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-folder-and-poll
+  summary: Create a Google Cloud folder and wait for the operation to complete.
+  description: >-
+    Submits a folder creation request, polls the returned operation until it is
+    done, then retrieves the new folder by its resource id.
+  inputs:
+    type: object
+    required:
+    - parent
+    - displayName
+    - folderId
+    properties:
+      parent:
+        type: string
+        description: The parent resource, e.g. organizations/987654321 or folders/123.
+      displayName:
+        type: string
+        description: The display name for the new folder.
+      folderId:
+        type: string
+        description: The resource id used to fetch the folder once created (e.g. 500123).
+  steps:
+  - stepId: createFolder
+    description: >-
+      Submit the folder creation request. Returns a long-running Operation
+      whose name is used to poll for completion.
+    operationId: cloudresourcemanager.folders.create
+    requestBody:
+      contentType: application/json
+      payload:
+        parent: $inputs.parent
+        displayName: $inputs.displayName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+      operationDone: $response.body#/done
+  - stepId: pollOperation
+    description: >-
+      Poll the long-running operation by name until the done flag is true.
+      Branches back to itself while the operation is still in progress.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.createFolder.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+      operationResponse: $response.body#/response
+    onSuccess:
+    - name: operationComplete
+      type: goto
+      stepId: getFolder
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: stillRunning
+      type: goto
+      stepId: pollOperation
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: getFolder
+    description: >-
+      Fetch the newly created folder by its resource id to confirm its final
+      state and display name.
+    operationId: cloudresourcemanager.folders.get
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      folderName: $response.body#/name
+      state: $response.body#/state
+      displayName: $response.body#/displayName
+  outputs:
+    operationName: $steps.createFolder.outputs.operationName
+    folderName: $steps.getFolder.outputs.folderName
+    state: $steps.getFolder.outputs.state

@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: Google Cloud Platform Move Folder and Poll Operation
+  summary: Read a folder, move it under a new parent, poll the operation, then confirm the new parent.
+  description: >-
+    Relocates a folder within the resource hierarchy. The workflow first reads
+    the folder to capture its current parent, submits a move to a new
+    destination parent, polls the returned long-running Operation until done,
+    and finally re-reads the folder to confirm the new parent took effect.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: cloudResourceManagerApi
+  url: ../openapi/cloud-resource-manager-openapi.yml
+  type: openapi
+workflows:
+- workflowId: move-folder-and-poll
+  summary: Move a Google Cloud folder to a new parent and wait for completion.
+  description: >-
+    Captures the current parent, moves the folder to a new destination parent,
+    polls the operation until done, then re-reads the folder.
+  inputs:
+    type: object
+    required:
+    - folderId
+    - destinationParent
+    properties:
+      folderId:
+        type: string
+        description: The resource id of the folder to move (e.g. 500123).
+      destinationParent:
+        type: string
+        description: The new parent resource, e.g. folders/456 or organizations/987.
+  steps:
+  - stepId: getFolderBefore
+    description: >-
+      Read the folder to capture its current parent before the move.
+    operationId: cloudresourcemanager.folders.get
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentParent: $response.body#/parent
+      displayName: $response.body#/displayName
+  - stepId: moveFolder
+    description: >-
+      Move the folder under the destination parent. Returns a long-running
+      Operation whose name is used to poll for completion.
+    operationId: cloudresourcemanager.folders.move
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    requestBody:
+      contentType: application/json
+      payload:
+        destinationParent: $inputs.destinationParent
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      operationName: $response.body#/name
+  - stepId: pollOperation
+    description: >-
+      Poll the long-running operation by name until the done flag is true.
+      Branches back to itself while the operation is still in progress.
+    operationId: cloudresourcemanager.operations.get
+    parameters:
+    - name: name
+      in: path
+      value: $steps.moveFolder.outputs.operationName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      done: $response.body#/done
+    onSuccess:
+    - name: operationComplete
+      type: goto
+      stepId: getFolderAfter
+      criteria:
+      - context: $response.body
+        condition: $.done == true
+        type: jsonpath
+    - name: stillRunning
+      type: goto
+      stepId: pollOperation
+      criteria:
+      - context: $response.body
+        condition: $.done == false
+        type: jsonpath
+  - stepId: getFolderAfter
+    description: >-
+      Re-read the folder to confirm the new parent took effect after the move.
+    operationId: cloudresourcemanager.folders.get
+    parameters:
+    - name: folderId
+      in: path
+      value: $inputs.folderId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      newParent: $response.body#/parent
+  outputs:
+    previousParent: $steps.getFolderBefore.outputs.currentParent
+    newParent: $steps.getFolderAfter.outputs.newParent
+    operationName: $steps.moveFolder.outputs.operationName
