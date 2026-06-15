@@ -1,0 +1,746 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The name of the parent resource whose projects are to be listed. Must be of the form folders/{folder_id} or organizations/{org_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of projects to return in the response. The server can return fewer results. If unspecified, the server picks an appropriate default value."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "A pagination token returned from a previous call to ListProjects that indicates where this listing should continue from."
+              },
+              {
+                "name": "showDeleted",
+                "value": "true",
+                "type": "query",
+                "description": "Indicate that projects in the DELETE_REQUESTED state should also be returned."
+              }
+            ]
+          },
+          "docs": "Lists projects that are direct children of the specified parent resource. Projects are listed in alphabetical order by display name. The caller must have the resourcemanager.projects.list permission on the parent resource."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new project resource under the specified parent. The parent must be an organization or folder. The caller must have the resourcemanager.projects.create permission on the parent. This method returns a long-running Operation which can be used to track creation."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to retrieve, such as projects/123 or projects/my-project-id. The project ID or number is required."
+              }
+            ]
+          },
+          "docs": "Retrieves the project identified by the specified name, such as projects/123 or projects/my-project-id. The caller must have the resourcemanager.projects.get permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Update a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to update."
+              },
+              {
+                "name": "updateMask",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of fields to update. Only display_name and labels fields can be updated. An empty update mask is not permitted."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the display name and labels of the project identified by the specified name. Changes to the project are not reflected immediately and may take several minutes to propagate. The caller must have the resourcemanager.projects.update permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Delete a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to delete."
+              }
+            ]
+          },
+          "docs": "Marks the project identified by the specified name to be deleted. This method sets the project lifecycle state to DELETE_REQUESTED. The project is not immediately deleted but enters a 30-day grace period during which it can be restored using undelete. After 30 days, the project and all its resources are permanently deleted."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Undelete a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId:undelete",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to undelete."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restores the project identified by the specified name. A project can only be restored within the 30-day grace period after deletion. The caller must have the resourcemanager.projects.undelete permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get Project Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:resource:getIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The name of the project whose policy is being requested, such as projects/12345."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the IAM access control policy for the specified project. The caller must have the resourcemanager.projects.getIamPolicy permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Set Project Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:resource:setIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The name of the project whose policy is being set, such as projects/12345."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the IAM access control policy for the specified project, replacing any existing policy. The caller must have the resourcemanager.projects.setIamPolicy permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Search Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects:search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "A query string for searching projects. The query supports filtering by displayName, parent.type, parent.id, projectId, state, and labels. Example: parent.type:folder parent.id:123."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of projects to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous search call."
+              }
+            ]
+          },
+          "docs": "Search for projects that the caller has the resourcemanager.projects.get permission on. Projects can be filtered by parent, display name, project ID, and state."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The name of the parent resource whose folders are to be listed. Must be of the form folders/{folder_id} or organizations/{org_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of folders to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              },
+              {
+                "name": "showDeleted",
+                "value": "true",
+                "type": "query",
+                "description": "Indicate that folders in the DELETE_REQUESTED state should also be returned."
+              }
+            ]
+          },
+          "docs": "Lists the folders that are direct descendants of the specified parent resource. The caller must have the resourcemanager.folders.list permission on the parent. Folders are listed in alphabetical order by display name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a folder in the resource hierarchy under the specified parent. The parent can be an organization or another folder. The caller must have the resourcemanager.folders.create permission on the parent."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a folder identified by the specified resource name. The caller must have the resourcemanager.folders.get permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Update a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to update."
+              },
+              {
+                "name": "updateMask",
+                "value": "example_value",
+                "type": "query",
+                "description": "Fields to be updated. Only the display_name field can be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a folder, changing its display name. Changes to the folder display name are not immediately reflected and may take several minutes to propagate. The caller must have the resourcemanager.folders.update permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Delete a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to delete."
+              }
+            ]
+          },
+          "docs": "Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED state and enters a 30-day grace period. During this period, the folder can be restored. After the grace period, the folder is permanently deleted. The folder must be empty before it can be deleted. The caller must have the resourcemanager.folders.delete permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Undelete a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId:undelete",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to undelete."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels the deletion request for a folder. This method can only be called within the 30-day grace period. The caller must have the resourcemanager.folders.undelete permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Move a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId:move",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to move."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moves a folder under a new resource parent. The folder can be moved to another folder or to the organization root. The caller must have the resourcemanager.folders.move permission on both the source folder and the destination parent."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Search Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders:search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "Search criteria used to select folders. The supported filter fields are displayName, parent, and state. Example: displayName=Engineering."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of folders to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous search call."
+              }
+            ]
+          },
+          "docs": "Search for folders that match specified filter criteria. The caller must have the resourcemanager.folders.get permission on the returned folders."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform Get an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the organization to fetch, such as organizations/12345."
+              }
+            ]
+          },
+          "docs": "Fetches an organization resource identified by the specified resource name, such as organizations/12345. The caller must have the resourcemanager.organizations.get permission on the organization."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Search Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations:search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "An optional query string used to filter organizations. Supported filter fields include domain and displayName. Example: domain:example.com."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of organizations to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous search call."
+              }
+            ]
+          },
+          "docs": "Searches for organizations that the caller has the resourcemanager.organizations.get permission on. Organizations can be searched by domain or display name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get Organization Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations/:resource:getIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The resource name of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets the access control policy for an organization resource. The caller must have the resourcemanager.organizations.getIamPolicy permission on the organization."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Set Organization Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations/:resource:setIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The resource name of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the access control policy on an organization resource, replacing any existing policy. The caller must have the resourcemanager.organizations.setIamPolicy permission on the organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform Get a Long-running Operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "Example Title",
+                "type": "path",
+                "description": "The name of the operation resource."
+              }
+            ]
+          },
+          "docs": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TagKeys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Tag Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagKeys",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The resource name of the parent. Must be of the form organizations/{org_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of tag keys to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              }
+            ]
+          },
+          "docs": "Lists all tag keys under a specified parent resource. The parent can be an organization. The caller must have the resourcemanager.tagKeys.list permission on the parent."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Tag Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagKeys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tag key under the specified parent. The tag key short name must be unique within the parent. The caller must have the resourcemanager.tagKeys.create permission on the parent."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TagValues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Tag Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagValues",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The resource name of the tag key whose values are to be listed. Must be of the form tagKeys/{tag_key_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of tag values to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              }
+            ]
+          },
+          "docs": "Lists all tag values for a specified tag key. The caller must have the resourcemanager.tagValues.list permission on the parent tag key."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Tag Value",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagValues",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a tag value as a child of the specified tag key. The caller must have the resourcemanager.tagValues.create permission on the parent tag key."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TagBindings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Tag Bindings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagBindings",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The full resource name of the resource whose bindings are being listed. Example: //cloudresourcemanager.googleapis.com/projects/123."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of tag bindings to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              }
+            ]
+          },
+          "docs": "Lists the tag bindings that are applied to the specified resource. The caller must have the appropriate permission on the resource."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Tag Binding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagBindings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a tag binding between a tag value and a cloud resource. The caller must have the appropriate tag permission on the resource and the resourcemanager.tagValueBindings.create permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
