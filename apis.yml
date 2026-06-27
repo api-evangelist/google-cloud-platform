@@ -37,7 +37,7 @@ apis:
         url: https://console.cloud.google.com/compute
       - type: GettingStarted
         url: https://cloud.google.com/compute/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/compute/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/compute/quotas
@@ -65,7 +65,7 @@ apis:
         url: https://console.cloud.google.com/storage
       - type: GettingStarted
         url: https://cloud.google.com/storage/docs/quickstart-console
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/storage/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/storage/quotas
@@ -93,7 +93,7 @@ apis:
         url: https://console.cloud.google.com/functions
       - type: GettingStarted
         url: https://cloud.google.com/functions/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/functions/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/functions/quotas
@@ -121,7 +121,7 @@ apis:
         url: https://console.cloud.google.com/kubernetes
       - type: GettingStarted
         url: https://cloud.google.com/kubernetes-engine/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/kubernetes-engine/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/kubernetes-engine/quotas
@@ -149,7 +149,7 @@ apis:
         url: https://console.cloud.google.com/bigquery
       - type: GettingStarted
         url: https://cloud.google.com/bigquery/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/bigquery/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/bigquery/quotas
@@ -177,7 +177,7 @@ apis:
         url: https://console.cloud.google.com/cloudpubsub
       - type: GettingStarted
         url: https://cloud.google.com/pubsub/docs/quickstart-console
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/pubsub/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/pubsub/quotas
@@ -205,7 +205,7 @@ apis:
         url: https://console.cloud.google.com/apis/library/vision.googleapis.com
       - type: GettingStarted
         url: https://cloud.google.com/vision/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/vision/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/vision/docs/release-notes
@@ -232,7 +232,7 @@ apis:
         url: https://console.cloud.google.com/vertex-ai
       - type: GettingStarted
         url: https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/vertex-ai/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/vertex-ai/docs/quotas
@@ -261,7 +261,7 @@ apis:
         url: https://console.cloud.google.com/apis/library/language.googleapis.com
       - type: GettingStarted
         url: https://cloud.google.com/natural-language/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/natural-language/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/natural-language/docs/release-notes
@@ -288,7 +288,7 @@ apis:
         url: https://console.cloud.google.com/apis/library/speech.googleapis.com
       - type: GettingStarted
         url: https://cloud.google.com/speech-to-text/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/speech-to-text/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/speech-to-text/docs/release-notes
@@ -315,7 +315,7 @@ apis:
         url: https://console.cloud.google.com/apis/library/translate.googleapis.com
       - type: GettingStarted
         url: https://cloud.google.com/translate/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/translate/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/translate/docs/release-notes
@@ -341,7 +341,7 @@ apis:
         url: https://console.cloud.google.com/run
       - type: GettingStarted
         url: https://cloud.google.com/run/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/run/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/run/quotas
@@ -371,7 +371,7 @@ apis:
         url: https://console.cloud.google.com/sql
       - type: GettingStarted
         url: https://cloud.google.com/sql/docs/mysql/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/sql/docs/mysql/apis
       - type: RateLimits
         url: https://cloud.google.com/sql/docs/quotas
@@ -400,7 +400,7 @@ apis:
         url: https://console.cloud.google.com/spanner
       - type: GettingStarted
         url: https://cloud.google.com/spanner/docs/quickstart-console
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/spanner/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/spanner/quotas
@@ -429,7 +429,7 @@ apis:
         url: https://console.cloud.google.com/firestore
       - type: GettingStarted
         url: https://cloud.google.com/firestore/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/firestore/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/firestore/docs/release-notes
@@ -456,7 +456,7 @@ apis:
         url: https://console.cloud.google.com/bigtable
       - type: GettingStarted
         url: https://cloud.google.com/bigtable/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/bigtable/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/bigtable/quotas
@@ -485,7 +485,7 @@ apis:
         url: https://console.cloud.google.com/iam-admin
       - type: GettingStarted
         url: https://cloud.google.com/iam/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/iam/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/iam/docs/release-notes
@@ -511,7 +511,7 @@ apis:
         url: https://console.cloud.google.com/net-services/dns
       - type: GettingStarted
         url: https://cloud.google.com/dns/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/dns/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/dns/quotas
@@ -540,7 +540,7 @@ apis:
         url: https://console.cloud.google.com/logs
       - type: GettingStarted
         url: https://cloud.google.com/logging/docs/quickstart-sdk
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/logging/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/logging/quotas
@@ -569,7 +569,7 @@ apis:
         url: https://console.cloud.google.com/monitoring
       - type: GettingStarted
         url: https://cloud.google.com/monitoring/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/monitoring/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/monitoring/quotas
@@ -598,7 +598,7 @@ apis:
         url: https://console.cloud.google.com/dataflow
       - type: GettingStarted
         url: https://cloud.google.com/dataflow/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/dataflow/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/dataflow/quotas
@@ -627,7 +627,7 @@ apis:
         url: https://console.cloud.google.com/dataproc
       - type: GettingStarted
         url: https://cloud.google.com/dataproc/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/dataproc/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/dataproc/quotas
@@ -656,7 +656,7 @@ apis:
         url: https://console.cloud.google.com/security/kms
       - type: GettingStarted
         url: https://cloud.google.com/kms/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/kms/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/kms/docs/release-notes
@@ -682,7 +682,7 @@ apis:
         url: https://console.cloud.google.com/security/secret-manager
       - type: GettingStarted
         url: https://cloud.google.com/secret-manager/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/secret-manager/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/secret-manager/quotas
@@ -711,7 +711,7 @@ apis:
         url: https://console.cloud.google.com/artifacts
       - type: GettingStarted
         url: https://cloud.google.com/artifact-registry/docs/quickstarts
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/artifact-registry/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/artifact-registry/docs/release-notes
@@ -738,7 +738,7 @@ apis:
         url: https://console.cloud.google.com/cloud-build
       - type: GettingStarted
         url: https://cloud.google.com/build/docs/quickstart-build
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/build/docs/api/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/build/docs/release-notes
@@ -769,7 +769,7 @@ apis:
         url: https://console.cloud.google.com/cloud-resource-manager
       - type: GettingStarted
         url: https://cloud.google.com/resource-manager/docs/creating-managing-projects
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/resource-manager/docs/apis
       - type: ReleaseNotes
         url: https://cloud.google.com/resource-manager/docs/release-notes
@@ -795,7 +795,7 @@ apis:
         url: https://console.cloud.google.com/cloudtasks
       - type: GettingStarted
         url: https://cloud.google.com/tasks/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/tasks/docs/reference/libraries
       - type: RateLimits
         url: https://cloud.google.com/tasks/docs/quotas
@@ -823,7 +823,7 @@ apis:
         url: https://console.cloud.google.com/cloudscheduler
       - type: GettingStarted
         url: https://cloud.google.com/scheduler/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/scheduler/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/scheduler/docs/release-notes
@@ -850,7 +850,7 @@ apis:
         url: https://console.cloud.google.com/apis/library/texttospeech.googleapis.com
       - type: GettingStarted
         url: https://cloud.google.com/text-to-speech/docs/quickstart-protocol
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/text-to-speech/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/text-to-speech/docs/release-notes
@@ -876,7 +876,7 @@ apis:
         url: https://console.cloud.google.com/api-gateway
       - type: GettingStarted
         url: https://cloud.google.com/api-gateway/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/api-gateway/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/api-gateway/docs/release-notes
@@ -902,7 +902,7 @@ apis:
         url: https://console.cloud.google.com/workflows
       - type: GettingStarted
         url: https://cloud.google.com/workflows/docs/quickstart-console
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/workflows/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/workflows/docs/release-notes
@@ -929,7 +929,7 @@ apis:
         url: https://console.cloud.google.com/deploy
       - type: GettingStarted
         url: https://cloud.google.com/deploy/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/deploy/docs/api
       - type: ReleaseNotes
         url: https://cloud.google.com/deploy/docs/release-notes
@@ -956,7 +956,7 @@ apis:
         url: https://console.cloud.google.com/apis/library/dialogflow.googleapis.com
       - type: GettingStarted
         url: https://cloud.google.com/dialogflow/cx/docs/quick/setup
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/dialogflow/cx/docs/reference
       - type: ReleaseNotes
         url: https://cloud.google.com/dialogflow/cx/docs/release-notes
@@ -983,7 +983,7 @@ apis:
         url: https://console.cloud.google.com/security/sensitive-data-protection
       - type: GettingStarted
         url: https://cloud.google.com/sensitive-data-protection/docs/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/sensitive-data-protection/docs/reference/libraries
       - type: ReleaseNotes
         url: https://cloud.google.com/sensitive-data-protection/docs/release-notes
@@ -1010,7 +1010,7 @@ apis:
         url: https://console.cloud.google.com/memorystore/redis
       - type: GettingStarted
         url: https://cloud.google.com/memorystore/docs/redis/quickstart
-      - type: SDK
+      - type: SDKs
         url: https://cloud.google.com/memorystore/docs/redis/apis
       - type: ReleaseNotes
         url: https://cloud.google.com/memorystore/docs/redis/release-notes
@@ -1026,75 +1026,72 @@ maintainers:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-cloud-platform/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/google-cloud-platform-audit-folder-and-projects-workflow.yml
-        name: Google Cloud Platform Audit Folder and Projects
-        summary: Search for a folder, fetch its record, then list the projects directly under it.
-      - url: arazzo/google-cloud-platform-bind-tag-to-project-workflow.yml
-        name: Google Cloud Platform Bind Tag to Project
-        summary: Look up a tag value for a key, create a tag binding to a resource, poll, then list bindings.
-      - url: arazzo/google-cloud-platform-copy-project-iam-policy-workflow.yml
-        name: Google Cloud Platform Copy Project IAM Policy
-        summary: Read the IAM policy of a source project and apply its bindings to a target project.
-      - url: arazzo/google-cloud-platform-create-folder-and-poll-workflow.yml
-        name: Google Cloud Platform Create Folder and Poll Operation
-        summary: Create a folder, poll the long-running operation until done, then read back the folder.
-      - url: arazzo/google-cloud-platform-create-project-and-poll-workflow.yml
-        name: Google Cloud Platform Create Project and Poll Operation
-        summary: Create a project, poll the long-running operation until done, then read back the project.
-      - url: arazzo/google-cloud-platform-create-tag-key-and-value-workflow.yml
-        name: Google Cloud Platform Create Tag Key and Value
-        summary: Create a tag key, poll the operation, then create a tag value under it and poll again.
-      - url: arazzo/google-cloud-platform-delete-and-restore-folder-workflow.yml
-        name: Google Cloud Platform Delete and Restore Folder
-        summary: Mark a folder for deletion, wait for it, then undelete it within the grace period.
-      - url: arazzo/google-cloud-platform-delete-and-restore-project-workflow.yml
-        name: Google Cloud Platform Delete and Restore Project
-        summary: Mark a project for deletion, confirm DELETE_REQUESTED, then undelete it back to active.
-      - url: arazzo/google-cloud-platform-delete-empty-folder-workflow.yml
-        name: Google Cloud Platform Delete Empty Folder
-        summary: Confirm a folder has no child projects, then delete it and poll the operation.
-      - url: arazzo/google-cloud-platform-inspect-organization-access-workflow.yml
-        name: Google Cloud Platform Inspect Organization Access
-        summary: Search for an organization, fetch its record, then read its IAM policy.
-      - url: arazzo/google-cloud-platform-inventory-organization-tags-workflow.yml
-        name: Google Cloud Platform Inventory Organization Tags
-        summary: List an organization's tag keys, then list the tag values under the first key.
-      - url: arazzo/google-cloud-platform-label-project-and-poll-workflow.yml
-        name: Google Cloud Platform Label Project and Poll Operation
-        summary: Read a project, patch its labels, poll the operation, then confirm the new labels.
-      - url: arazzo/google-cloud-platform-move-folder-and-poll-workflow.yml
-        name: Google Cloud Platform Move Folder and Poll Operation
-        summary: Read a folder, move it under a new parent, poll the operation, then confirm the new parent.
-      - url: arazzo/google-cloud-platform-provision-folder-with-project-workflow.yml
-        name: Google Cloud Platform Provision Folder with Project
-        summary: Create a folder, wait for it, then create a project under that folder and wait for it.
-      - url: arazzo/google-cloud-platform-rename-folder-and-poll-workflow.yml
-        name: Google Cloud Platform Rename Folder and Poll Operation
-        summary: Read a folder, patch its display name, poll the operation, then confirm the new name.
-      - url: arazzo/google-cloud-platform-rename-project-and-poll-workflow.yml
-        name: Google Cloud Platform Rename Project and Poll Operation
-        summary: Read a project, patch its display name, poll the operation, then confirm the new name.
-      - url: arazzo/google-cloud-platform-reset-project-iam-policy-workflow.yml
-        name: Google Cloud Platform Reset Project IAM Policy
-        summary: Read a project IAM policy, then overwrite it with a single owner binding using the etag.
-      - url: arazzo/google-cloud-platform-review-project-governance-workflow.yml
-        name: Google Cloud Platform Review Project Governance
-        summary: Fetch a project, read its IAM policy, then list the tag bindings applied to it.
-      - url: arazzo/google-cloud-platform-search-and-inspect-project-workflow.yml
-        name: Google Cloud Platform Search and Inspect Project
-        summary: Search for a project, fetch its full record, then read its IAM policy.
-      - url: arazzo/google-cloud-platform-update-organization-iam-policy-workflow.yml
-        name: Google Cloud Platform Update Organization IAM Policy
-        summary: Read an organization IAM policy, add a member binding, and write it back with the etag.
-      - url: arazzo/google-cloud-platform-update-project-iam-policy-workflow.yml
-        name: Google Cloud Platform Update Project IAM Policy
-        summary: Read a project IAM policy, add a member binding, and write the policy back with the etag.
-      - url: arazzo/google-cloud-platform-walk-resource-hierarchy-workflow.yml
-        name: Google Cloud Platform Walk Resource Hierarchy
-        summary: Find an organization, list its folders, then list the projects directly under it.
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-audit-folder-and-projects-workflow.yml
+    name: Google Cloud Platform Audit Folder and Projects
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-bind-tag-to-project-workflow.yml
+    name: Google Cloud Platform Bind Tag to Project
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-copy-project-iam-policy-workflow.yml
+    name: Google Cloud Platform Copy Project IAM Policy
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-create-folder-and-poll-workflow.yml
+    name: Google Cloud Platform Create Folder and Poll Operation
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-create-project-and-poll-workflow.yml
+    name: Google Cloud Platform Create Project and Poll Operation
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-create-tag-key-and-value-workflow.yml
+    name: Google Cloud Platform Create Tag Key and Value
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-delete-and-restore-folder-workflow.yml
+    name: Google Cloud Platform Delete and Restore Folder
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-delete-and-restore-project-workflow.yml
+    name: Google Cloud Platform Delete and Restore Project
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-delete-empty-folder-workflow.yml
+    name: Google Cloud Platform Delete Empty Folder
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-inspect-organization-access-workflow.yml
+    name: Google Cloud Platform Inspect Organization Access
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-inventory-organization-tags-workflow.yml
+    name: Google Cloud Platform Inventory Organization Tags
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-label-project-and-poll-workflow.yml
+    name: Google Cloud Platform Label Project and Poll Operation
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-move-folder-and-poll-workflow.yml
+    name: Google Cloud Platform Move Folder and Poll Operation
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-provision-folder-with-project-workflow.yml
+    name: Google Cloud Platform Provision Folder with Project
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-rename-folder-and-poll-workflow.yml
+    name: Google Cloud Platform Rename Folder and Poll Operation
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-rename-project-and-poll-workflow.yml
+    name: Google Cloud Platform Rename Project and Poll Operation
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-reset-project-iam-policy-workflow.yml
+    name: Google Cloud Platform Reset Project IAM Policy
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-review-project-governance-workflow.yml
+    name: Google Cloud Platform Review Project Governance
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-search-and-inspect-project-workflow.yml
+    name: Google Cloud Platform Search and Inspect Project
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-update-organization-iam-policy-workflow.yml
+    name: Google Cloud Platform Update Organization IAM Policy
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-update-project-iam-policy-workflow.yml
+    name: Google Cloud Platform Update Project IAM Policy
+  - type: Arazzo
+    url: arazzo/google-cloud-platform-walk-resource-hierarchy-workflow.yml
+    name: Google Cloud Platform Walk Resource Hierarchy
   - type: Portal
     url: https://cloud.google.com/
   - type: Documentation
@@ -1107,7 +1104,7 @@ common:
     url: https://cloud.google.com/docs/authentication
   - type: Console
     url: https://console.cloud.google.com/apis
-  - type: SignUp
+  - type: Signup
     url: https://cloud.google.com/free
   - type: Login
     url: https://console.cloud.google.com/
@@ -1125,7 +1122,7 @@ common:
     url: https://github.com/GoogleCloudPlatform
   - type: Pricing
     url: https://cloud.google.com/pricing
-  - type: SDK
+  - type: SDKs
     url: https://cloud.google.com/sdk
   - type: Security
     url: https://cloud.google.com/security
