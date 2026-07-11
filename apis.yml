@@ -1024,6 +1024,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: OAuthScopes
+    url: scopes/google-cloud-platform-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-cloud-platform/overview
   - type: Arazzo
