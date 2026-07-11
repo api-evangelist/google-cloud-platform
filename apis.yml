@@ -1024,6 +1024,12 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-platform-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-platform-domain-security.yml
+  - type: Authentication
+    url: authentication/google-cloud-platform-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-platform-scopes.yml
   - type: PostmanWorkspace
