@@ -1024,6 +1024,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-cloud-platform-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-cloud-platform-vulnerability-disclosure.yml
   - type: DomainSecurity

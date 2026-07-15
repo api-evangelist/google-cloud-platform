@@ -1,0 +1,476 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/cloud-resource-manager-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 28
+  by_action_class:
+    connected: 12
+    acting: 16
+  by_consequence:
+    read: 12
+    write: 16
+  human_in_the_loop_required: 0
+operations:
+- path: /v3/projects
+  method: get
+  operationId: cloudresourcemanager.projects.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects
+  method: post
+  operationId: cloudresourcemanager.projects.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects/{projectId}
+  method: get
+  operationId: cloudresourcemanager.projects.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects/{projectId}
+  method: patch
+  operationId: cloudresourcemanager.projects.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects/{projectId}
+  method: delete
+  operationId: cloudresourcemanager.projects.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects/{projectId}:undelete
+  method: post
+  operationId: cloudresourcemanager.projects.undelete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects/{resource}:getIamPolicy
+  method: post
+  operationId: cloudresourcemanager.projects.getIamPolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects/{resource}:setIamPolicy
+  method: post
+  operationId: cloudresourcemanager.projects.setIamPolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/projects:search
+  method: get
+  operationId: cloudresourcemanager.projects.search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders
+  method: get
+  operationId: cloudresourcemanager.folders.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders
+  method: post
+  operationId: cloudresourcemanager.folders.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders/{folderId}
+  method: get
+  operationId: cloudresourcemanager.folders.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders/{folderId}
+  method: patch
+  operationId: cloudresourcemanager.folders.patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders/{folderId}
+  method: delete
+  operationId: cloudresourcemanager.folders.delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders/{folderId}:undelete
+  method: post
+  operationId: cloudresourcemanager.folders.undelete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders/{folderId}:move
+  method: post
+  operationId: cloudresourcemanager.folders.move
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/folders:search
+  method: get
+  operationId: cloudresourcemanager.folders.search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/organizations/{organizationId}
+  method: get
+  operationId: cloudresourcemanager.organizations.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/organizations:search
+  method: get
+  operationId: cloudresourcemanager.organizations.search
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/organizations/{resource}:getIamPolicy
+  method: post
+  operationId: cloudresourcemanager.organizations.getIamPolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/organizations/{resource}:setIamPolicy
+  method: post
+  operationId: cloudresourcemanager.organizations.setIamPolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/{name}
+  method: get
+  operationId: cloudresourcemanager.operations.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/tagKeys
+  method: get
+  operationId: cloudresourcemanager.tagKeys.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/tagKeys
+  method: post
+  operationId: cloudresourcemanager.tagKeys.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/tagValues
+  method: get
+  operationId: cloudresourcemanager.tagValues.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/tagValues
+  method: post
+  operationId: cloudresourcemanager.tagValues.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/tagBindings
+  method: get
+  operationId: cloudresourcemanager.tagBindings.list
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
+- path: /v3/tagBindings
+  method: post
+  operationId: cloudresourcemanager.tagBindings.create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - https://www.googleapis.com/auth/cloud-platform
+    - https://www.googleapis.com/auth/cloud-platform.read-only
