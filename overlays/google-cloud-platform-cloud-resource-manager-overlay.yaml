@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Google Cloud Resource Manager API
+  version: 1.0.0
+extends: openapi/cloud-resource-manager-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: google-cloud-platform
+      x-apievangelist-service: cloud-resource-manager
+      x-apievangelist-enrichment: '2026-06-20'
+      x-artifacts:
+        authentication: authentication/google-cloud-platform-authentication.yml
+        scopes: scopes/google-cloud-platform-scopes.yml
+        errors: errors/google-cloud-platform-problem-types.yml
+        conventions: conventions/google-cloud-platform-conventions.yml
+        data-model: data-model/google-cloud-platform-data-model.yml
+        lifecycle: lifecycle/google-cloud-platform-lifecycle.yml
+        grpc: grpc/google-cloud-platform-grpc.yml
+  - target: $.info
+    update:
+      x-error-envelope: google.rpc.Status
+      x-long-running-operations: true
+      x-pagination-style: page-token
+  - target: $.externalDocs
+    update:
+      description: Google Cloud API design guide (AIP)
+      url: https://cloud.google.com/apis/design

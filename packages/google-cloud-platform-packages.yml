@@ -1,0 +1,92 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  npm registry (registry.npmjs.org), PyPI (pypi.org), and
+  cloud.google.com/*/docs/reference/libraries — first-party Google Cloud
+  Client Libraries. Google publishes idiomatic client libraries per product in
+  seven languages plus the gcloud CLI. Registry existence + version confirmed
+  live for the sampled libraries; the family is uniform across GCP products.
+notes: >-
+  Google Cloud Client Libraries follow uniform naming per language: npm
+  @google-cloud/<product>, PyPI google-cloud-<product>, Maven
+  com.google.cloud:google-cloud-<product>, NuGet Google.Cloud.<Product>.V1,
+  Go cloud.google.com/go/<product>, RubyGems google-cloud-<product>, PHP
+  google/cloud-<product>. Only representative first-party packages are
+  enumerated; every GCP service in apis.yml ships the equivalent library.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@google-cloud/resource-manager"
+    url: https://www.npmjs.com/package/@google-cloud/resource-manager
+    install: npm install @google-cloud/resource-manager
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@google-cloud/storage"
+    url: https://www.npmjs.com/package/@google-cloud/storage
+    install: npm install @google-cloud/storage
+    official: true
+  - language: python
+    registry: pypi
+    name: google-cloud-resource-manager
+    version: 1.18.0
+    url: https://pypi.org/project/google-cloud-resource-manager/
+    install: pip install google-cloud-resource-manager
+    official: true
+  - language: python
+    registry: pypi
+    name: google-cloud-storage
+    version: 3.13.0
+    url: https://pypi.org/project/google-cloud-storage/
+    install: pip install google-cloud-storage
+    official: true
+  - language: python
+    registry: pypi
+    name: google-cloud-bigquery
+    version: 3.42.2
+    url: https://pypi.org/project/google-cloud-bigquery/
+    install: pip install google-cloud-bigquery
+    official: true
+  - language: python
+    registry: pypi
+    name: google-cloud-pubsub
+    version: 2.39.0
+    url: https://pypi.org/project/google-cloud-pubsub/
+    install: pip install google-cloud-pubsub
+    official: true
+  - language: java
+    registry: maven
+    name: com.google.cloud:google-cloud-resourcemanager
+    url: https://central.sonatype.com/artifact/com.google.cloud/google-cloud-resourcemanager
+    install: "implementation 'com.google.cloud:google-cloud-resourcemanager'"
+    official: true
+  - language: dotnet
+    registry: nuget
+    name: Google.Cloud.ResourceManager.V3
+    url: https://www.nuget.org/packages/Google.Cloud.ResourceManager.V3
+    install: dotnet add package Google.Cloud.ResourceManager.V3
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: cloud.google.com/go/resourcemanager
+    url: https://pkg.go.dev/cloud.google.com/go/resourcemanager
+    install: go get cloud.google.com/go/resourcemanager
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: google-cloud-resource_manager
+    url: https://rubygems.org/gems/google-cloud-resource_manager
+    install: gem install google-cloud-resource_manager
+    official: true
+  - language: php
+    registry: packagist
+    name: google/cloud-storage
+    url: https://packagist.org/packages/google/cloud-storage
+    install: composer require google/cloud-storage
+    official: true
+  - language: cli
+    registry: google
+    name: gcloud (Google Cloud CLI)
+    url: https://cloud.google.com/sdk/docs/install
+    install: curl https://sdk.cloud.google.com | bash
+    official: true

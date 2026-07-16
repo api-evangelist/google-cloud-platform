@@ -1,0 +1,59 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/cloud-resource-manager-openapi.yml
+docs: https://cloud.google.com/apis/design/errors
+format: google.rpc.Status
+notes: >-
+  Google Cloud APIs do NOT use RFC 9457 application/problem+json. All errors
+  return the google.rpc.Status envelope { code: <int google.rpc.Code>, message:
+  <string>, details: [ ... ] } on an HTTP status. The `status[]` list below maps
+  the HTTP statuses declared across the Cloud Resource Manager operations to the
+  canonical google.rpc.Code enum (searched from cloud.google.com/apis/design/errors).
+envelope:
+  schema: "#/components/schemas/Status"
+  fields:
+    code: integer google.rpc.Code enum value
+    message: developer-facing English message
+    details: array of typed detail messages (e.g. ErrorInfo, BadRequest, QuotaFailure)
+http_statuses:
+  - status: 400
+    rpc_code: INVALID_ARGUMENT
+    title: Invalid request parameters
+    remediation: Fix the request payload or query parameters; check field formats and constraints.
+    seen_on:
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.list
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.create
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.create
+  - status: 401
+    rpc_code: UNAUTHENTICATED
+    title: Authentication credentials are missing or invalid
+    remediation: Provide a valid OAuth 2.0 access token or service-account credential.
+    seen_on:
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.list
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.get
+  - status: 403
+    rpc_code: PERMISSION_DENIED
+    title: The caller does not have required permissions
+    remediation: Grant the caller the required IAM permission/role on the target resource.
+    seen_on:
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.list
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.setIamPolicy
+  - status: 404
+    rpc_code: NOT_FOUND
+    title: Resource not found
+    remediation: Verify the resource name/id exists and the caller can see it.
+    seen_on:
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.get
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.get
+  - status: 409
+    rpc_code: ALREADY_EXISTS
+    title: Resource already exists / conflict
+    remediation: Use a unique identifier, or reconcile the conflicting state before retrying.
+    seen_on:
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.create
+  - status: 412
+    rpc_code: FAILED_PRECONDITION
+    title: Precondition failed (etag mismatch)
+    remediation: Re-read the resource to obtain the current etag and retry the conditional operation.
+    seen_on:
+      - openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.undelete

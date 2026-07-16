@@ -1,6 +1,12 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/cloud-resource-manager-openapi.yml
+docs: https://developers.google.com/identity/protocols/oauth2/scopes
+notes: >-
+  Google publishes the full OAuth 2.0 scope reference across all APIs at the
+  docs URL above. Cloud Resource Manager uses the two platform-wide scopes
+  below; most GCP services also accept the broad cloud-platform scope in
+  addition to any service-specific scopes.
 schemes:
 - name: oauth2
   source: openapi/cloud-resource-manager-openapi.yml

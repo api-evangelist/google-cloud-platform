@@ -6,7 +6,7 @@ description: >-
 image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
 url: https://cloud.google.com
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 type: Index
 tags:
@@ -1034,6 +1034,38 @@ common:
     url: authentication/google-cloud-platform-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-platform-scopes.yml
+  - type: TrustCenter
+    url: security/google-cloud-platform-trust-center.yml
+  - type: Packages
+    url: packages/google-cloud-platform-packages.yml
+  - type: WellKnown
+    url: well-known/google-cloud-platform-well-known.yml
+  - type: SecurityTxt
+    url: well-known/google-cloud-platform-security.txt
+  - type: MCPServer
+    url: mcp/google-cloud-platform-mcp.yml
+  - type: LLMsTxt
+    url: llms/google-cloud-platform-llms.txt
+  - type: Overlay
+    url: overlays/google-cloud-platform-cloud-resource-manager-overlay.yaml
+  - type: Protobuf
+    url: grpc/google-cloud-platform-grpc.yml
+  - type: Conformance
+    url: conformance/google-cloud-platform-conformance.yml
+  - type: ErrorCatalog
+    url: errors/google-cloud-platform-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/google-cloud-platform-lifecycle.yml
+  - type: Conventions
+    url: conventions/google-cloud-platform-conventions.yml
+  - type: DataModel
+    url: data-model/google-cloud-platform-data-model.yml
+  - type: ChangeLog
+    url: changelog/google-cloud-platform-changelog.yml
+  - type: CLI
+    url: cli/google-cloud-platform-cli.yml
+  - type: Sandbox
+    url: sandbox/google-cloud-platform-sandbox.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-cloud-platform/overview
   - type: Arazzo

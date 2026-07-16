@@ -1,0 +1,66 @@
+generated: '2026-06-20'
+method: searched
+status: published
+source: >-
+  Google publishes several official open-source Model Context Protocol servers
+  for Google Cloud. Verified live (HTTP 200). These run locally / self-hosted
+  (stdio or http) rather than as a single Google-hosted remote endpoint.
+servers:
+  - name: mcp-toolbox-for-databases
+    description: >-
+      Open-source MCP server (formerly GenAI Toolbox) exposing Google Cloud
+      databases — AlloyDB, Cloud SQL (Postgres/MySQL/SQL Server), Spanner,
+      Bigtable, BigQuery, Firestore — as MCP tools for agents.
+    transport: stdio
+    repo: https://github.com/googleapis/genai-toolbox
+    official: true
+  - name: cloud-run-mcp
+    description: >-
+      Official MCP server to deploy and manage applications on Google Cloud
+      Run from an MCP client.
+    transport: stdio
+    repo: https://github.com/GoogleCloudPlatform/cloud-run-mcp
+    official: true
+# Derived candidate tools for the one locally-captured OpenAPI (Cloud Resource
+# Manager v3). These are a candidate MCP surface derived one-tool-per-operation
+# from openapi/cloud-resource-manager-openapi.yml, not a published Google tool
+# list.
+candidate_tools_source: openapi/cloud-resource-manager-openapi.yml
+candidate_status: candidate
+tools:
+  - name: list_projects
+    description: List Google Cloud projects.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.list
+  - name: create_project
+    description: Create a Google Cloud project.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.create
+  - name: get_project
+    description: Retrieve a project.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.get
+  - name: search_projects
+    description: Search projects the caller has access to.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.search
+  - name: get_project_iam_policy
+    description: Get the IAM policy for a project.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.getIamPolicy
+  - name: set_project_iam_policy
+    description: Set the IAM policy for a project.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.setIamPolicy
+  - name: list_folders
+    description: List folders under a parent.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.list
+  - name: create_folder
+    description: Create a folder.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.create
+  - name: move_folder
+    description: Move a folder to a new parent.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.move
+  - name: get_organization
+    description: Retrieve an organization.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.organizations.get
+  - name: create_tag_key
+    description: Create a tag key.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.tagKeys.create
+  - name: create_tag_binding
+    description: Bind a tag value to a resource.
+    source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.tagBindings.create

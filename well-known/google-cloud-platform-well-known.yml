@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/ on Google Cloud auth and marketing hosts
+notes: >-
+  Google Cloud API service hosts (e.g. cloudresourcemanager.googleapis.com,
+  storage.googleapis.com) do not serve a /.well-known discovery surface. OAuth
+  2.0 / OIDC discovery is served centrally from accounts.google.com, and the
+  RFC 9116 security.txt is served from the corporate google.com host.
+hosts:
+  - host: https://accounts.google.com
+    documents:
+      - path: /.well-known/openid-configuration        # OIDC discovery
+        status: 200
+        file: google-cloud-platform-openid-configuration.json
+      - path: /.well-known/oauth-authorization-server   # RFC 8414
+        status: 200
+        file: google-cloud-platform-oauth-authorization-server.json
+  - host: https://www.google.com
+    documents:
+      - path: /.well-known/security.txt                 # RFC 9116
+        status: 200
+        file: google-cloud-platform-security.txt
+  - host: https://cloudresourcemanager.googleapis.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 404
+  - host: https://storage.googleapis.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 400
+  - host: https://cloud.google.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404

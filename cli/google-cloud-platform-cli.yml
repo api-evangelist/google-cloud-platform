@@ -1,0 +1,59 @@
+generated: '2026-06-20'
+method: searched
+source: https://cloud.google.com/sdk/docs, https://cloud.google.com/sdk/gcloud/reference
+name: Google Cloud CLI (gcloud)
+description: >-
+  First-party unified command-line interface for Google Cloud. Ships in the
+  Google Cloud SDK bundle alongside gsutil (Cloud Storage), bq (BigQuery), and
+  the gcloud CLI itself. Manages and inspects nearly every GCP service.
+binary: gcloud
+package_ref: packages/google-cloud-platform-packages.yml
+install:
+  - method: interactive-installer
+    command: curl https://sdk.cloud.google.com | bash
+  - method: apt
+    command: apt-get install google-cloud-cli
+  - method: brew
+    command: brew install --cask google-cloud-sdk
+  - method: docker
+    command: docker pull gcr.io/google.com/cloudsdktool/google-cloud-cli
+auth_flows:
+  - gcloud auth login
+  - gcloud auth application-default login
+  - gcloud auth activate-service-account --key-file=KEY.json
+  - gcloud config set project PROJECT_ID
+command_groups:
+  - group: projects
+    resource: Cloud Resource Manager projects
+    examples: [gcloud projects list, gcloud projects create, gcloud projects add-iam-policy-binding]
+  - group: resource-manager folders
+    resource: Cloud Resource Manager folders
+    examples: [gcloud resource-manager folders list, gcloud resource-manager folders create]
+  - group: resource-manager org-policies
+    resource: Organization policies
+  - group: compute
+    resource: Compute Engine
+  - group: storage
+    resource: Cloud Storage (also `gsutil`)
+  - group: container
+    resource: Google Kubernetes Engine
+  - group: run
+    resource: Cloud Run
+  - group: functions
+    resource: Cloud Functions
+  - group: iam
+    resource: IAM service accounts, roles, workload identity
+  - group: pubsub
+    resource: Pub/Sub topics and subscriptions
+  - group: sql
+    resource: Cloud SQL instances
+  - group: bigquery (bq)
+    resource: BigQuery datasets, tables, queries
+  - group: secrets
+    resource: Secret Manager
+  - group: services
+    resource: Service Usage (enable/disable APIs, quotas)
+companion_tools:
+  - {name: gsutil, purpose: Cloud Storage object operations}
+  - {name: bq, purpose: BigQuery query and dataset management}
+  - {name: gcloud emulators, purpose: local emulators for Firestore, Pub/Sub, Bigtable, Spanner, Datastore}

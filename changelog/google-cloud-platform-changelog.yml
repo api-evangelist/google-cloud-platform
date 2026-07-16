@@ -1,0 +1,21 @@
+generated: '2026-06-20'
+method: searched
+source: https://cloud.google.com/release-notes
+scheme: per-product-release-notes
+notes: >-
+  Google Cloud publishes a dated changelog per product (feed at
+  cloud.google.com/<product>/docs/release-notes) plus an aggregated feed at
+  cloud.google.com/release-notes filterable by product and release type
+  (Feature, Changed, Fixed, Deprecated, Breaking, Announcement, Issue,
+  Libraries, Security). Recent-window entries are not enumerated here to avoid
+  fabricating dated rows; the live feed is the source of truth.
+feeds:
+  - aggregate: https://cloud.google.com/release-notes
+  - rss: https://cloud.google.com/feeds/gcp-release-notes.xml
+  - product_pattern: https://cloud.google.com/{product}/docs/release-notes
+per_product_examples:
+  - {product: Compute Engine, url: https://cloud.google.com/compute/docs/release-notes}
+  - {product: Cloud Storage, url: https://cloud.google.com/storage/docs/release-notes}
+  - {product: BigQuery, url: https://cloud.google.com/bigquery/docs/release-notes}
+  - {product: Cloud Resource Manager, url: https://cloud.google.com/resource-manager/docs/release-notes}
+entries: []

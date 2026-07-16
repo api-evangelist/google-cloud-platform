@@ -1,0 +1,66 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/cloud-resource-manager-openapi.yml
+notes: >-
+  Entity-relationship graph derived from the Cloud Resource Manager v3 schemas
+  ($ref links and id-reference fields such as `parent`, `parentTagKey`,
+  `tagValue`). This is the GCP resource-hierarchy backbone; all other GCP
+  resources live inside a Project.
+entities:
+  - name: Organization
+    schema: "#/components/schemas/Organization"
+    id_form: organizations/{organization_id}
+    description: Root node of the resource hierarchy; tied to a Cloud Identity / Workspace account.
+  - name: Folder
+    schema: "#/components/schemas/Folder"
+    id_form: folders/{folder_id}
+    description: Grouping/isolation node between organization and projects.
+  - name: Project
+    schema: "#/components/schemas/Project"
+    id_form: projects/{project_number} (projectId user-assigned)
+    description: Base-level container for GCP resources; required to use most services.
+  - name: TagKey
+    schema: "#/components/schemas/TagKey"
+    id_form: tagKeys/{numeric_id}
+  - name: TagValue
+    schema: "#/components/schemas/TagValue"
+    id_form: tagValues/{numeric_id}
+  - name: TagBinding
+    schema: "#/components/schemas/TagBinding"
+  - name: Policy
+    schema: "#/components/schemas/Policy"
+  - name: Binding
+    schema: "#/components/schemas/Binding"
+  - name: Expr
+    schema: "#/components/schemas/Expr"
+  - name: Operation
+    schema: "#/components/schemas/Operation"
+relationships:
+  - from: Folder
+    type: belongs_to
+    to: [Organization, Folder]
+    via: parent
+  - from: Project
+    type: belongs_to
+    to: [Folder, Organization]
+    via: parent
+  - from: TagValue
+    type: belongs_to
+    to: TagKey
+    via: parent
+  - from: TagBinding
+    type: has_one
+    to: TagValue
+    via: tagValue
+  - from: TagBinding
+    type: has_one
+    to: [Project, Folder, Organization]
+    via: parent
+  - from: Policy
+    type: has_many
+    to: Binding
+    via: bindings
+  - from: Binding
+    type: has_one
+    to: Expr
+    via: condition

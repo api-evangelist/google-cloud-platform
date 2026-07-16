@@ -1,0 +1,26 @@
+generated: '2026-06-20'
+method: searched
+source: https://cloud.google.com/sdk/gcloud/reference/emulators, https://cloud.google.com/free
+notes: >-
+  Google Cloud has no test-vs-live API-key split and publishes no magic test
+  card/identifier values. Its testing surface is (1) local service emulators
+  shipped in the gcloud CLI, and (2) the Free Tier / free trial credits for
+  running real services cheaply. No test credentials are invented here.
+local_emulators:
+  docs: https://cloud.google.com/sdk/gcloud/reference/emulators
+  note: >-
+    Emulators run the service locally; point the client library at the emulator
+    via the *_EMULATOR_HOST environment variable it prints on start.
+  services:
+    - {name: Firestore, command: "gcloud emulators firestore start", env: FIRESTORE_EMULATOR_HOST}
+    - {name: Pub/Sub, command: "gcloud emulators pubsub start", env: PUBSUB_EMULATOR_HOST}
+    - {name: Bigtable, command: "gcloud emulators bigtable start", env: BIGTABLE_EMULATOR_HOST}
+    - {name: Spanner, command: "gcloud emulators spanner start", env: SPANNER_EMULATOR_HOST}
+    - {name: Datastore, command: "gcloud emulators datastore start", env: DATASTORE_EMULATOR_HOST}
+free_tier:
+  trial: https://cloud.google.com/free
+  note: New accounts receive trial credits; many products have an always-free monthly usage allotment.
+test_projects:
+  note: >-
+    Recommended practice is a dedicated throwaway GCP project for testing so
+    IAM, quotas, and billing are isolated from production.

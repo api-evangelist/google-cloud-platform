@@ -1,0 +1,50 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://cloud.google.com/apis/design (Google Cloud API design guide / AIPs)
+  and derived from openapi/cloud-resource-manager-openapi.yml. Google Cloud
+  APIs follow a house resource-oriented design shared across all services.
+authentication:
+  style: OAuth 2.0 bearer access tokens (user or service-account) + optional API key
+  header: "Authorization: Bearer <access_token>"
+  api_key: query parameter `key` (identifies the calling project; not for authorization)
+  see: authentication/google-cloud-platform-authentication.yml
+long_running_operations:
+  present: true
+  style: >-
+    Mutating calls that take time return a google.longrunning.Operation; poll
+    operations.get until done=true, then read response or error.
+  resource: "#/components/schemas/Operation"
+  design: https://google.aip.dev/151
+pagination:
+  style: page-token
+  request_params: [pageSize, pageToken]
+  response_fields: [nextPageToken]
+  design: https://google.aip.dev/158
+field_masks:
+  present: true
+  style: update requests and some reads accept a `updateMask` / `fieldMask` (google.protobuf.FieldMask) to limit affected/returned fields
+  design: https://google.aip.dev/134
+concurrency:
+  optimistic: true
+  mechanism: etag field on mutable resources; conditional writes fail 412 FAILED_PRECONDITION on mismatch
+metadata:
+  labels: resources carry user-defined `labels` (map<string,string>)
+  tags: organization-level tag keys/values bound via TagBindings for policy/attribution
+resource_names:
+  style: hierarchical resource names, e.g. projects/{id}, folders/{id}, organizations/{id}
+  design: https://google.aip.dev/122
+error_envelope:
+  format: google.rpc.Status
+  shape: "{ code: <google.rpc.Code int>, message: string, details: [] }"
+  see: errors/google-cloud-platform-problem-types.yml
+versioning:
+  style: major version in service path (v1, v2, v3)
+  see: lifecycle/google-cloud-platform-lifecycle.yml
+rate_limiting:
+  model: per-project quotas managed in Cloud console / Service Usage; over-quota returns 429 RESOURCE_EXHAUSTED
+  see: rate-limits/google-cloud-platform-rate-limits.yml
+transport:
+  grpc: true
+  rest: HTTP/JSON transcoding of the gRPC services
+  see: grpc/google-cloud-platform-grpc.yml

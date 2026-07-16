@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from openapi/cloud-resource-manager-openapi.yml security schemes,
+  error envelope, and pagination conventions; OIDC/OAuth confirmed via
+  accounts.google.com/.well-known discovery (200). GCP does not use RFC 9457
+  application/problem+json; it uses the google.rpc.Status / google.rpc.Code
+  error model (canonical codes), so rfc9457 conforms: false.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: openapi securitySchemes declares oauth2 authorizationCode (accounts.google.com/o/oauth2/auth)
+  - id: oidc
+    conforms: true
+    evidence: accounts.google.com/.well-known/openid-configuration returns 200 (issuer https://accounts.google.com)
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: accounts.google.com/.well-known/oauth-authorization-server returns 200
+  - id: rfc9116-security-txt
+    conforms: true
+    evidence: https://www.google.com/.well-known/security.txt returns 200 with Policy/Contact
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: error responses use google.rpc.Status (code/message/details), not application/problem+json
+  - id: grpc
+    conforms: true
+    evidence: canonical gRPC/protobuf service definitions published in googleapis/googleapis; REST is HTTP/JSON transcoding
+  - id: pagination-cursor
+    conforms: true
+    evidence: list operations use pageToken/pageSize request params and nextPageToken response field
+  - id: json-api
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: scim2
+    conforms: false
+  - id: odata
+    conforms: false

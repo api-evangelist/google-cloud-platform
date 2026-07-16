@@ -1,0 +1,38 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://cloud.google.com/products#product-launch-stages,
+  https://cloud.google.com/terms/, https://status.cloud.google.com/,
+  https://cloud.google.com/release-notes — plus deprecated_operations derived
+  from openapi/cloud-resource-manager-openapi.yml.
+versioning:
+  scheme: uri-path
+  note: >-
+    Each Google Cloud API carries a major version in its service name/path
+    (e.g. cloudresourcemanager v3, compute v1, storage v1, bigquery v2).
+    Multiple major versions can run concurrently during migration windows.
+  current:
+    cloud-resource-manager: v3
+launch_stages:
+  docs: https://cloud.google.com/products#product-launch-stages
+  stages: [Preview, General Availability, Deprecated, Decommissioned]
+deprecation:
+  policy_url: https://cloud.google.com/terms/
+  note: >-
+    Google Cloud's Deprecation Policy (Section in the GCP Terms of Service)
+    commits to at least 12 months notice before making a backwards-incompatible
+    change to, or discontinuing, a Generally Available service, except for
+    limited exceptions (security, legal, abuse).
+  minimum_notice: 12 months (GA services)
+  sunset_header: false
+sla:
+  note: Per-product SLAs published under cloud.google.com/*/sla.
+  examples:
+    - {product: Compute Engine, url: https://cloud.google.com/compute/sla}
+    - {product: Cloud Storage, url: https://cloud.google.com/storage/sla}
+    - {product: BigQuery, url: https://cloud.google.com/bigquery/sla}
+status_page: https://status.cloud.google.com/
+release_notes:
+  aggregate: https://cloud.google.com/release-notes
+  per_product: true
+deprecated_operations: []

@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+probe: false
+source: https://cloud.google.com/security/compliance/offerings
+url: https://cloud.google.com/security/compliance
+notes: >-
+  Google Cloud's compliance offerings page (HTTP 200) is a JS-rendered catalog
+  of its certifications and attestations; the certifications below are Google
+  Cloud's long-standing, publicly documented compliance offerings. Per-offering
+  detail pages live under cloud.google.com/security/compliance/<offering>.
+compliance_reports_manager: https://cloud.google.com/security/compliance/compliance-reports-manager
+certifications:
+  - SOC 1
+  - SOC 2
+  - SOC 3
+  - ISO/IEC 27001
+  - ISO/IEC 27017
+  - ISO/IEC 27018
+  - ISO/IEC 27701
+  - PCI DSS
+  - HIPAA
+  - FedRAMP High
+  - CSA STAR
+  - GDPR
+  - FIPS 140-2
+evidence:
+  - source: https://cloud.google.com/security/compliance/offerings
+    status: 200
+    keywords: [compliance offerings, GDPR]

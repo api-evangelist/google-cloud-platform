@@ -1,6 +1,14 @@
-generated: '2026-07-11'
-method: derived
+generated: '2026-06-20'
+method: searched
 source: openapi/cloud-resource-manager-openapi.yml
+docs: https://cloud.google.com/docs/authentication
+oidc_discovery: well-known/google-cloud-platform-openid-configuration.json
+notes: >-
+  Google Cloud authenticates with OAuth 2.0 access tokens minted for either an
+  end user (3-legged) or a service account (2-legged, via signed JWT or
+  Application Default Credentials / Workload Identity Federation). The optional
+  API key (query `key`) only identifies the calling project and does not grant
+  authorization. OIDC discovery confirmed live at accounts.google.com (200).
 summary:
   types:
   - apiKey

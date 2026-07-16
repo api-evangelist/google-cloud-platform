@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://github.com/googleapis/googleapis/tree/master/google/cloud/resourcemanager/v3
+  — Google publishes the canonical gRPC/protobuf service definitions for every
+  Cloud API in the public googleapis/googleapis repository. The .proto files in
+  this directory are saved verbatim from that source. GCP's REST APIs are the
+  HTTP/JSON transcoding of these gRPC services.
+service: google.cloud.resourcemanager.v3
+protos:
+  - file: google-cloud-platform-projects.proto
+    service: Projects
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/cloud/resourcemanager/v3/projects.proto
+  - file: google-cloud-platform-folders.proto
+    service: Folders
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/cloud/resourcemanager/v3/folders.proto
+  - file: google-cloud-platform-organizations.proto
+    service: Organizations
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/cloud/resourcemanager/v3/organizations.proto
+  - file: google-cloud-platform-tag_keys.proto
+    service: TagKeys
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/cloud/resourcemanager/v3/tag_keys.proto
+  - file: google-cloud-platform-tag_values.proto
+    service: TagValues
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/cloud/resourcemanager/v3/tag_values.proto
+  - file: google-cloud-platform-tag_bindings.proto
+    service: TagBindings
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/cloud/resourcemanager/v3/tag_bindings.proto
