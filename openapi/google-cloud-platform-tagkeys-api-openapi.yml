@@ -1,0 +1,324 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Platform Google Cloud Resource Manager Folders TagKeys API
+  description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
+  version: v3
+  termsOfService: https://cloud.google.com/terms
+  contact:
+    name: Google Cloud Platform
+    url: https://cloud.google.com/resource-manager/
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  x-logo:
+    url: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+servers:
+- url: https://cloudresourcemanager.googleapis.com
+  description: Google Cloud Resource Manager API production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform.read-only
+tags:
+- name: TagKeys
+  description: Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace for tag values that can be attached to resources.
+paths:
+  /v3/tagKeys:
+    get:
+      operationId: cloudresourcemanager.tagKeys.list
+      summary: Google Cloud Platform List Tag Keys
+      description: Lists all tag keys under a specified parent resource. The parent can be an organization. The caller must have the resourcemanager.tagKeys.list permission on the parent.
+      tags:
+      - TagKeys
+      parameters:
+      - name: parent
+        in: query
+        description: The resource name of the parent. Must be of the form organizations/{org_id}.
+        required: true
+        schema:
+          type: string
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of tag keys to return.
+        schema:
+          type: integer
+          format: int32
+        example: 10
+      - name: pageToken
+        in: query
+        description: Pagination token from a previous list call.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing a list of tag keys.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagKeysResponse'
+              examples:
+                CloudresourcemanagerTagkeysList200Example:
+                  summary: Default cloudresourcemanager.tagKeys.list 200 response
+                  x-microcks-default: true
+                  value:
+                    tagKeys:
+                    - name: Example Title
+                      parent: example_value
+                      shortName: example_value
+                      namespacedName: example_value
+                      description: A sample description.
+                      createTime: '2026-01-15T10:30:00Z'
+                      updateTime: '2026-01-15T10:30:00Z'
+                      etag: example_value
+                    nextPageToken: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagkeysList401Example:
+                  summary: Default cloudresourcemanager.tagKeys.list 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagkeysList403Example:
+                  summary: Default cloudresourcemanager.tagKeys.list 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: cloudresourcemanager.tagKeys.create
+      summary: Google Cloud Platform Create a Tag Key
+      description: Creates a new tag key under the specified parent. The tag key short name must be unique within the parent. The caller must have the resourcemanager.tagKeys.create permission on the parent.
+      tags:
+      - TagKeys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagKey'
+            examples:
+              CloudresourcemanagerTagkeysCreateRequestExample:
+                summary: Default cloudresourcemanager.tagKeys.create request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  parent: example_value
+                  shortName: example_value
+                  namespacedName: example_value
+                  description: A sample description.
+                  createTime: '2026-01-15T10:30:00Z'
+                  updateTime: '2026-01-15T10:30:00Z'
+                  etag: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerTagkeysCreate200Example:
+                  summary: Default cloudresourcemanager.tagKeys.create 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid tag key data provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagkeysCreate400Example:
+                  summary: Default cloudresourcemanager.tagKeys.create 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagkeysCreate401Example:
+                  summary: Default cloudresourcemanager.tagKeys.create 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagkeysCreate403Example:
+                  summary: Default cloudresourcemanager.tagKeys.create 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
+          type: string
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
+          example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    ListTagKeysResponse:
+      type: object
+      description: Response message for listing tag keys.
+      properties:
+        tagKeys:
+          type: array
+          description: The list of tag keys.
+          items:
+            $ref: '#/components/schemas/TagKey'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    TagKey:
+      type: object
+      description: A tag key, used to group tag values. Tag keys define namespaces for tag values that can be attached to resources for organization and policy purposes.
+      properties:
+        name:
+          type: string
+          description: The resource name of the tag key in the form tagKeys/{tag_key_id}. Output only.
+          readOnly: true
+          example: Example Title
+        parent:
+          type: string
+          description: The resource name of the parent. Must be of the form organizations/{org_id}.
+          example: example_value
+        shortName:
+          type: string
+          description: The user-friendly short name for the tag key. The short name must be unique within the same parent and have a maximum length of 256 characters.
+          maxLength: 256
+          example: example_value
+        namespacedName:
+          type: string
+          description: The namespaced name of the tag key in the form {parentId}/{shortName}. Output only.
+          readOnly: true
+          example: example_value
+        description:
+          type: string
+          description: User-assigned description of the tag key. Maximum length of 256 characters.
+          maxLength: 256
+          example: A sample description.
+        createTime:
+          type: string
+          format: date-time
+          description: Timestamp when the tag key was created. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        updateTime:
+          type: string
+          format: date-time
+          description: Timestamp when the tag key was last modified. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        etag:
+          type: string
+          description: Entity tag for optimistic concurrency control.
+          readOnly: true
+          example: example_value
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication using Google Cloud service accounts or user credentials. Supports both service-to-service and end-user authentication flows.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to view and manage Google Cloud resources.
+            https://www.googleapis.com/auth/cloud-platform.read-only: Read-only access to view Google Cloud resources.
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+      description: API key for identifying the calling project.

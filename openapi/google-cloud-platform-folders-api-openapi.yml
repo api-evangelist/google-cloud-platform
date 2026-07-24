@@ -1,0 +1,946 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Platform Google Cloud Resource Manager Folders API
+  description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
+  version: v3
+  termsOfService: https://cloud.google.com/terms
+  contact:
+    name: Google Cloud Platform
+    url: https://cloud.google.com/resource-manager/
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  x-logo:
+    url: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+servers:
+- url: https://cloudresourcemanager.googleapis.com
+  description: Google Cloud Resource Manager API production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform.read-only
+tags:
+- name: Folders
+  description: Manage Google Cloud folders. Folders provide an additional grouping mechanism and isolation boundary between projects. They can be used to model organizational structure, departments, teams, or environments.
+paths:
+  /v3/folders:
+    get:
+      operationId: cloudresourcemanager.folders.list
+      summary: Google Cloud Platform List Folders
+      description: Lists the folders that are direct descendants of the specified parent resource. The caller must have the resourcemanager.folders.list permission on the parent. Folders are listed in alphabetical order by display name.
+      tags:
+      - Folders
+      parameters:
+      - name: parent
+        in: query
+        description: The name of the parent resource whose folders are to be listed. Must be of the form folders/{folder_id} or organizations/{org_id}.
+        required: true
+        schema:
+          type: string
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of folders to return.
+        schema:
+          type: integer
+          format: int32
+        example: 10
+      - name: pageToken
+        in: query
+        description: Pagination token from a previous list call.
+        schema:
+          type: string
+        example: example_value
+      - name: showDeleted
+        in: query
+        description: Indicate that folders in the DELETE_REQUESTED state should also be returned.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      responses:
+        '200':
+          description: Successful response containing a list of folders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFoldersResponse'
+              examples:
+                CloudresourcemanagerFoldersList200Example:
+                  summary: Default cloudresourcemanager.folders.list 200 response
+                  x-microcks-default: true
+                  value:
+                    folders:
+                    - name: Example Title
+                      parent: example_value
+                      displayName: example_value
+                      state: STATE_UNSPECIFIED
+                      createTime: '2026-01-15T10:30:00Z'
+                      updateTime: '2026-01-15T10:30:00Z'
+                      deleteTime: '2026-01-15T10:30:00Z'
+                      etag: example_value
+                    nextPageToken: example_value
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersList400Example:
+                  summary: Default cloudresourcemanager.folders.list 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersList401Example:
+                  summary: Default cloudresourcemanager.folders.list 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersList403Example:
+                  summary: Default cloudresourcemanager.folders.list 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: cloudresourcemanager.folders.create
+      summary: Google Cloud Platform Create a Folder
+      description: Creates a folder in the resource hierarchy under the specified parent. The parent can be an organization or another folder. The caller must have the resourcemanager.folders.create permission on the parent.
+      tags:
+      - Folders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Folder'
+            examples:
+              CloudresourcemanagerFoldersCreateRequestExample:
+                summary: Default cloudresourcemanager.folders.create request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  parent: example_value
+                  displayName: example_value
+                  state: STATE_UNSPECIFIED
+                  createTime: '2026-01-15T10:30:00Z'
+                  updateTime: '2026-01-15T10:30:00Z'
+                  deleteTime: '2026-01-15T10:30:00Z'
+                  etag: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation that can be polled for completion.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerFoldersCreate200Example:
+                  summary: Default cloudresourcemanager.folders.create 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid folder data provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersCreate400Example:
+                  summary: Default cloudresourcemanager.folders.create 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersCreate401Example:
+                  summary: Default cloudresourcemanager.folders.create 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersCreate403Example:
+                  summary: Default cloudresourcemanager.folders.create 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/folders/{folderId}:
+    get:
+      operationId: cloudresourcemanager.folders.get
+      summary: Google Cloud Platform Get a Folder
+      description: Retrieves a folder identified by the specified resource name. The caller must have the resourcemanager.folders.get permission on the folder.
+      tags:
+      - Folders
+      parameters:
+      - name: folderId
+        in: path
+        description: The resource name of the folder to retrieve.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successful response containing the folder.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Folder'
+              examples:
+                CloudresourcemanagerFoldersGet200Example:
+                  summary: Default cloudresourcemanager.folders.get 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    parent: example_value
+                    displayName: example_value
+                    state: STATE_UNSPECIFIED
+                    createTime: '2026-01-15T10:30:00Z'
+                    updateTime: '2026-01-15T10:30:00Z'
+                    deleteTime: '2026-01-15T10:30:00Z'
+                    etag: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersGet401Example:
+                  summary: Default cloudresourcemanager.folders.get 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersGet403Example:
+                  summary: Default cloudresourcemanager.folders.get 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified folder was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersGet404Example:
+                  summary: Default cloudresourcemanager.folders.get 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: cloudresourcemanager.folders.patch
+      summary: Google Cloud Platform Update a Folder
+      description: Updates a folder, changing its display name. Changes to the folder display name are not immediately reflected and may take several minutes to propagate. The caller must have the resourcemanager.folders.update permission on the folder.
+      tags:
+      - Folders
+      parameters:
+      - name: folderId
+        in: path
+        description: The resource name of the folder to update.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      - name: updateMask
+        in: query
+        description: Fields to be updated. Only the display_name field can be updated.
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Folder'
+            examples:
+              CloudresourcemanagerFoldersPatchRequestExample:
+                summary: Default cloudresourcemanager.folders.patch request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  parent: example_value
+                  displayName: example_value
+                  state: STATE_UNSPECIFIED
+                  createTime: '2026-01-15T10:30:00Z'
+                  updateTime: '2026-01-15T10:30:00Z'
+                  deleteTime: '2026-01-15T10:30:00Z'
+                  etag: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerFoldersPatch200Example:
+                  summary: Default cloudresourcemanager.folders.patch 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid update parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersPatch400Example:
+                  summary: Default cloudresourcemanager.folders.patch 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersPatch401Example:
+                  summary: Default cloudresourcemanager.folders.patch 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersPatch403Example:
+                  summary: Default cloudresourcemanager.folders.patch 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified folder was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersPatch404Example:
+                  summary: Default cloudresourcemanager.folders.patch 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: cloudresourcemanager.folders.delete
+      summary: Google Cloud Platform Delete a Folder
+      description: Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED state and enters a 30-day grace period. During this period, the folder can be restored. After the grace period, the folder is permanently deleted. The folder must be empty before it can be deleted. The caller must have the resourcemanager.folders.delete permission on the folder.
+      tags:
+      - Folders
+      parameters:
+      - name: folderId
+        in: path
+        description: The resource name of the folder to delete.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerFoldersDelete200Example:
+                  summary: Default cloudresourcemanager.folders.delete 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersDelete401Example:
+                  summary: Default cloudresourcemanager.folders.delete 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersDelete403Example:
+                  summary: Default cloudresourcemanager.folders.delete 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified folder was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersDelete404Example:
+                  summary: Default cloudresourcemanager.folders.delete 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/folders/{folderId}:undelete:
+    post:
+      operationId: cloudresourcemanager.folders.undelete
+      summary: Google Cloud Platform Undelete a Folder
+      description: Cancels the deletion request for a folder. This method can only be called within the 30-day grace period. The caller must have the resourcemanager.folders.undelete permission on the folder.
+      tags:
+      - Folders
+      parameters:
+      - name: folderId
+        in: path
+        description: The resource name of the folder to undelete.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UndeleteFolderRequest'
+            examples:
+              CloudresourcemanagerFoldersUndeleteRequestExample:
+                summary: Default cloudresourcemanager.folders.undelete request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: The folder has been restored from pending deletion.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Folder'
+              examples:
+                CloudresourcemanagerFoldersUndelete200Example:
+                  summary: Default cloudresourcemanager.folders.undelete 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    parent: example_value
+                    displayName: example_value
+                    state: STATE_UNSPECIFIED
+                    createTime: '2026-01-15T10:30:00Z'
+                    updateTime: '2026-01-15T10:30:00Z'
+                    deleteTime: '2026-01-15T10:30:00Z'
+                    etag: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersUndelete401Example:
+                  summary: Default cloudresourcemanager.folders.undelete 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersUndelete403Example:
+                  summary: Default cloudresourcemanager.folders.undelete 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified folder was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersUndelete404Example:
+                  summary: Default cloudresourcemanager.folders.undelete 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/folders/{folderId}:move:
+    post:
+      operationId: cloudresourcemanager.folders.move
+      summary: Google Cloud Platform Move a Folder
+      description: Moves a folder under a new resource parent. The folder can be moved to another folder or to the organization root. The caller must have the resourcemanager.folders.move permission on both the source folder and the destination parent.
+      tags:
+      - Folders
+      parameters:
+      - name: folderId
+        in: path
+        description: The resource name of the folder to move.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MoveFolderRequest'
+            examples:
+              CloudresourcemanagerFoldersMoveRequestExample:
+                summary: Default cloudresourcemanager.folders.move request
+                x-microcks-default: true
+                value:
+                  destinationParent: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerFoldersMove200Example:
+                  summary: Default cloudresourcemanager.folders.move 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid move parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersMove400Example:
+                  summary: Default cloudresourcemanager.folders.move 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersMove401Example:
+                  summary: Default cloudresourcemanager.folders.move 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersMove403Example:
+                  summary: Default cloudresourcemanager.folders.move 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/folders:search:
+    get:
+      operationId: cloudresourcemanager.folders.search
+      summary: Google Cloud Platform Search Folders
+      description: Search for folders that match specified filter criteria. The caller must have the resourcemanager.folders.get permission on the returned folders.
+      tags:
+      - Folders
+      parameters:
+      - name: query
+        in: query
+        description: 'Search criteria used to select folders. The supported filter fields are displayName, parent, and state. Example: displayName=Engineering.'
+        schema:
+          type: string
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of folders to return.
+        schema:
+          type: integer
+          format: int32
+        example: 10
+      - name: pageToken
+        in: query
+        description: Pagination token from a previous search call.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing matching folders.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchFoldersResponse'
+              examples:
+                CloudresourcemanagerFoldersSearch200Example:
+                  summary: Default cloudresourcemanager.folders.search 200 response
+                  x-microcks-default: true
+                  value:
+                    folders:
+                    - name: Example Title
+                      parent: example_value
+                      displayName: example_value
+                      state: STATE_UNSPECIFIED
+                      createTime: '2026-01-15T10:30:00Z'
+                      updateTime: '2026-01-15T10:30:00Z'
+                      deleteTime: '2026-01-15T10:30:00Z'
+                      etag: example_value
+                    nextPageToken: example_value
+        '400':
+          description: Invalid query parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersSearch400Example:
+                  summary: Default cloudresourcemanager.folders.search 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerFoldersSearch401Example:
+                  summary: Default cloudresourcemanager.folders.search 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListFoldersResponse:
+      type: object
+      description: Response message for listing folders.
+      properties:
+        folders:
+          type: array
+          description: The list of folders under the specified parent.
+          items:
+            $ref: '#/components/schemas/Folder'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    Folder:
+      type: object
+      description: A folder in the Google Cloud resource hierarchy. Folders can contain projects and other folders, allowing users to group resources and apply policies hierarchically. Folders can be up to 10 levels deep.
+      properties:
+        name:
+          type: string
+          description: The resource name of the folder in the form folders/{folder_id}. Output only.
+          readOnly: true
+          examples:
+          - folders/123456789
+        parent:
+          type: string
+          description: The resource name of the folder's parent. Can be an organization or another folder in the form organizations/{org_id} or folders/{folder_id}.
+          examples:
+          - organizations/987654321
+          - folders/111222333
+        displayName:
+          type: string
+          description: The folder's display name. A folder's display name must be distinct from all other folders that share its parent. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores, and can be no longer than 30 characters.
+          maxLength: 30
+          examples:
+          - Engineering
+        state:
+          type: string
+          description: The lifecycle state of the folder. Output only.
+          readOnly: true
+          enum:
+          - STATE_UNSPECIFIED
+          - ACTIVE
+          - DELETE_REQUESTED
+          example: STATE_UNSPECIFIED
+        createTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the folder was created. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        updateTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the folder was last modified. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        deleteTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the delete request was sent. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        etag:
+          type: string
+          description: A checksum computed by the server based on the current value of the folder resource.
+          readOnly: true
+          example: example_value
+    MoveFolderRequest:
+      type: object
+      description: Request message for moving a folder.
+      properties:
+        destinationParent:
+          type: string
+          description: The resource name of the folder or organization which should be the new parent of the folder.
+          examples:
+          - folders/654321
+          - organizations/987654321
+      required:
+      - destinationParent
+    UndeleteFolderRequest:
+      type: object
+      description: Request message for undeleting a folder.
+      properties: {}
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
+          type: string
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
+          example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    SearchFoldersResponse:
+      type: object
+      description: Response message for searching folders.
+      properties:
+        folders:
+          type: array
+          description: The list of folders matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Folder'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication using Google Cloud service accounts or user credentials. Supports both service-to-service and end-user authentication flows.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to view and manage Google Cloud resources.
+            https://www.googleapis.com/auth/cloud-platform.read-only: Read-only access to view Google Cloud resources.
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+      description: API key for identifying the calling project.

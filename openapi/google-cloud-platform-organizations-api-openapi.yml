@@ -1,0 +1,557 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Platform Google Cloud Resource Manager Folders Organizations API
+  description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
+  version: v3
+  termsOfService: https://cloud.google.com/terms
+  contact:
+    name: Google Cloud Platform
+    url: https://cloud.google.com/resource-manager/
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  x-logo:
+    url: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+servers:
+- url: https://cloudresourcemanager.googleapis.com
+  description: Google Cloud Resource Manager API production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform.read-only
+tags:
+- name: Organizations
+  description: Manage Google Cloud organizations. An organization is the root node in the Google Cloud resource hierarchy, typically representing a company or business entity. Organizations are tied to a Google Workspace or Cloud Identity account.
+paths:
+  /v3/organizations/{organizationId}:
+    get:
+      operationId: cloudresourcemanager.organizations.get
+      summary: Google Cloud Platform Get an Organization
+      description: Fetches an organization resource identified by the specified resource name, such as organizations/12345. The caller must have the resourcemanager.organizations.get permission on the organization.
+      tags:
+      - Organizations
+      parameters:
+      - name: organizationId
+        in: path
+        description: The resource name of the organization to fetch, such as organizations/12345.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successful response containing the organization.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+              examples:
+                CloudresourcemanagerOrganizationsGet200Example:
+                  summary: Default cloudresourcemanager.organizations.get 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    displayName: example_value
+                    directoryCustomerId: '500123'
+                    state: STATE_UNSPECIFIED
+                    createTime: '2026-01-15T10:30:00Z'
+                    updateTime: '2026-01-15T10:30:00Z'
+                    deleteTime: '2026-01-15T10:30:00Z'
+                    etag: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsGet401Example:
+                  summary: Default cloudresourcemanager.organizations.get 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsGet403Example:
+                  summary: Default cloudresourcemanager.organizations.get 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified organization was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsGet404Example:
+                  summary: Default cloudresourcemanager.organizations.get 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/organizations:search:
+    get:
+      operationId: cloudresourcemanager.organizations.search
+      summary: Google Cloud Platform Search Organizations
+      description: Searches for organizations that the caller has the resourcemanager.organizations.get permission on. Organizations can be searched by domain or display name.
+      tags:
+      - Organizations
+      parameters:
+      - name: query
+        in: query
+        description: 'An optional query string used to filter organizations. Supported filter fields include domain and displayName. Example: domain:example.com.'
+        schema:
+          type: string
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of organizations to return.
+        schema:
+          type: integer
+          format: int32
+        example: 10
+      - name: pageToken
+        in: query
+        description: Pagination token from a previous search call.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing matching organizations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchOrganizationsResponse'
+              examples:
+                CloudresourcemanagerOrganizationsSearch200Example:
+                  summary: Default cloudresourcemanager.organizations.search 200 response
+                  x-microcks-default: true
+                  value:
+                    organizations:
+                    - name: Example Title
+                      displayName: example_value
+                      directoryCustomerId: '500123'
+                      state: STATE_UNSPECIFIED
+                      createTime: '2026-01-15T10:30:00Z'
+                      updateTime: '2026-01-15T10:30:00Z'
+                      deleteTime: '2026-01-15T10:30:00Z'
+                      etag: example_value
+                    nextPageToken: example_value
+        '400':
+          description: Invalid query parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsSearch400Example:
+                  summary: Default cloudresourcemanager.organizations.search 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsSearch401Example:
+                  summary: Default cloudresourcemanager.organizations.search 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/organizations/{resource}:getIamPolicy:
+    post:
+      operationId: cloudresourcemanager.organizations.getIamPolicy
+      summary: Google Cloud Platform Get Organization Iam Policy
+      description: Gets the access control policy for an organization resource. The caller must have the resourcemanager.organizations.getIamPolicy permission on the organization.
+      tags:
+      - Organizations
+      parameters:
+      - name: resource
+        in: path
+        description: The resource name of the organization.
+        required: true
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetIamPolicyRequest'
+            examples:
+              CloudresourcemanagerOrganizationsGetiampolicyRequestExample:
+                summary: Default cloudresourcemanager.organizations.getIamPolicy request
+                x-microcks-default: true
+                value:
+                  options:
+                    requestedPolicyVersion: 10
+      responses:
+        '200':
+          description: Successful response containing the IAM policy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+              examples:
+                CloudresourcemanagerOrganizationsGetiampolicy200Example:
+                  summary: Default cloudresourcemanager.organizations.getIamPolicy 200 response
+                  x-microcks-default: true
+                  value:
+                    version: 10
+                    bindings:
+                    - role: example_value
+                      members: {}
+                    etag: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsGetiampolicy401Example:
+                  summary: Default cloudresourcemanager.organizations.getIamPolicy 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsGetiampolicy403Example:
+                  summary: Default cloudresourcemanager.organizations.getIamPolicy 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/organizations/{resource}:setIamPolicy:
+    post:
+      operationId: cloudresourcemanager.organizations.setIamPolicy
+      summary: Google Cloud Platform Set Organization Iam Policy
+      description: Sets the access control policy on an organization resource, replacing any existing policy. The caller must have the resourcemanager.organizations.setIamPolicy permission on the organization.
+      tags:
+      - Organizations
+      parameters:
+      - name: resource
+        in: path
+        description: The resource name of the organization.
+        required: true
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetIamPolicyRequest'
+            examples:
+              CloudresourcemanagerOrganizationsSetiampolicyRequestExample:
+                summary: Default cloudresourcemanager.organizations.setIamPolicy request
+                x-microcks-default: true
+                value:
+                  policy:
+                    version: 10
+                    bindings:
+                    - {}
+                    etag: example_value
+                  updateMask: example_value
+      responses:
+        '200':
+          description: Successful response containing the updated IAM policy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+              examples:
+                CloudresourcemanagerOrganizationsSetiampolicy200Example:
+                  summary: Default cloudresourcemanager.organizations.setIamPolicy 200 response
+                  x-microcks-default: true
+                  value:
+                    version: 10
+                    bindings:
+                    - role: example_value
+                      members: {}
+                    etag: example_value
+        '400':
+          description: Invalid policy data provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsSetiampolicy400Example:
+                  summary: Default cloudresourcemanager.organizations.setIamPolicy 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsSetiampolicy401Example:
+                  summary: Default cloudresourcemanager.organizations.setIamPolicy 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerOrganizationsSetiampolicy403Example:
+                  summary: Default cloudresourcemanager.organizations.setIamPolicy 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    GetIamPolicyRequest:
+      type: object
+      description: Request message for GetIamPolicy method.
+      properties:
+        options:
+          type: object
+          description: Optional options for the request.
+          properties:
+            requestedPolicyVersion:
+              type: integer
+              format: int32
+              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+          example: example_value
+    Binding:
+      type: object
+      description: Associates members with a role.
+      properties:
+        role:
+          type: string
+          description: 'The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.'
+          examples:
+          - roles/resourcemanager.projectViewer
+        members:
+          type: array
+          description: The identities requesting access. Supports user, serviceAccount, group, and domain members.
+          items:
+            type: string
+          examples:
+          - - user:alice@example.com
+            - serviceAccount:my-sa@project.iam.gserviceaccount.com
+            - group:admins@example.com
+            - domain:example.com
+        condition:
+          $ref: '#/components/schemas/Expr'
+    Policy:
+      type: object
+      description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
+      properties:
+        version:
+          type: integer
+          format: int32
+          description: Specifies the format of the policy. Valid values are 0, 1, and 3. Version 3 supports conditional role bindings.
+          example: 10
+        bindings:
+          type: array
+          description: Associates a list of members to a role, optionally with a condition.
+          items:
+            $ref: '#/components/schemas/Binding'
+          example: []
+        etag:
+          type: string
+          format: byte
+          description: etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.
+          example: example_value
+    Expr:
+      type: object
+      description: Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.
+      properties:
+        expression:
+          type: string
+          description: 'The CEL expression string. Example: request.time < timestamp("2024-01-01T00:00:00Z").'
+          example: example_value
+        title:
+          type: string
+          description: An optional title for the expression.
+          example: Example Title
+        description:
+          type: string
+          description: An optional description of the expression.
+          example: A sample description.
+        location:
+          type: string
+          description: An optional string indicating the location of the expression for error reporting.
+          example: example_value
+    SetIamPolicyRequest:
+      type: object
+      description: Request message for SetIamPolicy method.
+      properties:
+        policy:
+          $ref: '#/components/schemas/Policy'
+        updateMask:
+          type: string
+          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
+          example: example_value
+      required:
+      - policy
+    SearchOrganizationsResponse:
+      type: object
+      description: Response message for searching organizations.
+      properties:
+        organizations:
+          type: array
+          description: The list of organizations matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Organization'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    Organization:
+      type: object
+      description: The root node in the resource hierarchy to which a particular entity's resources belong. An organization is tied to a Google Workspace or Cloud Identity account. Organizations cannot be created or deleted through the API; they are automatically provisioned when a Google Workspace or Cloud Identity account is created.
+      properties:
+        name:
+          type: string
+          description: The resource name of the organization in the form organizations/{organization_id}. Output only.
+          readOnly: true
+          examples:
+          - organizations/987654321
+        displayName:
+          type: string
+          description: A human-readable string that refers to the organization in the Google Cloud Console. This field is output only and derived from the associated Google Workspace or Cloud Identity account.
+          readOnly: true
+          examples:
+          - Example Corp
+        directoryCustomerId:
+          type: string
+          description: The unique identifier for the Google Workspace or Cloud Identity account associated with this organization. Output only.
+          readOnly: true
+          example: '500123'
+        state:
+          type: string
+          description: The organization lifecycle state. Output only.
+          readOnly: true
+          enum:
+          - STATE_UNSPECIFIED
+          - ACTIVE
+          - DELETE_REQUESTED
+          example: STATE_UNSPECIFIED
+        createTime:
+          type: string
+          format: date-time
+          description: Timestamp when the organization was created. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        updateTime:
+          type: string
+          format: date-time
+          description: Timestamp when the organization was last modified. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        deleteTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the delete request was sent. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        etag:
+          type: string
+          description: A checksum computed by the server based on the current value of the organization resource.
+          readOnly: true
+          example: example_value
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication using Google Cloud service accounts or user credentials. Supports both service-to-service and end-user authentication flows.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to view and manage Google Cloud resources.
+            https://www.googleapis.com/auth/cloud-platform.read-only: Read-only access to view Google Cloud resources.
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+      description: API key for identifying the calling project.

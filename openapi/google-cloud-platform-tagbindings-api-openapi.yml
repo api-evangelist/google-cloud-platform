@@ -1,0 +1,293 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Platform Google Cloud Resource Manager Folders TagBindings API
+  description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
+  version: v3
+  termsOfService: https://cloud.google.com/terms
+  contact:
+    name: Google Cloud Platform
+    url: https://cloud.google.com/resource-manager/
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  x-logo:
+    url: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+servers:
+- url: https://cloudresourcemanager.googleapis.com
+  description: Google Cloud Resource Manager API production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform.read-only
+tags:
+- name: TagBindings
+  description: Manage tag bindings that associate tag values with Google Cloud resources. Tag bindings connect tag values to specific resources in the hierarchy.
+paths:
+  /v3/tagBindings:
+    get:
+      operationId: cloudresourcemanager.tagBindings.list
+      summary: Google Cloud Platform List Tag Bindings
+      description: Lists the tag bindings that are applied to the specified resource. The caller must have the appropriate permission on the resource.
+      tags:
+      - TagBindings
+      parameters:
+      - name: parent
+        in: query
+        description: 'The full resource name of the resource whose bindings are being listed. Example: //cloudresourcemanager.googleapis.com/projects/123.'
+        required: true
+        schema:
+          type: string
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of tag bindings to return.
+        schema:
+          type: integer
+          format: int32
+        example: 10
+      - name: pageToken
+        in: query
+        description: Pagination token from a previous list call.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing a list of tag bindings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagBindingsResponse'
+              examples:
+                CloudresourcemanagerTagbindingsList200Example:
+                  summary: Default cloudresourcemanager.tagBindings.list 200 response
+                  x-microcks-default: true
+                  value:
+                    tagBindings:
+                    - name: Example Title
+                      parent: example_value
+                      tagValue: example_value
+                      tagValueNamespacedName: example_value
+                    nextPageToken: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagbindingsList401Example:
+                  summary: Default cloudresourcemanager.tagBindings.list 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagbindingsList403Example:
+                  summary: Default cloudresourcemanager.tagBindings.list 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: cloudresourcemanager.tagBindings.create
+      summary: Google Cloud Platform Create a Tag Binding
+      description: Creates a tag binding between a tag value and a cloud resource. The caller must have the appropriate tag permission on the resource and the resourcemanager.tagValueBindings.create permission.
+      tags:
+      - TagBindings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagBinding'
+            examples:
+              CloudresourcemanagerTagbindingsCreateRequestExample:
+                summary: Default cloudresourcemanager.tagBindings.create request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  parent: example_value
+                  tagValue: example_value
+                  tagValueNamespacedName: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerTagbindingsCreate200Example:
+                  summary: Default cloudresourcemanager.tagBindings.create 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid tag binding data provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagbindingsCreate400Example:
+                  summary: Default cloudresourcemanager.tagBindings.create 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagbindingsCreate401Example:
+                  summary: Default cloudresourcemanager.tagBindings.create 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerTagbindingsCreate403Example:
+                  summary: Default cloudresourcemanager.tagBindings.create 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
+          type: string
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
+          example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    TagBinding:
+      type: object
+      description: A tag binding associates a tag value with a Google Cloud resource. Tag bindings represent the link between organization taxonomy (tag keys and values) and actual cloud resources.
+      properties:
+        name:
+          type: string
+          description: The resource name of the tag binding in the form tagBindings/{tag_binding_id}. Output only.
+          readOnly: true
+          example: Example Title
+        parent:
+          type: string
+          description: 'The full resource name of the resource the tag value is bound to. Example: //cloudresourcemanager.googleapis.com/projects/123.'
+          example: example_value
+        tagValue:
+          type: string
+          description: The resource name of the tag value in the form tagValues/{tag_value_id}.
+          example: example_value
+        tagValueNamespacedName:
+          type: string
+          description: The namespaced name of the tag value in the form {parentNamespace}/{tagKeyShortName}/{tagValueShortName}. Output only.
+          readOnly: true
+          example: example_value
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    ListTagBindingsResponse:
+      type: object
+      description: Response message for listing tag bindings.
+      properties:
+        tagBindings:
+          type: array
+          description: The list of tag bindings.
+          items:
+            $ref: '#/components/schemas/TagBinding'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication using Google Cloud service accounts or user credentials. Supports both service-to-service and end-user authentication flows.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to view and manage Google Cloud resources.
+            https://www.googleapis.com/auth/cloud-platform.read-only: Read-only access to view Google Cloud resources.
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+      description: API key for identifying the calling project.

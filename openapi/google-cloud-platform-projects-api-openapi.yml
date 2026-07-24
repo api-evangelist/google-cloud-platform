@@ -1,0 +1,1161 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Platform Google Cloud Resource Manager Folders Projects API
+  description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
+  version: v3
+  termsOfService: https://cloud.google.com/terms
+  contact:
+    name: Google Cloud Platform
+    url: https://cloud.google.com/resource-manager/
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+  x-logo:
+    url: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+servers:
+- url: https://cloudresourcemanager.googleapis.com
+  description: Google Cloud Resource Manager API production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-platform.read-only
+tags:
+- name: Projects
+  description: Manage Google Cloud projects. A project is the base-level organizing entity in Google Cloud and is required to use most Google Cloud services. Projects contain resources and are associated with billing accounts.
+paths:
+  /v3/projects:
+    get:
+      operationId: cloudresourcemanager.projects.list
+      summary: Google Cloud Platform List Projects
+      description: Lists projects that are direct children of the specified parent resource. Projects are listed in alphabetical order by display name. The caller must have the resourcemanager.projects.list permission on the parent resource.
+      tags:
+      - Projects
+      parameters:
+      - name: parent
+        in: query
+        description: The name of the parent resource whose projects are to be listed. Must be of the form folders/{folder_id} or organizations/{org_id}.
+        required: true
+        schema:
+          type: string
+          examples:
+          - folders/123456789
+          - organizations/987654321
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of projects to return in the response. The server can return fewer results. If unspecified, the server picks an appropriate default value.
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+        example: 10
+      - name: pageToken
+        in: query
+        description: A pagination token returned from a previous call to ListProjects that indicates where this listing should continue from.
+        schema:
+          type: string
+        example: example_value
+      - name: showDeleted
+        in: query
+        description: Indicate that projects in the DELETE_REQUESTED state should also be returned.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      responses:
+        '200':
+          description: Successful response containing a list of projects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProjectsResponse'
+              examples:
+                CloudresourcemanagerProjectsList200Example:
+                  summary: Default cloudresourcemanager.projects.list 200 response
+                  x-microcks-default: true
+                  value:
+                    projects:
+                    - name: Example Title
+                      parent: example_value
+                      projectId: '500123'
+                      state: STATE_UNSPECIFIED
+                      displayName: example_value
+                      createTime: '2026-01-15T10:30:00Z'
+                      updateTime: '2026-01-15T10:30:00Z'
+                      deleteTime: '2026-01-15T10:30:00Z'
+                      etag: example_value
+                      labels: example_value
+                    nextPageToken: example_value
+        '400':
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsList400Example:
+                  summary: Default cloudresourcemanager.projects.list 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsList401Example:
+                  summary: Default cloudresourcemanager.projects.list 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsList403Example:
+                  summary: Default cloudresourcemanager.projects.list 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: cloudresourcemanager.projects.create
+      summary: Google Cloud Platform Create a Project
+      description: Creates a new project resource under the specified parent. The parent must be an organization or folder. The caller must have the resourcemanager.projects.create permission on the parent. This method returns a long-running Operation which can be used to track creation.
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+            examples:
+              CloudresourcemanagerProjectsCreateRequestExample:
+                summary: Default cloudresourcemanager.projects.create request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  parent: example_value
+                  projectId: '500123'
+                  state: STATE_UNSPECIFIED
+                  displayName: example_value
+                  createTime: '2026-01-15T10:30:00Z'
+                  updateTime: '2026-01-15T10:30:00Z'
+                  deleteTime: '2026-01-15T10:30:00Z'
+                  etag: example_value
+                  labels: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation that can be polled for completion.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerProjectsCreate200Example:
+                  summary: Default cloudresourcemanager.projects.create 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid project data provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsCreate400Example:
+                  summary: Default cloudresourcemanager.projects.create 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsCreate401Example:
+                  summary: Default cloudresourcemanager.projects.create 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsCreate403Example:
+                  summary: Default cloudresourcemanager.projects.create 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '409':
+          description: A project with the specified project ID already exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsCreate409Example:
+                  summary: Default cloudresourcemanager.projects.create 409 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/projects/{projectId}:
+    get:
+      operationId: cloudresourcemanager.projects.get
+      summary: Google Cloud Platform Get a Project
+      description: Retrieves the project identified by the specified name, such as projects/123 or projects/my-project-id. The caller must have the resourcemanager.projects.get permission on the project.
+      tags:
+      - Projects
+      parameters:
+      - name: projectId
+        in: path
+        description: The name of the project to retrieve, such as projects/123 or projects/my-project-id. The project ID or number is required.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Successful response containing the project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                CloudresourcemanagerProjectsGet200Example:
+                  summary: Default cloudresourcemanager.projects.get 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    parent: example_value
+                    projectId: '500123'
+                    state: STATE_UNSPECIFIED
+                    displayName: example_value
+                    createTime: '2026-01-15T10:30:00Z'
+                    updateTime: '2026-01-15T10:30:00Z'
+                    deleteTime: '2026-01-15T10:30:00Z'
+                    etag: example_value
+                    labels: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsGet401Example:
+                  summary: Default cloudresourcemanager.projects.get 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsGet403Example:
+                  summary: Default cloudresourcemanager.projects.get 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified project was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsGet404Example:
+                  summary: Default cloudresourcemanager.projects.get 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: cloudresourcemanager.projects.patch
+      summary: Google Cloud Platform Update a Project
+      description: Updates the display name and labels of the project identified by the specified name. Changes to the project are not reflected immediately and may take several minutes to propagate. The caller must have the resourcemanager.projects.update permission on the project.
+      tags:
+      - Projects
+      parameters:
+      - name: projectId
+        in: path
+        description: The name of the project to update.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      - name: updateMask
+        in: query
+        description: A comma-separated list of fields to update. Only display_name and labels fields can be updated. An empty update mask is not permitted.
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+            examples:
+              CloudresourcemanagerProjectsPatchRequestExample:
+                summary: Default cloudresourcemanager.projects.patch request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  parent: example_value
+                  projectId: '500123'
+                  state: STATE_UNSPECIFIED
+                  displayName: example_value
+                  createTime: '2026-01-15T10:30:00Z'
+                  updateTime: '2026-01-15T10:30:00Z'
+                  deleteTime: '2026-01-15T10:30:00Z'
+                  etag: example_value
+                  labels: example_value
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation that can be polled for completion.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerProjectsPatch200Example:
+                  summary: Default cloudresourcemanager.projects.patch 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '400':
+          description: Invalid update parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsPatch400Example:
+                  summary: Default cloudresourcemanager.projects.patch 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsPatch401Example:
+                  summary: Default cloudresourcemanager.projects.patch 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsPatch403Example:
+                  summary: Default cloudresourcemanager.projects.patch 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified project was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsPatch404Example:
+                  summary: Default cloudresourcemanager.projects.patch 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: cloudresourcemanager.projects.delete
+      summary: Google Cloud Platform Delete a Project
+      description: Marks the project identified by the specified name to be deleted. This method sets the project lifecycle state to DELETE_REQUESTED. The project is not immediately deleted but enters a 30-day grace period during which it can be restored using undelete. After 30 days, the project and all its resources are permanently deleted.
+      tags:
+      - Projects
+      parameters:
+      - name: projectId
+        in: path
+        description: The name of the project to delete.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation that can be polled for completion.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerProjectsDelete200Example:
+                  summary: Default cloudresourcemanager.projects.delete 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsDelete401Example:
+                  summary: Default cloudresourcemanager.projects.delete 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsDelete403Example:
+                  summary: Default cloudresourcemanager.projects.delete 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified project was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsDelete404Example:
+                  summary: Default cloudresourcemanager.projects.delete 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/projects/{projectId}:undelete:
+    post:
+      operationId: cloudresourcemanager.projects.undelete
+      summary: Google Cloud Platform Undelete a Project
+      description: Restores the project identified by the specified name. A project can only be restored within the 30-day grace period after deletion. The caller must have the resourcemanager.projects.undelete permission on the project.
+      tags:
+      - Projects
+      parameters:
+      - name: projectId
+        in: path
+        description: The name of the project to undelete.
+        required: true
+        schema:
+          type: string
+        example: '500123'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UndeleteProjectRequest'
+            examples:
+              CloudresourcemanagerProjectsUndeleteRequestExample:
+                summary: Default cloudresourcemanager.projects.undelete request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: Operation started successfully. Returns a long-running operation that can be polled for completion.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+              examples:
+                CloudresourcemanagerProjectsUndelete200Example:
+                  summary: Default cloudresourcemanager.projects.undelete 200 response
+                  x-microcks-default: true
+                  value:
+                    name: Example Title
+                    metadata: example_value
+                    done: true
+                    error:
+                      code: 10
+                      message: example_value
+                      details:
+                      - {}
+                    response: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsUndelete401Example:
+                  summary: Default cloudresourcemanager.projects.undelete 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsUndelete403Example:
+                  summary: Default cloudresourcemanager.projects.undelete 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '404':
+          description: The specified project was not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsUndelete404Example:
+                  summary: Default cloudresourcemanager.projects.undelete 404 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '412':
+          description: The project is not in DELETE_REQUESTED state or the 30-day grace period has expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsUndelete412Example:
+                  summary: Default cloudresourcemanager.projects.undelete 412 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/projects/{resource}:getIamPolicy:
+    post:
+      operationId: cloudresourcemanager.projects.getIamPolicy
+      summary: Google Cloud Platform Get Project Iam Policy
+      description: Returns the IAM access control policy for the specified project. The caller must have the resourcemanager.projects.getIamPolicy permission on the project.
+      tags:
+      - Projects
+      parameters:
+      - name: resource
+        in: path
+        description: The name of the project whose policy is being requested, such as projects/12345.
+        required: true
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetIamPolicyRequest'
+            examples:
+              CloudresourcemanagerProjectsGetiampolicyRequestExample:
+                summary: Default cloudresourcemanager.projects.getIamPolicy request
+                x-microcks-default: true
+                value:
+                  options:
+                    requestedPolicyVersion: 10
+      responses:
+        '200':
+          description: Successful response containing the IAM policy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+              examples:
+                CloudresourcemanagerProjectsGetiampolicy200Example:
+                  summary: Default cloudresourcemanager.projects.getIamPolicy 200 response
+                  x-microcks-default: true
+                  value:
+                    version: 10
+                    bindings:
+                    - role: example_value
+                      members: {}
+                    etag: example_value
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsGetiampolicy401Example:
+                  summary: Default cloudresourcemanager.projects.getIamPolicy 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsGetiampolicy403Example:
+                  summary: Default cloudresourcemanager.projects.getIamPolicy 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/projects/{resource}:setIamPolicy:
+    post:
+      operationId: cloudresourcemanager.projects.setIamPolicy
+      summary: Google Cloud Platform Set Project Iam Policy
+      description: Sets the IAM access control policy for the specified project, replacing any existing policy. The caller must have the resourcemanager.projects.setIamPolicy permission on the project.
+      tags:
+      - Projects
+      parameters:
+      - name: resource
+        in: path
+        description: The name of the project whose policy is being set, such as projects/12345.
+        required: true
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetIamPolicyRequest'
+            examples:
+              CloudresourcemanagerProjectsSetiampolicyRequestExample:
+                summary: Default cloudresourcemanager.projects.setIamPolicy request
+                x-microcks-default: true
+                value:
+                  policy:
+                    version: 10
+                    bindings:
+                    - {}
+                    etag: example_value
+                  updateMask: example_value
+      responses:
+        '200':
+          description: Successful response containing the updated IAM policy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+              examples:
+                CloudresourcemanagerProjectsSetiampolicy200Example:
+                  summary: Default cloudresourcemanager.projects.setIamPolicy 200 response
+                  x-microcks-default: true
+                  value:
+                    version: 10
+                    bindings:
+                    - role: example_value
+                      members: {}
+                    etag: example_value
+        '400':
+          description: Invalid policy data provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsSetiampolicy400Example:
+                  summary: Default cloudresourcemanager.projects.setIamPolicy 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsSetiampolicy401Example:
+                  summary: Default cloudresourcemanager.projects.setIamPolicy 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '403':
+          description: The caller does not have required permissions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsSetiampolicy403Example:
+                  summary: Default cloudresourcemanager.projects.setIamPolicy 403 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v3/projects:search:
+    get:
+      operationId: cloudresourcemanager.projects.search
+      summary: Google Cloud Platform Search Projects
+      description: Search for projects that the caller has the resourcemanager.projects.get permission on. Projects can be filtered by parent, display name, project ID, and state.
+      tags:
+      - Projects
+      parameters:
+      - name: query
+        in: query
+        description: 'A query string for searching projects. The query supports filtering by displayName, parent.type, parent.id, projectId, state, and labels. Example: parent.type:folder parent.id:123.'
+        schema:
+          type: string
+        example: example_value
+      - name: pageSize
+        in: query
+        description: Maximum number of projects to return.
+        schema:
+          type: integer
+          format: int32
+        example: 10
+      - name: pageToken
+        in: query
+        description: Pagination token from a previous search call.
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing matching projects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchProjectsResponse'
+              examples:
+                CloudresourcemanagerProjectsSearch200Example:
+                  summary: Default cloudresourcemanager.projects.search 200 response
+                  x-microcks-default: true
+                  value:
+                    projects:
+                    - name: Example Title
+                      parent: example_value
+                      projectId: '500123'
+                      state: STATE_UNSPECIFIED
+                      displayName: example_value
+                      createTime: '2026-01-15T10:30:00Z'
+                      updateTime: '2026-01-15T10:30:00Z'
+                      deleteTime: '2026-01-15T10:30:00Z'
+                      etag: example_value
+                      labels: example_value
+                    nextPageToken: example_value
+        '400':
+          description: Invalid query parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsSearch400Example:
+                  summary: Default cloudresourcemanager.projects.search 400 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+        '401':
+          description: Authentication credentials are missing or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+              examples:
+                CloudresourcemanagerProjectsSearch401Example:
+                  summary: Default cloudresourcemanager.projects.search 401 response
+                  x-microcks-default: true
+                  value:
+                    code: 10
+                    message: example_value
+                    details:
+                    - {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    GetIamPolicyRequest:
+      type: object
+      description: Request message for GetIamPolicy method.
+      properties:
+        options:
+          type: object
+          description: Optional options for the request.
+          properties:
+            requestedPolicyVersion:
+              type: integer
+              format: int32
+              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+          example: example_value
+    Binding:
+      type: object
+      description: Associates members with a role.
+      properties:
+        role:
+          type: string
+          description: 'The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.'
+          examples:
+          - roles/resourcemanager.projectViewer
+        members:
+          type: array
+          description: The identities requesting access. Supports user, serviceAccount, group, and domain members.
+          items:
+            type: string
+          examples:
+          - - user:alice@example.com
+            - serviceAccount:my-sa@project.iam.gserviceaccount.com
+            - group:admins@example.com
+            - domain:example.com
+        condition:
+          $ref: '#/components/schemas/Expr'
+    Policy:
+      type: object
+      description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
+      properties:
+        version:
+          type: integer
+          format: int32
+          description: Specifies the format of the policy. Valid values are 0, 1, and 3. Version 3 supports conditional role bindings.
+          example: 10
+        bindings:
+          type: array
+          description: Associates a list of members to a role, optionally with a condition.
+          items:
+            $ref: '#/components/schemas/Binding'
+          example: []
+        etag:
+          type: string
+          format: byte
+          description: etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.
+          example: example_value
+    Expr:
+      type: object
+      description: Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.
+      properties:
+        expression:
+          type: string
+          description: 'The CEL expression string. Example: request.time < timestamp("2024-01-01T00:00:00Z").'
+          example: example_value
+        title:
+          type: string
+          description: An optional title for the expression.
+          example: Example Title
+        description:
+          type: string
+          description: An optional description of the expression.
+          example: A sample description.
+        location:
+          type: string
+          description: An optional string indicating the location of the expression for error reporting.
+          example: example_value
+    ListProjectsResponse:
+      type: object
+      description: Response message for listing projects.
+      properties:
+        projects:
+          type: array
+          description: The list of projects under the specified parent.
+          items:
+            $ref: '#/components/schemas/Project'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token to retrieve the next page of results. Empty if there are no more results.
+          example: example_value
+    SearchProjectsResponse:
+      type: object
+      description: Response message for searching projects.
+      properties:
+        projects:
+          type: array
+          description: The list of projects matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Project'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    SetIamPolicyRequest:
+      type: object
+      description: Request message for SetIamPolicy method.
+      properties:
+        policy:
+          $ref: '#/components/schemas/Policy'
+        updateMask:
+          type: string
+          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
+          example: example_value
+      required:
+      - policy
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
+          type: string
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
+          example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    Project:
+      type: object
+      description: A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. Projects are the base-level organizing entity and are required to use service-level resources.
+      properties:
+        name:
+          type: string
+          description: The unique resource name of the project in the form projects/{project_number}. Output only.
+          readOnly: true
+          examples:
+          - projects/123456789
+        parent:
+          type: string
+          description: The resource name of the parent in the form folders/{folder_id} or organizations/{organization_id}. Required when creating a project.
+          examples:
+          - folders/123456789
+          - organizations/987654321
+        projectId:
+          type: string
+          description: The unique, user-assigned identifier of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter and cannot end with a hyphen. Project IDs are immutable and cannot be reused once assigned.
+          pattern: ^[a-z][a-z0-9-]{4,28}[a-z0-9]$
+          examples:
+          - my-gcp-project
+          - production-app-2024
+        state:
+          type: string
+          description: The project lifecycle state. Output only.
+          readOnly: true
+          enum:
+          - STATE_UNSPECIFIED
+          - ACTIVE
+          - DELETE_REQUESTED
+          examples:
+          - ACTIVE
+        displayName:
+          type: string
+          description: A user-assigned display name for the project. This field is optional and has a maximum length of 30 characters. Display names are used for identification purposes and do not need to be unique.
+          maxLength: 30
+          examples:
+          - My GCP Project
+        createTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the project was created. Output only. Uses RFC 3339 format.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        updateTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the project was last modified. Output only. Uses RFC 3339 format.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        deleteTime:
+          type: string
+          format: date-time
+          description: Timestamp of when the delete request was sent. Only present when the project is in DELETE_REQUESTED state. Output only.
+          readOnly: true
+          example: '2026-01-15T10:30:00Z'
+        etag:
+          type: string
+          description: A checksum computed by the server based on the current value of the project resource. Used for optimistic concurrency control.
+          readOnly: true
+          example: example_value
+        labels:
+          type: object
+          description: User-defined labels associated with the project. Label keys must be between 1 and 63 characters, and label values must be between 0 and 63 characters. Both keys and values can contain lowercase letters, numeric characters, underscores, and dashes. A maximum of 256 labels can be associated with a project.
+          additionalProperties:
+            type: string
+          examples:
+          - env: production
+            team: backend
+    UndeleteProjectRequest:
+      type: object
+      description: Request message for undeleting a project.
+      properties: {}
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication using Google Cloud service accounts or user credentials. Supports both service-to-service and end-user authentication flows.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to view and manage Google Cloud resources.
+            https://www.googleapis.com/auth/cloud-platform.read-only: Read-only access to view Google Cloud resources.
+    apiKey:
+      type: apiKey
+      name: key
+      in: query
+      description: API key for identifying the calling project.
