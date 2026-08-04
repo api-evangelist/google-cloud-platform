@@ -1,0 +1,26 @@
+{
+  "provider": "google-cloud-platform",
+  "sources": [
+    "google-cloud-platform-folders-api-openapi.yml",
+    "google-cloud-platform-operations-api-openapi.yml",
+    "google-cloud-platform-organizations-api-openapi.yml",
+    "google-cloud-platform-projects-api-openapi.yml",
+    "google-cloud-platform-tagbindings-api-openapi.yml",
+    "google-cloud-platform-tagkeys-api-openapi.yml",
+    "google-cloud-platform-tagvalues-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-platform-folders-api-openapi.yml",
+    "google-cloud-platform-operations-api-openapi.yml",
+    "google-cloud-platform-organizations-api-openapi.yml",
+    "google-cloud-platform-projects-api-openapi.yml",
+    "google-cloud-platform-tagbindings-api-openapi.yml",
+    "google-cloud-platform-tagkeys-api-openapi.yml",
+    "google-cloud-platform-tagvalues-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
