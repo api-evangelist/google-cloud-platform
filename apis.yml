@@ -20,7 +20,7 @@ image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/sup
 url: https://cloud.google.com
 created: '2024-01-15'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 type: Index
 tags:
   - API Management
