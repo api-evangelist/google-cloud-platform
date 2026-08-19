@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders TagKeys API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TagKeys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Tag Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagKeys",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The resource name of the parent. Must be of the form organizations/{org_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of tag keys to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              }
+            ]
+          },
+          "docs": "Lists all tag keys under a specified parent resource. The parent can be an organization. The caller must have the resourcemanager.tagKeys.list permission on the parent."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Tag Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagKeys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tag key under the specified parent. The tag key short name must be unique within the parent. The caller must have the resourcemanager.tagKeys.create permission on the parent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

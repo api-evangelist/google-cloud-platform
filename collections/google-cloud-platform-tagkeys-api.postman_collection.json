@@ -1,0 +1,536 @@
+{
+  "item": [
+    {
+      "id": "55dc7f8f-6561-444f-8cab-4a91cdb276ef",
+      "name": "TagKeys",
+      "description": {
+        "content": "Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace for tag values that can be attached to resources.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "836b5e4d-a0d7-419c-934a-8afd78ced9bf",
+          "name": "Google Cloud Platform List Tag Keys",
+          "request": {
+            "name": "Google Cloud Platform List Tag Keys",
+            "description": {
+              "content": "Lists all tag keys under a specified parent resource. The parent can be an organization. The caller must have the resourcemanager.tagKeys.list permission on the parent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "tagKeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "parent",
+                  "value": "<string>",
+                  "description": "(Required) The resource name of the parent. Must be of the form organizations/{org_id}."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of tag keys to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous list call."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05cfcabe-b04e-469b-aab6-14b13d5f245a",
+              "name": "Successful response containing a list of tag keys.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parent",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tagKeys\": [\n    {\n      \"name\": \"Example Title\",\n      \"parent\": \"example_value\",\n      \"shortName\": \"example_value\",\n      \"namespacedName\": \"example_value\",\n      \"description\": \"A sample description.\",\n      \"createTime\": \"2026-01-15T10:30:00Z\",\n      \"updateTime\": \"2026-01-15T10:30:00Z\",\n      \"etag\": \"example_value\"\n    }\n  ],\n  \"nextPageToken\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41bf9e0e-8c47-49c0-b643-6551d0218e5b",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parent",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\",\n  \"details\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23ec0bc6-1ed9-4444-8417-bc7dc4cc2a54",
+              "name": "The caller does not have required permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parent",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\",\n  \"details\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f674806a-e938-4291-add0-68fad0505654",
+          "name": "Google Cloud Platform Create a Tag Key",
+          "request": {
+            "name": "Google Cloud Platform Create a Tag Key",
+            "description": {
+              "content": "Creates a new tag key under the specified parent. The tag key short name must be unique within the parent. The caller must have the resourcemanager.tagKeys.create permission on the parent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "tagKeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parent\": \"<string>\",\n  \"shortName\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6c1f96d-a633-4e05-bad1-9588dafdfc18",
+              "name": "Operation started successfully. Returns a long-running operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"parent\": \"example_value\",\n  \"shortName\": \"example_value\",\n  \"namespacedName\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"createTime\": \"2026-01-15T10:30:00Z\",\n  \"updateTime\": \"2026-01-15T10:30:00Z\",\n  \"etag\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"Example Title\",\n  \"metadata\": \"example_value\",\n  \"done\": true,\n  \"error\": {\n    \"code\": 10,\n    \"message\": \"example_value\",\n    \"details\": [\n      {}\n    ]\n  },\n  \"response\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de290420-34f0-44fe-ba15-db7405cf58aa",
+              "name": "Invalid tag key data provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"parent\": \"example_value\",\n  \"shortName\": \"example_value\",\n  \"namespacedName\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"createTime\": \"2026-01-15T10:30:00Z\",\n  \"updateTime\": \"2026-01-15T10:30:00Z\",\n  \"etag\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\",\n  \"details\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74ff2a61-053b-4d32-acac-499b5091fd9f",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"parent\": \"example_value\",\n  \"shortName\": \"example_value\",\n  \"namespacedName\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"createTime\": \"2026-01-15T10:30:00Z\",\n  \"updateTime\": \"2026-01-15T10:30:00Z\",\n  \"etag\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\",\n  \"details\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93057936-6830-4e78-be96-00a46a6a1f58",
+              "name": "The caller does not have required permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tagKeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"parent\": \"example_value\",\n  \"shortName\": \"example_value\",\n  \"namespacedName\": \"example_value\",\n  \"description\": \"A sample description.\",\n  \"createTime\": \"2026-01-15T10:30:00Z\",\n  \"updateTime\": \"2026-01-15T10:30:00Z\",\n  \"etag\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 10,\n  \"message\": \"example_value\",\n  \"details\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloudresourcemanager.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloud-platform.read-only"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "056d8fab-ce18-4662-9925-2a6a66d60750",
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders TagKeys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.\n\nContact Support:\n Name: Google Cloud Platform",
+      "type": "text/plain"
+    }
+  }
+}

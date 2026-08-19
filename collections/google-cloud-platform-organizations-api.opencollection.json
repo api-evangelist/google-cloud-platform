@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders Organizations API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform Get an Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations/:organizationId",
+            "params": [
+              {
+                "name": "organizationId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the organization to fetch, such as organizations/12345."
+              }
+            ]
+          },
+          "docs": "Fetches an organization resource identified by the specified resource name, such as organizations/12345. The caller must have the resourcemanager.organizations.get permission on the organization."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Search Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations:search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "An optional query string used to filter organizations. Supported filter fields include domain and displayName. Example: domain:example.com."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of organizations to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous search call."
+              }
+            ]
+          },
+          "docs": "Searches for organizations that the caller has the resourcemanager.organizations.get permission on. Organizations can be searched by domain or display name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get Organization Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations/:resource:getIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The resource name of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets the access control policy for an organization resource. The caller must have the resourcemanager.organizations.getIamPolicy permission on the organization."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Set Organization Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/organizations/:resource:setIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The resource name of the organization."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the access control policy on an organization resource, replacing any existing policy. The caller must have the resourcemanager.organizations.setIamPolicy permission on the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

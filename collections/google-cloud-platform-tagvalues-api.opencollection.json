@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders TagValues API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TagValues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Tag Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagValues",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The resource name of the tag key whose values are to be listed. Must be of the form tagKeys/{tag_key_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of tag values to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              }
+            ]
+          },
+          "docs": "Lists all tag values for a specified tag key. The caller must have the resourcemanager.tagValues.list permission on the parent tag key."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Tag Value",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagValues",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a tag value as a child of the specified tag key. The caller must have the resourcemanager.tagValues.create permission on the parent tag key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The name of the parent resource whose folders are to be listed. Must be of the form folders/{folder_id} or organizations/{org_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of folders to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              },
+              {
+                "name": "showDeleted",
+                "value": "true",
+                "type": "query",
+                "description": "Indicate that folders in the DELETE_REQUESTED state should also be returned."
+              }
+            ]
+          },
+          "docs": "Lists the folders that are direct descendants of the specified parent resource. The caller must have the resourcemanager.folders.list permission on the parent. Folders are listed in alphabetical order by display name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a folder in the resource hierarchy under the specified parent. The parent can be an organization or another folder. The caller must have the resourcemanager.folders.create permission on the parent."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieves a folder identified by the specified resource name. The caller must have the resourcemanager.folders.get permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Update a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to update."
+              },
+              {
+                "name": "updateMask",
+                "value": "example_value",
+                "type": "query",
+                "description": "Fields to be updated. Only the display_name field can be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a folder, changing its display name. Changes to the folder display name are not immediately reflected and may take several minutes to propagate. The caller must have the resourcemanager.folders.update permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Delete a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to delete."
+              }
+            ]
+          },
+          "docs": "Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED state and enters a 30-day grace period. During this period, the folder can be restored. After the grace period, the folder is permanently deleted. The folder must be empty before it can be deleted. The caller must have the resourcemanager.folders.delete permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Undelete a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId:undelete",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to undelete."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels the deletion request for a folder. This method can only be called within the 30-day grace period. The caller must have the resourcemanager.folders.undelete permission on the folder."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Move a Folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders/:folderId:move",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "500123",
+                "type": "path",
+                "description": "The resource name of the folder to move."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moves a folder under a new resource parent. The folder can be moved to another folder or to the organization root. The caller must have the resourcemanager.folders.move permission on both the source folder and the destination parent."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Search Folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/folders:search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "Search criteria used to select folders. The supported filter fields are displayName, parent, and state. Example: displayName=Engineering."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of folders to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous search call."
+              }
+            ]
+          },
+          "docs": "Search for folders that match specified filter criteria. The caller must have the resourcemanager.folders.get permission on the returned folders."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

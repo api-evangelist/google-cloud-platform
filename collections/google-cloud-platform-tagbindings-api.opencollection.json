@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders TagBindings API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TagBindings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Tag Bindings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagBindings",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The full resource name of the resource whose bindings are being listed. Example: //cloudresourcemanager.googleapis.com/projects/123."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of tag bindings to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous list call."
+              }
+            ]
+          },
+          "docs": "Lists the tag bindings that are applied to the specified resource. The caller must have the appropriate permission on the resource."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Tag Binding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/tagBindings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a tag binding between a tag value and a cloud resource. The caller must have the appropriate tag permission on the resource and the resourcemanager.tagValueBindings.create permission."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

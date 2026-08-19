@@ -1,0 +1,249 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Platform Google Cloud Resource Manager Folders Projects API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Platform List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects",
+            "params": [
+              {
+                "name": "parent",
+                "value": "example_value",
+                "type": "query",
+                "description": "The name of the parent resource whose projects are to be listed. Must be of the form folders/{folder_id} or organizations/{org_id}."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of projects to return in the response. The server can return fewer results. If unspecified, the server picks an appropriate default value."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "A pagination token returned from a previous call to ListProjects that indicates where this listing should continue from."
+              },
+              {
+                "name": "showDeleted",
+                "value": "true",
+                "type": "query",
+                "description": "Indicate that projects in the DELETE_REQUESTED state should also be returned."
+              }
+            ]
+          },
+          "docs": "Lists projects that are direct children of the specified parent resource. Projects are listed in alphabetical order by display name. The caller must have the resourcemanager.projects.list permission on the parent resource."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Create a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new project resource under the specified parent. The parent must be an organization or folder. The caller must have the resourcemanager.projects.create permission on the parent. This method returns a long-running Operation which can be used to track creation."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to retrieve, such as projects/123 or projects/my-project-id. The project ID or number is required."
+              }
+            ]
+          },
+          "docs": "Retrieves the project identified by the specified name, such as projects/123 or projects/my-project-id. The caller must have the resourcemanager.projects.get permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Update a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to update."
+              },
+              {
+                "name": "updateMask",
+                "value": "example_value",
+                "type": "query",
+                "description": "A comma-separated list of fields to update. Only display_name and labels fields can be updated. An empty update mask is not permitted."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the display name and labels of the project identified by the specified name. Changes to the project are not reflected immediately and may take several minutes to propagate. The caller must have the resourcemanager.projects.update permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Delete a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to delete."
+              }
+            ]
+          },
+          "docs": "Marks the project identified by the specified name to be deleted. This method sets the project lifecycle state to DELETE_REQUESTED. The project is not immediately deleted but enters a 30-day grace period during which it can be restored using undelete. After 30 days, the project and all its resources are permanently deleted."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Undelete a Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:projectId:undelete",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "500123",
+                "type": "path",
+                "description": "The name of the project to undelete."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restores the project identified by the specified name. A project can only be restored within the 30-day grace period after deletion. The caller must have the resourcemanager.projects.undelete permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Get Project Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:resource:getIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The name of the project whose policy is being requested, such as projects/12345."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the IAM access control policy for the specified project. The caller must have the resourcemanager.projects.getIamPolicy permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Set Project Iam Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects/:resource:setIamPolicy",
+            "params": [
+              {
+                "name": "resource",
+                "value": "example_value",
+                "type": "path",
+                "description": "The name of the project whose policy is being set, such as projects/12345."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the IAM access control policy for the specified project, replacing any existing policy. The caller must have the resourcemanager.projects.setIamPolicy permission on the project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Platform Search Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudresourcemanager.googleapis.com/v3/projects:search",
+            "params": [
+              {
+                "name": "query",
+                "value": "example_value",
+                "type": "query",
+                "description": "A query string for searching projects. The query supports filtering by displayName, parent.type, parent.id, projectId, state, and labels. Example: parent.type:folder parent.id:123."
+              },
+              {
+                "name": "pageSize",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of projects to return."
+              },
+              {
+                "name": "pageToken",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination token from a previous search call."
+              }
+            ]
+          },
+          "docs": "Search for projects that the caller has the resourcemanager.projects.get permission on. Projects can be filtered by parent, display name, project ID, and state."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
