@@ -26,6 +26,11 @@ tags:
   - API Management
   - Cloud Computing
   - Infrastructure
+  - Platform-as-a-Service
+tags_raw:
+  - API Management
+  - Cloud Computing
+  - Infrastructure
   - Platform as a Service
 apis:
 - aid: google-cloud-platform:google-cloud-platform-folders-api
@@ -525,7 +530,8 @@ apis:
     resource to track the progress of asynchronous requests.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
@@ -1017,6 +1023,8 @@ apis:
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -1508,6 +1516,8 @@ apis:
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -2978,6 +2988,8 @@ apis:
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
+  - Tag Values
+  tags_raw:
   - TagValues
   properties:
   - type: OpenAPI
