@@ -12,8 +12,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: cloudResourceManagerApi
-  url: ../openapi/cloud-resource-manager-openapi.yml
+- name: projectsApi
+  url: ../openapi/google-cloud-platform-projects-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-project-iam-policy

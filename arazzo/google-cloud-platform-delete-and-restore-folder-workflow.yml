@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: cloudResourceManagerApi
-  url: ../openapi/cloud-resource-manager-openapi.yml
+- name: foldersApi
+  url: ../openapi/google-cloud-platform-folders-api-openapi.yml
+  type: openapi
+- name: operationsApi
+  url: ../openapi/google-cloud-platform-operations-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: delete-and-restore-folder

@@ -11,8 +11,14 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: cloudResourceManagerApi
-  url: ../openapi/cloud-resource-manager-openapi.yml
+- name: operationsApi
+  url: ../openapi/google-cloud-platform-operations-api-openapi.yml
+  type: openapi
+- name: tagkeysApi
+  url: ../openapi/google-cloud-platform-tagkeys-api-openapi.yml
+  type: openapi
+- name: tagvaluesApi
+  url: ../openapi/google-cloud-platform-tagvalues-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-tag-key-and-value
