@@ -3000,7 +3000,7 @@ apis:
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
-  - Tag Values
+  - TagValues
   tags_raw:
   - TagValues
   properties:
