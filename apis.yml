@@ -28,7 +28,7 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
-image: https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png
+image: ''
 url: https://cloud.google.com
 created: '2024-01-15'
 modified: '2026-06-20'
