@@ -1,8 +1,6 @@
 aid: google-cloud-platform
 name: Google Cloud Platform
-description: >-
-  Google Cloud Platform enables developers to build, test, and deploy applications on Google's highly-scalable and
-  reliable infrastructure.
+description: Google Cloud Platform enables developers to build, test, and deploy applications on Google's highly-scalable and reliable infrastructure.
 deliveryModel:
   model: saas
   open_source: false
@@ -35,21 +33,19 @@ modified: '2026-06-20'
 specificationVersion: '0.23'
 type: Index
 tags:
-  - API Management
-  - Cloud Computing
-  - Infrastructure
-  - Platform-as-a-Service
+- API Management
+- Cloud Computing
+- Infrastructure
+- Platform-as-a-Service
 tags_raw:
-  - API Management
-  - Cloud Computing
-  - Infrastructure
-  - Platform as a Service
+- API Management
+- Cloud Computing
+- Infrastructure
+- Platform as a Service
 apis:
 - aid: google-cloud-platform:google-cloud-platform-folders-api
   name: Google Cloud Platform Folders API
-  description: >-
-    Manage Google Cloud folders. Folders provide an additional grouping mechanism and isolation boundary
-    between projects. They can be used to model organizational structure, departments, teams, or environments.
+  description: Manage Google Cloud folders. Folders provide an additional grouping mechanism and isolation boundary between projects. They can be used to model organizational structure, departments, teams, or environments.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -537,9 +533,7 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-operations-api
   name: Google Cloud Platform Operations API
-  description: >-
-    Long-running operations returned by Resource Manager API methods. Some methods return an Operation
-    resource to track the progress of asynchronous requests.
+  description: Long-running operations returned by Resource Manager API methods. Some methods return an Operation resource to track the progress of asynchronous requests.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags: []
@@ -1028,10 +1022,7 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-organizations-api
   name: Google Cloud Platform Organizations API
-  description: >-
-    Manage Google Cloud organizations. An organization is the root node in the Google Cloud resource hierarchy,
-    typically representing a company or business entity. Organizations are tied to a Google Workspace
-    or Cloud Identity account.
+  description: Manage Google Cloud organizations. An organization is the root node in the Google Cloud resource hierarchy, typically representing a company or business entity. Organizations are tied to a Google Workspace or Cloud Identity account.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -1521,10 +1512,7 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-projects-api
   name: Google Cloud Platform Projects API
-  description: >-
-    Manage Google Cloud projects. A project is the base-level organizing entity in Google Cloud and is
-    required to use most Google Cloud services. Projects contain resources and are associated with billing
-    accounts.
+  description: Manage Google Cloud projects. A project is the base-level organizing entity in Google Cloud and is required to use most Google Cloud services. Projects contain resources and are associated with billing accounts.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -2014,9 +2002,7 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-tagbindings-api
   name: Google Cloud Platform TagBindings API
-  description: >-
-    Manage tag bindings that associate tag values with Google Cloud resources. Tag bindings connect tag
-    values to specific resources in the hierarchy.
+  description: Manage tag bindings that associate tag values with Google Cloud resources. Tag bindings connect tag values to specific resources in the hierarchy.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -2504,9 +2490,7 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-tagkeys-api
   name: Google Cloud Platform TagKeys API
-  description: >-
-    Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace
-    for tag values that can be attached to resources.
+  description: Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace for tag values that can be attached to resources.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -2994,9 +2978,7 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-tagvalues-api
   name: Google Cloud Platform TagValues API
-  description: >-
-    Manage tag values associated with tag keys. Tag values are the specific labels that can be bound to
-    resources through tag bindings.
+  description: Manage tag values associated with tag keys. Tag values are the specific labels that can be bound to resources through tag bindings.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -3484,228 +3466,250 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/apis
   - type: ReleaseNotes
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
-include:
-  - name: Google Cloud API Common Resources
-    url: https://cloud.google.com/apis/design/resources
-integrations:
-  - name: Become a Partner
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-common:
-  - type: MCPServer
-    url: https://docs.cloud.google.com/mcp/overview
-  - type: BlogRSS
-    url: https://cloudblog.withgoogle.com/rss/
-  - type: BlogRSS
-    url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/
-  - type: Website
-    url: https://cloud.google.com/
-  - type: AgenticAccess
-    url: agentic-access/google-cloud-platform-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/google-cloud-platform-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/google-cloud-platform-domain-security.yml
-  - type: Authentication
-    url: authentication/google-cloud-platform-authentication.yml
-  - type: OAuthScopes
-    url: scopes/google-cloud-platform-scopes.yml
-  - type: TrustCenter
-    url: security/google-cloud-platform-trust-center.yml
-  - type: Packages
-    url: packages/google-cloud-platform-packages.yml
-  - type: WellKnown
-    url: well-known/google-cloud-platform-well-known.yml
-  - type: SecurityTxt
-    url: well-known/google-cloud-platform-security.txt
-  - type: X-MCPServerCandidate
-    url: mcp/google-cloud-platform-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-  - type: LLMsTxt
-    url: llms/google-cloud-platform-llms.txt
-  - type: Overlay
-    url: overlays/google-cloud-platform-cloud-resource-manager-overlay.yaml
-  - type: Protobuf
-    url: grpc/google-cloud-platform-grpc.yml
-  - type: Conformance
-    url: conformance/google-cloud-platform-conformance.yml
-  - type: ErrorCatalog
-    url: errors/google-cloud-platform-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/google-cloud-platform-lifecycle.yml
-  - type: Conventions
-    url: conventions/google-cloud-platform-conventions.yml
-  - type: DataModel
-    url: data-model/google-cloud-platform-data-model.yml
-  - type: ChangeLog
-    url: changelog/google-cloud-platform-changelog.yml
-  - type: CLI
-    url: cli/google-cloud-platform-cli.yml
-  - type: Sandbox
-    url: sandbox/google-cloud-platform-sandbox.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/google-cloud-platform/overview
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-audit-folder-and-projects-workflow.yml
-    name: Google Cloud Platform Audit Folder and Projects
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-bind-tag-to-project-workflow.yml
-    name: Google Cloud Platform Bind Tag to Project
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-copy-project-iam-policy-workflow.yml
-    name: Google Cloud Platform Copy Project IAM Policy
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-create-folder-and-poll-workflow.yml
-    name: Google Cloud Platform Create Folder and Poll Operation
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-create-project-and-poll-workflow.yml
-    name: Google Cloud Platform Create Project and Poll Operation
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-create-tag-key-and-value-workflow.yml
-    name: Google Cloud Platform Create Tag Key and Value
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-delete-and-restore-folder-workflow.yml
-    name: Google Cloud Platform Delete and Restore Folder
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-delete-and-restore-project-workflow.yml
-    name: Google Cloud Platform Delete and Restore Project
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-delete-empty-folder-workflow.yml
-    name: Google Cloud Platform Delete Empty Folder
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-inspect-organization-access-workflow.yml
-    name: Google Cloud Platform Inspect Organization Access
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-inventory-organization-tags-workflow.yml
-    name: Google Cloud Platform Inventory Organization Tags
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-label-project-and-poll-workflow.yml
-    name: Google Cloud Platform Label Project and Poll Operation
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-move-folder-and-poll-workflow.yml
-    name: Google Cloud Platform Move Folder and Poll Operation
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-provision-folder-with-project-workflow.yml
-    name: Google Cloud Platform Provision Folder with Project
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-rename-folder-and-poll-workflow.yml
-    name: Google Cloud Platform Rename Folder and Poll Operation
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-rename-project-and-poll-workflow.yml
-    name: Google Cloud Platform Rename Project and Poll Operation
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-reset-project-iam-policy-workflow.yml
-    name: Google Cloud Platform Reset Project IAM Policy
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-review-project-governance-workflow.yml
-    name: Google Cloud Platform Review Project Governance
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-search-and-inspect-project-workflow.yml
-    name: Google Cloud Platform Search and Inspect Project
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-update-organization-iam-policy-workflow.yml
-    name: Google Cloud Platform Update Organization IAM Policy
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-update-project-iam-policy-workflow.yml
-    name: Google Cloud Platform Update Project IAM Policy
-  - type: Arazzo
-    url: arazzo/google-cloud-platform-walk-resource-hierarchy-workflow.yml
-    name: Google Cloud Platform Walk Resource Hierarchy
-  - type: Portal
-    url: https://cloud.google.com/
+- name: Vertex AI API
+  description: Unified AI platform for building, deploying, and scaling ML models.
+  image: https://cloud.google.com/images/products/vertex-ai.svg
+  humanUrl: https://cloud.google.com/vertex-ai
+  baseUrl: https://aiplatform.googleapis.com/v1
+  tags:
+  - Artificial Intelligence
+  - Machine-Learning
+  - MLOps
+  tags_raw:
+  - AI
+  - Machine Learning
+  - MLOps
+  properties:
   - type: Documentation
-    url: https://cloud.google.com/docs
-  - type: DeveloperPortal
-    url: https://cloud.google.com/developers
-  - type: GettingStarted
-    url: https://cloud.google.com/docs/get-started
-  - type: Authentication
-    url: https://cloud.google.com/docs/authentication
-  - type: Console
-    url: https://console.cloud.google.com/apis
-  - type: Signup
-    url: https://cloud.google.com/free
-  - type: Login
-    url: https://console.cloud.google.com/
-  - type: StatusPage
-    url: https://status.cloud.google.com/
-  - type: TermsOfService
-    url: https://cloud.google.com/terms
-  - type: PrivacyPolicy
-    url: https://cloud.google.com/privacy
-  - type: Support
-    url: https://cloud.google.com/support
-  - type: Blog
-    url: https://cloud.google.com/blog
-  - type: GitHubOrganization
-    url: https://github.com/GoogleCloudPlatform
+    url: https://cloud.google.com/vertex-ai/docs/reference/rest
   - type: Pricing
-    url: https://cloud.google.com/pricing
-  - type: SDKs
-    url: https://cloud.google.com/sdk
-  - type: Security
-    url: https://cloud.google.com/security
-  - type: Compliance
-    url: https://cloud.google.com/compliance
-  - type: ReleaseNotes
-    url: https://cloud.google.com/release-notes
-  - type: YouTube
-    url: https://www.youtube.com/googlecloudplatform
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/google-cloud-platform
-  - type: X
-    url: https://twitter.com/googlecloud
-  - type: LinkedIn
-    url: https://www.linkedin.com/showcase/google-cloud/
-  - type: SpectralRules
-    url: rules/google-cloud-platform-spectral-rules.yml
-  - type: Features
-    data:
-      - name: Compute Services
-        description: Run workloads on virtual machines, containers, and serverless platforms with automatic scaling.
-      - name: Storage and Databases
-        description: Store data in object storage, relational databases, NoSQL databases, and in-memory stores.
-      - name: AI and Machine Learning
-        description: Build and deploy ML models with Vertex AI, Vision, Natural Language, Speech, and Translation APIs.
-      - name: Data Analytics
-        description: Process and analyze data at scale with BigQuery, Dataflow, Dataproc, and Pub/Sub.
-      - name: Networking
-        description: Connect resources with DNS, load balancing, VPN, and CDN services.
-      - name: Security and Identity
-        description: Protect resources with IAM, KMS, Secret Manager, and data loss prevention services.
-      - name: DevOps and CI/CD
-        description: Build, deploy, and manage applications with Cloud Build, Artifact Registry, and Cloud Deploy.
-      - name: Serverless Computing
-        description: Run code without managing infrastructure using Cloud Functions, Cloud Run, and App Engine.
-      - name: Resource Management
-        description: Organize resources with projects, folders, organizations, and tags in a hierarchical structure.
-      - name: Observability
-        description: Monitor, log, and trace applications with Cloud Monitoring, Logging, and Trace services.
-  - type: UseCases
-    data:
-      - name: Application Modernization
-        description: Migrate and modernize legacy applications to cloud-native architectures using containers and serverless.
-      - name: Data Lake and Analytics
-        description: Build data lakes and run analytics pipelines with BigQuery, Dataflow, and Cloud Storage.
-      - name: AI Application Development
-        description: Build intelligent applications with Vertex AI, Dialogflow, and pre-trained ML APIs.
-      - name: Multi-Cloud Management
-        description: Manage workloads across multiple cloud providers with Anthos and GKE Enterprise.
-      - name: IoT and Edge Computing
-        description: Deploy and manage IoT devices and edge computing workloads at scale.
-  - type: Integrations
-    data:
-      - name: Terraform
-        description: Provision and manage GCP infrastructure as code using the Google Cloud Terraform provider.
-      - name: Kubernetes
-        description: Deploy containerized applications to Google Kubernetes Engine with native Kubernetes integration.
-      - name: GitHub
-        description: Integrate with GitHub for source code management, CI/CD triggers, and code deployment.
-      - name: Datadog
-        description: Monitor GCP resources and applications with Datadog's native integration.
-      - name: Slack
-        description: Receive GCP alerts and notifications directly in Slack channels.
-  - type: Integrations
-    url: https://cloud.google.com/marketplace
+    url: https://cloud.google.com/vertex-ai/pricing
+  - type: Console
+    url: https://console.cloud.google.com/vertex-ai
+include:
+- name: Google Cloud API Common Resources
+  url: https://cloud.google.com/apis/design/resources
+integrations:
+- name: Become a Partner
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+common:
+- type: Pricing Calculator
+  url: https://cloud.google.com/products/calculator
+- type: MCPServer
+  url: https://docs.cloud.google.com/mcp/overview
+- type: BlogRSS
+  url: https://cloudblog.withgoogle.com/rss/
+- type: BlogRSS
+  url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/
+- type: Website
+  url: https://cloud.google.com/
+- type: AgenticAccess
+  url: agentic-access/google-cloud-platform-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/google-cloud-platform-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-cloud-platform-domain-security.yml
+- type: Authentication
+  url: authentication/google-cloud-platform-authentication.yml
+- type: OAuthScopes
+  url: scopes/google-cloud-platform-scopes.yml
+- type: TrustCenter
+  url: security/google-cloud-platform-trust-center.yml
+- type: Packages
+  url: packages/google-cloud-platform-packages.yml
+- type: WellKnown
+  url: well-known/google-cloud-platform-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-cloud-platform-security.txt
+- type: X-MCPServerCandidate
+  url: mcp/google-cloud-platform-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+- type: LLMsTxt
+  url: llms/google-cloud-platform-llms.txt
+- type: Overlay
+  url: overlays/google-cloud-platform-cloud-resource-manager-overlay.yaml
+- type: Protobuf
+  url: grpc/google-cloud-platform-grpc.yml
+- type: Conformance
+  url: conformance/google-cloud-platform-conformance.yml
+- type: ErrorCatalog
+  url: errors/google-cloud-platform-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-cloud-platform-lifecycle.yml
+- type: Conventions
+  url: conventions/google-cloud-platform-conventions.yml
+- type: DataModel
+  url: data-model/google-cloud-platform-data-model.yml
+- type: ChangeLog
+  url: changelog/google-cloud-platform-changelog.yml
+- type: CLI
+  url: cli/google-cloud-platform-cli.yml
+- type: Sandbox
+  url: sandbox/google-cloud-platform-sandbox.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-cloud-platform/overview
+- type: Arazzo
+  url: arazzo/google-cloud-platform-audit-folder-and-projects-workflow.yml
+  name: Google Cloud Platform Audit Folder and Projects
+- type: Arazzo
+  url: arazzo/google-cloud-platform-bind-tag-to-project-workflow.yml
+  name: Google Cloud Platform Bind Tag to Project
+- type: Arazzo
+  url: arazzo/google-cloud-platform-copy-project-iam-policy-workflow.yml
+  name: Google Cloud Platform Copy Project IAM Policy
+- type: Arazzo
+  url: arazzo/google-cloud-platform-create-folder-and-poll-workflow.yml
+  name: Google Cloud Platform Create Folder and Poll Operation
+- type: Arazzo
+  url: arazzo/google-cloud-platform-create-project-and-poll-workflow.yml
+  name: Google Cloud Platform Create Project and Poll Operation
+- type: Arazzo
+  url: arazzo/google-cloud-platform-create-tag-key-and-value-workflow.yml
+  name: Google Cloud Platform Create Tag Key and Value
+- type: Arazzo
+  url: arazzo/google-cloud-platform-delete-and-restore-folder-workflow.yml
+  name: Google Cloud Platform Delete and Restore Folder
+- type: Arazzo
+  url: arazzo/google-cloud-platform-delete-and-restore-project-workflow.yml
+  name: Google Cloud Platform Delete and Restore Project
+- type: Arazzo
+  url: arazzo/google-cloud-platform-delete-empty-folder-workflow.yml
+  name: Google Cloud Platform Delete Empty Folder
+- type: Arazzo
+  url: arazzo/google-cloud-platform-inspect-organization-access-workflow.yml
+  name: Google Cloud Platform Inspect Organization Access
+- type: Arazzo
+  url: arazzo/google-cloud-platform-inventory-organization-tags-workflow.yml
+  name: Google Cloud Platform Inventory Organization Tags
+- type: Arazzo
+  url: arazzo/google-cloud-platform-label-project-and-poll-workflow.yml
+  name: Google Cloud Platform Label Project and Poll Operation
+- type: Arazzo
+  url: arazzo/google-cloud-platform-move-folder-and-poll-workflow.yml
+  name: Google Cloud Platform Move Folder and Poll Operation
+- type: Arazzo
+  url: arazzo/google-cloud-platform-provision-folder-with-project-workflow.yml
+  name: Google Cloud Platform Provision Folder with Project
+- type: Arazzo
+  url: arazzo/google-cloud-platform-rename-folder-and-poll-workflow.yml
+  name: Google Cloud Platform Rename Folder and Poll Operation
+- type: Arazzo
+  url: arazzo/google-cloud-platform-rename-project-and-poll-workflow.yml
+  name: Google Cloud Platform Rename Project and Poll Operation
+- type: Arazzo
+  url: arazzo/google-cloud-platform-reset-project-iam-policy-workflow.yml
+  name: Google Cloud Platform Reset Project IAM Policy
+- type: Arazzo
+  url: arazzo/google-cloud-platform-review-project-governance-workflow.yml
+  name: Google Cloud Platform Review Project Governance
+- type: Arazzo
+  url: arazzo/google-cloud-platform-search-and-inspect-project-workflow.yml
+  name: Google Cloud Platform Search and Inspect Project
+- type: Arazzo
+  url: arazzo/google-cloud-platform-update-organization-iam-policy-workflow.yml
+  name: Google Cloud Platform Update Organization IAM Policy
+- type: Arazzo
+  url: arazzo/google-cloud-platform-update-project-iam-policy-workflow.yml
+  name: Google Cloud Platform Update Project IAM Policy
+- type: Arazzo
+  url: arazzo/google-cloud-platform-walk-resource-hierarchy-workflow.yml
+  name: Google Cloud Platform Walk Resource Hierarchy
+- type: Portal
+  url: https://cloud.google.com/
+- type: Documentation
+  url: https://cloud.google.com/docs
+- type: DeveloperPortal
+  url: https://cloud.google.com/developers
+- type: GettingStarted
+  url: https://cloud.google.com/docs/get-started
+- type: Authentication
+  url: https://cloud.google.com/docs/authentication
+- type: Console
+  url: https://console.cloud.google.com/apis
+- type: Signup
+  url: https://cloud.google.com/free
+- type: Login
+  url: https://console.cloud.google.com/
+- type: StatusPage
+  url: https://status.cloud.google.com/
+- type: TermsOfService
+  url: https://cloud.google.com/terms
+- type: PrivacyPolicy
+  url: https://cloud.google.com/privacy
+- type: Support
+  url: https://cloud.google.com/support
+- type: Blog
+  url: https://cloud.google.com/blog
+- type: GitHubOrganization
+  url: https://github.com/GoogleCloudPlatform
+- type: Pricing
+  url: https://cloud.google.com/pricing
+- type: SDKs
+  url: https://cloud.google.com/sdk
+- type: Security
+  url: https://cloud.google.com/security
+- type: Compliance
+  url: https://cloud.google.com/compliance
+- type: ReleaseNotes
+  url: https://cloud.google.com/release-notes
+- type: YouTube
+  url: https://www.youtube.com/googlecloudplatform
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/google-cloud-platform
+- type: X
+  url: https://twitter.com/googlecloud
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/google-cloud/
+- type: SpectralRules
+  url: rules/google-cloud-platform-spectral-rules.yml
+- type: Features
+  data:
+  - name: Compute Services
+    description: Run workloads on virtual machines, containers, and serverless platforms with automatic scaling.
+  - name: Storage and Databases
+    description: Store data in object storage, relational databases, NoSQL databases, and in-memory stores.
+  - name: AI and Machine Learning
+    description: Build and deploy ML models with Vertex AI, Vision, Natural Language, Speech, and Translation APIs.
+  - name: Data Analytics
+    description: Process and analyze data at scale with BigQuery, Dataflow, Dataproc, and Pub/Sub.
+  - name: Networking
+    description: Connect resources with DNS, load balancing, VPN, and CDN services.
+  - name: Security and Identity
+    description: Protect resources with IAM, KMS, Secret Manager, and data loss prevention services.
+  - name: DevOps and CI/CD
+    description: Build, deploy, and manage applications with Cloud Build, Artifact Registry, and Cloud Deploy.
+  - name: Serverless Computing
+    description: Run code without managing infrastructure using Cloud Functions, Cloud Run, and App Engine.
+  - name: Resource Management
+    description: Organize resources with projects, folders, organizations, and tags in a hierarchical structure.
+  - name: Observability
+    description: Monitor, log, and trace applications with Cloud Monitoring, Logging, and Trace services.
+- type: UseCases
+  data:
+  - name: Application Modernization
+    description: Migrate and modernize legacy applications to cloud-native architectures using containers and serverless.
+  - name: Data Lake and Analytics
+    description: Build data lakes and run analytics pipelines with BigQuery, Dataflow, and Cloud Storage.
+  - name: AI Application Development
+    description: Build intelligent applications with Vertex AI, Dialogflow, and pre-trained ML APIs.
+  - name: Multi-Cloud Management
+    description: Manage workloads across multiple cloud providers with Anthos and GKE Enterprise.
+  - name: IoT and Edge Computing
+    description: Deploy and manage IoT devices and edge computing workloads at scale.
+- type: Integrations
+  data:
+  - name: Terraform
+    description: Provision and manage GCP infrastructure as code using the Google Cloud Terraform provider.
+  - name: Kubernetes
+    description: Deploy containerized applications to Google Kubernetes Engine with native Kubernetes integration.
+  - name: GitHub
+    description: Integrate with GitHub for source code management, CI/CD triggers, and code deployment.
+  - name: Datadog
+    description: Monitor GCP resources and applications with Datadog's native integration.
+  - name: Slack
+    description: Receive GCP alerts and notifications directly in Slack channels.
+- type: Integrations
+  url: https://cloud.google.com/marketplace
