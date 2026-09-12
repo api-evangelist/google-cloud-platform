@@ -3713,3 +3713,5 @@ common:
     description: Receive GCP alerts and notifications directly in Slack channels.
 - type: Integrations
   url: https://cloud.google.com/marketplace
+x-parent: google
+x-relationship: product
