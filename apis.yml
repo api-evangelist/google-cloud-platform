@@ -3494,6 +3494,14 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: MCPServer
+    url: https://docs.cloud.google.com/mcp/overview
+  - type: BlogRSS
+    url: https://cloudblog.withgoogle.com/rss/
+  - type: BlogRSS
+    url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/
+  - type: Website
+    url: https://cloud.google.com/
   - type: AgenticAccess
     url: agentic-access/google-cloud-platform-agentic-access.yml
   - type: VulnerabilityDisclosure

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud Platform Google Cloud Resource Manager Folders Organizations API
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
@@ -366,6 +366,32 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SetIamPolicyRequest:
+      type: object
+      description: Request message for SetIamPolicy method.
+      properties:
+        policy:
+          $ref: '#/components/schemas/Policy'
+        updateMask:
+          type: string
+          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
+          example: example_value
+      required:
+      - policy
+    SearchOrganizationsResponse:
+      type: object
+      description: Response message for searching organizations.
+      properties:
+        organizations:
+          type: array
+          description: The list of organizations matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Organization'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
     GetIamPolicyRequest:
       type: object
       description: Request message for GetIamPolicy method.
@@ -379,27 +405,26 @@ components:
               format: int32
               description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
           example: example_value
-    Binding:
+    Status:
       type: object
-      description: Associates members with a role.
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
       properties:
-        role:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
           type: string
-          description: 'The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.'
-          examples:
-          - roles/resourcemanager.projectViewer
-        members:
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
           type: array
-          description: The identities requesting access. Supports user, serviceAccount, group, and domain members.
+          description: A list of messages that carry the error details.
           items:
-            type: string
-          examples:
-          - - user:alice@example.com
-            - serviceAccount:my-sa@project.iam.gserviceaccount.com
-            - group:admins@example.com
-            - domain:example.com
-        condition:
-          $ref: '#/components/schemas/Expr'
+            type: object
+            additionalProperties: true
+          example: []
     Policy:
       type: object
       description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
@@ -440,52 +465,27 @@ components:
           type: string
           description: An optional string indicating the location of the expression for error reporting.
           example: example_value
-    SetIamPolicyRequest:
+    Binding:
       type: object
-      description: Request message for SetIamPolicy method.
+      description: Associates members with a role.
       properties:
-        policy:
-          $ref: '#/components/schemas/Policy'
-        updateMask:
+        role:
           type: string
-          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
-          example: example_value
-      required:
-      - policy
-    SearchOrganizationsResponse:
-      type: object
-      description: Response message for searching organizations.
-      properties:
-        organizations:
+          description: 'The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.'
+          examples:
+          - roles/resourcemanager.projectViewer
+        members:
           type: array
-          description: The list of organizations matching the search criteria.
+          description: The identities requesting access. Supports user, serviceAccount, group, and domain members.
           items:
-            $ref: '#/components/schemas/Organization'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
+            type: string
+          examples:
+          - - user:alice@example.com
+            - serviceAccount:my-sa@project.iam.gserviceaccount.com
+            - group:admins@example.com
+            - domain:example.com
+        condition:
+          $ref: '#/components/schemas/Expr'
     Organization:
       type: object
       description: The root node in the resource hierarchy to which a particular entity's resources belong. An organization is tied to a Google Workspace or Cloud Identity account. Organizations cannot be created or deleted through the API; they are automatically provisioned when a Google Workspace or Cloud Identity account is created.

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders TagValues API
+  title: Google Cloud Platform Google Cloud Resource Manager Folders Tag Values API
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -227,20 +227,6 @@ components:
           description: The normal response of the operation. Contains the result on success.
           additionalProperties: true
           example: example_value
-    ListTagValuesResponse:
-      type: object
-      description: Response message for listing tag values.
-      properties:
-        tagValues:
-          type: array
-          description: The list of tag values.
-          items:
-            $ref: '#/components/schemas/TagValue'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
     Status:
       type: object
       description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
@@ -261,6 +247,20 @@ components:
             type: object
             additionalProperties: true
           example: []
+    ListTagValuesResponse:
+      type: object
+      description: Response message for listing tag values.
+      properties:
+        tagValues:
+          type: array
+          description: The list of tag values.
+          items:
+            $ref: '#/components/schemas/TagValue'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
     TagValue:
       type: object
       description: A tag value, which is a child of a tag key. Tag values are the specific labels that can be attached to resources through tag bindings.
