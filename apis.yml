@@ -45,7 +45,9 @@ tags_raw:
 apis:
 - aid: google-cloud-platform:google-cloud-platform-folders-api
   name: Google Cloud Platform Folders API
-  description: Manage Google Cloud folders. Folders provide an additional grouping mechanism and isolation boundary between projects. They can be used to model organizational structure, departments, teams, or environments.
+  description: >-
+    Manage Google Cloud folders. Folders provide an additional grouping mechanism and isolation boundary
+    between projects. They can be used to model organizational structure, departments, teams, or environments.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -533,7 +535,9 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-operations-api
   name: Google Cloud Platform Operations API
-  description: Long-running operations returned by Resource Manager API methods. Some methods return an Operation resource to track the progress of asynchronous requests.
+  description: >-
+    Long-running operations returned by Resource Manager API methods. Some methods return an Operation
+    resource to track the progress of asynchronous requests.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags: []
@@ -1022,7 +1026,10 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-organizations-api
   name: Google Cloud Platform Organizations API
-  description: Manage Google Cloud organizations. An organization is the root node in the Google Cloud resource hierarchy, typically representing a company or business entity. Organizations are tied to a Google Workspace or Cloud Identity account.
+  description: >-
+    Manage Google Cloud organizations. An organization is the root node in the Google Cloud resource hierarchy,
+    typically representing a company or business entity. Organizations are tied to a Google Workspace
+    or Cloud Identity account.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -1512,7 +1519,10 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-projects-api
   name: Google Cloud Platform Projects API
-  description: Manage Google Cloud projects. A project is the base-level organizing entity in Google Cloud and is required to use most Google Cloud services. Projects contain resources and are associated with billing accounts.
+  description: >-
+    Manage Google Cloud projects. A project is the base-level organizing entity in Google Cloud and is
+    required to use most Google Cloud services. Projects contain resources and are associated with billing
+    accounts.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -2002,7 +2012,9 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-tagbindings-api
   name: Google Cloud Platform TagBindings API
-  description: Manage tag bindings that associate tag values with Google Cloud resources. Tag bindings connect tag values to specific resources in the hierarchy.
+  description: >-
+    Manage tag bindings that associate tag values with Google Cloud resources. Tag bindings connect tag
+    values to specific resources in the hierarchy.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -2490,7 +2502,9 @@ apis:
     url: https://cloud.google.com/memorystore/docs/redis/release-notes
 - aid: google-cloud-platform:google-cloud-platform-tagkeys-api
   name: Google Cloud Platform TagKeys API
-  description: Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace for tag values that can be attached to resources.
+  description: >-
+    Manage tag keys used to organize and categorize Google Cloud resources. Tag keys define the namespace
+    for tag values that can be attached to resources.
   humanURL: https://cloud.google.com/compute/
   baseURL: https://compute.googleapis.com
   tags:
@@ -2498,496 +2512,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-platform-tagkeys-api-openapi.yml
-  - type: Documentation
-    url: https://cloud.google.com/compute/docs/reference/rest/v1
-  - type: Authentication
-    url: https://cloud.google.com/docs/authentication
-  - type: Pricing
-    url: https://cloud.google.com/compute/pricing
-  - type: Console
-    url: https://console.cloud.google.com/compute
-  - type: GettingStarted
-    url: https://cloud.google.com/compute/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/compute/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/compute/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/compute/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/storage/docs/json_api
-  - type: Authentication
-    url: https://cloud.google.com/storage/docs/authentication
-  - type: Pricing
-    url: https://cloud.google.com/storage/pricing
-  - type: Console
-    url: https://console.cloud.google.com/storage
-  - type: GettingStarted
-    url: https://cloud.google.com/storage/docs/quickstart-console
-  - type: SDKs
-    url: https://cloud.google.com/storage/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/storage/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/storage/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/functions/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/functions/pricing
-  - type: Console
-    url: https://console.cloud.google.com/functions
-  - type: GettingStarted
-    url: https://cloud.google.com/functions/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/functions/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/functions/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/functions/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/kubernetes-engine/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/kubernetes-engine/pricing
-  - type: Console
-    url: https://console.cloud.google.com/kubernetes
-  - type: GettingStarted
-    url: https://cloud.google.com/kubernetes-engine/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/kubernetes-engine/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/kubernetes-engine/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/kubernetes-engine/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/bigquery/docs/reference/rest
-  - type: Authentication
-    url: https://cloud.google.com/bigquery/docs/authentication
-  - type: Pricing
-    url: https://cloud.google.com/bigquery/pricing
-  - type: Console
-    url: https://console.cloud.google.com/bigquery
-  - type: GettingStarted
-    url: https://cloud.google.com/bigquery/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/bigquery/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/bigquery/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/bigquery/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/pubsub/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/pubsub/pricing
-  - type: Console
-    url: https://console.cloud.google.com/cloudpubsub
-  - type: GettingStarted
-    url: https://cloud.google.com/pubsub/docs/quickstart-console
-  - type: SDKs
-    url: https://cloud.google.com/pubsub/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/pubsub/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/pubsub/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/vision/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/vision/pricing
-  - type: Console
-    url: https://console.cloud.google.com/apis/library/vision.googleapis.com
-  - type: GettingStarted
-    url: https://cloud.google.com/vision/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/vision/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/vision/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/vertex-ai/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/vertex-ai/pricing
-  - type: Console
-    url: https://console.cloud.google.com/vertex-ai
-  - type: GettingStarted
-    url: https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform
-  - type: SDKs
-    url: https://cloud.google.com/vertex-ai/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/vertex-ai/docs/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/vertex-ai/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/natural-language/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/natural-language/pricing
-  - type: Console
-    url: https://console.cloud.google.com/apis/library/language.googleapis.com
-  - type: GettingStarted
-    url: https://cloud.google.com/natural-language/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/natural-language/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/natural-language/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/speech-to-text/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/speech-to-text/pricing
-  - type: Console
-    url: https://console.cloud.google.com/apis/library/speech.googleapis.com
-  - type: GettingStarted
-    url: https://cloud.google.com/speech-to-text/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/speech-to-text/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/speech-to-text/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/translate/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/translate/pricing
-  - type: Console
-    url: https://console.cloud.google.com/apis/library/translate.googleapis.com
-  - type: GettingStarted
-    url: https://cloud.google.com/translate/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/translate/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/translate/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/run/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/run/pricing
-  - type: Console
-    url: https://console.cloud.google.com/run
-  - type: GettingStarted
-    url: https://cloud.google.com/run/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/run/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/run/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/run/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
-  - type: Pricing
-    url: https://cloud.google.com/sql/pricing
-  - type: Console
-    url: https://console.cloud.google.com/sql
-  - type: GettingStarted
-    url: https://cloud.google.com/sql/docs/mysql/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/sql/docs/mysql/apis
-  - type: RateLimits
-    url: https://cloud.google.com/sql/docs/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/sql/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/spanner/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/spanner/pricing
-  - type: Console
-    url: https://console.cloud.google.com/spanner
-  - type: GettingStarted
-    url: https://cloud.google.com/spanner/docs/quickstart-console
-  - type: SDKs
-    url: https://cloud.google.com/spanner/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/spanner/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/spanner/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/firestore/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/firestore/pricing
-  - type: Console
-    url: https://console.cloud.google.com/firestore
-  - type: GettingStarted
-    url: https://cloud.google.com/firestore/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/firestore/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/firestore/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/bigtable/docs/reference/admin/rest
-  - type: Pricing
-    url: https://cloud.google.com/bigtable/pricing
-  - type: Console
-    url: https://console.cloud.google.com/bigtable
-  - type: GettingStarted
-    url: https://cloud.google.com/bigtable/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/bigtable/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/bigtable/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/bigtable/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/iam/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/iam/pricing
-  - type: Console
-    url: https://console.cloud.google.com/iam-admin
-  - type: GettingStarted
-    url: https://cloud.google.com/iam/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/iam/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/iam/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/dns/docs/reference/rest/v1
-  - type: Pricing
-    url: https://cloud.google.com/dns/pricing
-  - type: Console
-    url: https://console.cloud.google.com/net-services/dns
-  - type: GettingStarted
-    url: https://cloud.google.com/dns/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/dns/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/dns/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/dns/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/logging/docs/reference/v2/rest
-  - type: Pricing
-    url: https://cloud.google.com/logging/pricing
-  - type: Console
-    url: https://console.cloud.google.com/logs
-  - type: GettingStarted
-    url: https://cloud.google.com/logging/docs/quickstart-sdk
-  - type: SDKs
-    url: https://cloud.google.com/logging/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/logging/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/logging/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/monitoring/api/ref_v3/rest
-  - type: Pricing
-    url: https://cloud.google.com/monitoring/pricing
-  - type: Console
-    url: https://console.cloud.google.com/monitoring
-  - type: GettingStarted
-    url: https://cloud.google.com/monitoring/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/monitoring/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/monitoring/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/monitoring/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/dataflow/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/dataflow/pricing
-  - type: Console
-    url: https://console.cloud.google.com/dataflow
-  - type: GettingStarted
-    url: https://cloud.google.com/dataflow/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/dataflow/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/dataflow/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/dataflow/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/dataproc/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/dataproc/pricing
-  - type: Console
-    url: https://console.cloud.google.com/dataproc
-  - type: GettingStarted
-    url: https://cloud.google.com/dataproc/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/dataproc/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/dataproc/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/dataproc/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/kms/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/kms/pricing
-  - type: Console
-    url: https://console.cloud.google.com/security/kms
-  - type: GettingStarted
-    url: https://cloud.google.com/kms/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/kms/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/kms/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/secret-manager/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/secret-manager/pricing
-  - type: Console
-    url: https://console.cloud.google.com/security/secret-manager
-  - type: GettingStarted
-    url: https://cloud.google.com/secret-manager/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/secret-manager/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/secret-manager/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/secret-manager/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/artifact-registry/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/artifact-registry/pricing
-  - type: Console
-    url: https://console.cloud.google.com/artifacts
-  - type: GettingStarted
-    url: https://cloud.google.com/artifact-registry/docs/quickstarts
-  - type: SDKs
-    url: https://cloud.google.com/artifact-registry/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/artifact-registry/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/build/docs/api/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/build/pricing
-  - type: Console
-    url: https://console.cloud.google.com/cloud-build
-  - type: GettingStarted
-    url: https://cloud.google.com/build/docs/quickstart-build
-  - type: SDKs
-    url: https://cloud.google.com/build/docs/api/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/build/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/resource-manager/reference/rest
-  - type: JSONSchema
-    url: json-schema/gcp-project-schema.json
-  - type: JSONLD
-    url: json-ld/google-cloud-platform-context.jsonld
-  - type: Pricing
-    url: https://cloud.google.com/resource-manager/pricing
-  - type: Console
-    url: https://console.cloud.google.com/cloud-resource-manager
-  - type: GettingStarted
-    url: https://cloud.google.com/resource-manager/docs/creating-managing-projects
-  - type: SDKs
-    url: https://cloud.google.com/resource-manager/docs/apis
-  - type: ReleaseNotes
-    url: https://cloud.google.com/resource-manager/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/tasks/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/tasks/pricing
-  - type: Console
-    url: https://console.cloud.google.com/cloudtasks
-  - type: GettingStarted
-    url: https://cloud.google.com/tasks/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/tasks/docs/reference/libraries
-  - type: RateLimits
-    url: https://cloud.google.com/tasks/docs/quotas
-  - type: ReleaseNotes
-    url: https://cloud.google.com/tasks/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/scheduler/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/scheduler/pricing
-  - type: Console
-    url: https://console.cloud.google.com/cloudscheduler
-  - type: GettingStarted
-    url: https://cloud.google.com/scheduler/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/scheduler/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/scheduler/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/text-to-speech/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/text-to-speech/pricing
-  - type: Console
-    url: https://console.cloud.google.com/apis/library/texttospeech.googleapis.com
-  - type: GettingStarted
-    url: https://cloud.google.com/text-to-speech/docs/quickstart-protocol
-  - type: SDKs
-    url: https://cloud.google.com/text-to-speech/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/text-to-speech/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/api-gateway/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/api-gateway/pricing
-  - type: Console
-    url: https://console.cloud.google.com/api-gateway
-  - type: GettingStarted
-    url: https://cloud.google.com/api-gateway/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/api-gateway/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/api-gateway/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/workflows/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/workflows/pricing
-  - type: Console
-    url: https://console.cloud.google.com/workflows
-  - type: GettingStarted
-    url: https://cloud.google.com/workflows/docs/quickstart-console
-  - type: SDKs
-    url: https://cloud.google.com/workflows/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/workflows/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/deploy/docs/api/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/deploy/pricing
-  - type: Console
-    url: https://console.cloud.google.com/deploy
-  - type: GettingStarted
-    url: https://cloud.google.com/deploy/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/deploy/docs/api
-  - type: ReleaseNotes
-    url: https://cloud.google.com/deploy/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3-overview
-  - type: Pricing
-    url: https://cloud.google.com/dialogflow/pricing
-  - type: Console
-    url: https://console.cloud.google.com/apis/library/dialogflow.googleapis.com
-  - type: GettingStarted
-    url: https://cloud.google.com/dialogflow/cx/docs/quick/setup
-  - type: SDKs
-    url: https://cloud.google.com/dialogflow/cx/docs/reference
-  - type: ReleaseNotes
-    url: https://cloud.google.com/dialogflow/cx/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/sensitive-data-protection/docs/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/sensitive-data-protection/pricing
-  - type: Console
-    url: https://console.cloud.google.com/security/sensitive-data-protection
-  - type: GettingStarted
-    url: https://cloud.google.com/sensitive-data-protection/docs/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/sensitive-data-protection/docs/reference/libraries
-  - type: ReleaseNotes
-    url: https://cloud.google.com/sensitive-data-protection/docs/release-notes
-  - type: Documentation
-    url: https://cloud.google.com/memorystore/docs/redis/reference/rest
-  - type: Pricing
-    url: https://cloud.google.com/memorystore/docs/redis/pricing
-  - type: Console
-    url: https://console.cloud.google.com/memorystore/redis
-  - type: GettingStarted
-    url: https://cloud.google.com/memorystore/docs/redis/quickstart
-  - type: SDKs
-    url: https://cloud.google.com/memorystore/docs/redis/apis
-  - type: ReleaseNotes
-    url: https://cloud.google.com/memorystore/docs/redis/release-notes
-- aid: google-cloud-platform:google-cloud-platform-tagvalues-api
-  name: Google Cloud Platform TagValues API
-  description: Manage tag values associated with tag keys. Tag values are the specific labels that can be bound to resources through tag bindings.
-  humanURL: https://cloud.google.com/compute/
-  baseURL: https://compute.googleapis.com
-  tags:
-  - Tag Values
-  tags_raw:
-  - TagValues
-  properties:
-  - type: OpenAPI
-    url: openapi/google-cloud-platform-tagvalues-api-openapi.yml
   - type: Documentation
     url: https://cloud.google.com/compute/docs/reference/rest/v1
   - type: Authentication
@@ -3486,6 +3010,496 @@ apis:
     url: https://cloud.google.com/vertex-ai/pricing
   - type: Console
     url: https://console.cloud.google.com/vertex-ai
+- aid: google-cloud-platform:google-cloud-platform-tag-values-api
+  name: Google Cloud Platform Tag Values API
+  description: >-
+    Manage tag values associated with tag keys. Tag values are the specific labels that can be bound to
+    resources through tag bindings.
+  humanURL: https://cloud.google.com/compute/
+  baseURL: https://compute.googleapis.com
+  tags:
+  - Tag Values
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-platform-tag-values-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/compute/docs/reference/rest/v1
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/compute/pricing
+  - type: Console
+    url: https://console.cloud.google.com/compute
+  - type: GettingStarted
+    url: https://cloud.google.com/compute/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/compute/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/compute/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/compute/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: Console
+    url: https://console.cloud.google.com/storage
+  - type: GettingStarted
+    url: https://cloud.google.com/storage/docs/quickstart-console
+  - type: SDKs
+    url: https://cloud.google.com/storage/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/storage/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/functions/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/functions/pricing
+  - type: Console
+    url: https://console.cloud.google.com/functions
+  - type: GettingStarted
+    url: https://cloud.google.com/functions/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/functions/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/functions/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/functions/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/kubernetes-engine/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/kubernetes-engine/pricing
+  - type: Console
+    url: https://console.cloud.google.com/kubernetes
+  - type: GettingStarted
+    url: https://cloud.google.com/kubernetes-engine/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/kubernetes-engine/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/kubernetes-engine/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/kubernetes-engine/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/bigquery/docs/reference/rest
+  - type: Authentication
+    url: https://cloud.google.com/bigquery/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/bigquery/pricing
+  - type: Console
+    url: https://console.cloud.google.com/bigquery
+  - type: GettingStarted
+    url: https://cloud.google.com/bigquery/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/bigquery/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/bigquery/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/bigquery/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/pubsub/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/pubsub/pricing
+  - type: Console
+    url: https://console.cloud.google.com/cloudpubsub
+  - type: GettingStarted
+    url: https://cloud.google.com/pubsub/docs/quickstart-console
+  - type: SDKs
+    url: https://cloud.google.com/pubsub/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/pubsub/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/pubsub/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/vision/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/vision/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/vision.googleapis.com
+  - type: GettingStarted
+    url: https://cloud.google.com/vision/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/vision/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/vision/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/vertex-ai/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/vertex-ai/pricing
+  - type: Console
+    url: https://console.cloud.google.com/vertex-ai
+  - type: GettingStarted
+    url: https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform
+  - type: SDKs
+    url: https://cloud.google.com/vertex-ai/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/vertex-ai/docs/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/vertex-ai/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/natural-language/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/natural-language/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/language.googleapis.com
+  - type: GettingStarted
+    url: https://cloud.google.com/natural-language/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/natural-language/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/natural-language/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/speech-to-text/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/speech-to-text/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/speech.googleapis.com
+  - type: GettingStarted
+    url: https://cloud.google.com/speech-to-text/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/speech-to-text/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/speech-to-text/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/translate/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/translate/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/translate.googleapis.com
+  - type: GettingStarted
+    url: https://cloud.google.com/translate/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/translate/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/translate/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/run/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/run/pricing
+  - type: Console
+    url: https://console.cloud.google.com/run
+  - type: GettingStarted
+    url: https://cloud.google.com/run/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/run/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/run/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/run/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/sql/docs/mysql/admin-api/rest
+  - type: Pricing
+    url: https://cloud.google.com/sql/pricing
+  - type: Console
+    url: https://console.cloud.google.com/sql
+  - type: GettingStarted
+    url: https://cloud.google.com/sql/docs/mysql/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/sql/docs/mysql/apis
+  - type: RateLimits
+    url: https://cloud.google.com/sql/docs/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/sql/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/spanner/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/spanner/pricing
+  - type: Console
+    url: https://console.cloud.google.com/spanner
+  - type: GettingStarted
+    url: https://cloud.google.com/spanner/docs/quickstart-console
+  - type: SDKs
+    url: https://cloud.google.com/spanner/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/spanner/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/spanner/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/firestore/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/firestore/pricing
+  - type: Console
+    url: https://console.cloud.google.com/firestore
+  - type: GettingStarted
+    url: https://cloud.google.com/firestore/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/firestore/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/firestore/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/bigtable/docs/reference/admin/rest
+  - type: Pricing
+    url: https://cloud.google.com/bigtable/pricing
+  - type: Console
+    url: https://console.cloud.google.com/bigtable
+  - type: GettingStarted
+    url: https://cloud.google.com/bigtable/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/bigtable/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/bigtable/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/bigtable/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/iam/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/iam/pricing
+  - type: Console
+    url: https://console.cloud.google.com/iam-admin
+  - type: GettingStarted
+    url: https://cloud.google.com/iam/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/iam/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/iam/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/dns/docs/reference/rest/v1
+  - type: Pricing
+    url: https://cloud.google.com/dns/pricing
+  - type: Console
+    url: https://console.cloud.google.com/net-services/dns
+  - type: GettingStarted
+    url: https://cloud.google.com/dns/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/dns/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/dns/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/dns/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/logging/docs/reference/v2/rest
+  - type: Pricing
+    url: https://cloud.google.com/logging/pricing
+  - type: Console
+    url: https://console.cloud.google.com/logs
+  - type: GettingStarted
+    url: https://cloud.google.com/logging/docs/quickstart-sdk
+  - type: SDKs
+    url: https://cloud.google.com/logging/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/logging/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/logging/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/monitoring/api/ref_v3/rest
+  - type: Pricing
+    url: https://cloud.google.com/monitoring/pricing
+  - type: Console
+    url: https://console.cloud.google.com/monitoring
+  - type: GettingStarted
+    url: https://cloud.google.com/monitoring/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/monitoring/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/monitoring/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/monitoring/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/dataflow/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/dataflow/pricing
+  - type: Console
+    url: https://console.cloud.google.com/dataflow
+  - type: GettingStarted
+    url: https://cloud.google.com/dataflow/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/dataflow/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/dataflow/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/dataflow/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/dataproc/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/dataproc/pricing
+  - type: Console
+    url: https://console.cloud.google.com/dataproc
+  - type: GettingStarted
+    url: https://cloud.google.com/dataproc/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/dataproc/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/dataproc/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/dataproc/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/kms/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/kms/pricing
+  - type: Console
+    url: https://console.cloud.google.com/security/kms
+  - type: GettingStarted
+    url: https://cloud.google.com/kms/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/kms/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/kms/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/secret-manager/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/secret-manager/pricing
+  - type: Console
+    url: https://console.cloud.google.com/security/secret-manager
+  - type: GettingStarted
+    url: https://cloud.google.com/secret-manager/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/secret-manager/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/secret-manager/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/secret-manager/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/artifact-registry/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/artifact-registry/pricing
+  - type: Console
+    url: https://console.cloud.google.com/artifacts
+  - type: GettingStarted
+    url: https://cloud.google.com/artifact-registry/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/artifact-registry/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/artifact-registry/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/build/docs/api/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/build/pricing
+  - type: Console
+    url: https://console.cloud.google.com/cloud-build
+  - type: GettingStarted
+    url: https://cloud.google.com/build/docs/quickstart-build
+  - type: SDKs
+    url: https://cloud.google.com/build/docs/api/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/build/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/resource-manager/reference/rest
+  - type: JSONSchema
+    url: json-schema/gcp-project-schema.json
+  - type: JSONLD
+    url: json-ld/google-cloud-platform-context.jsonld
+  - type: Pricing
+    url: https://cloud.google.com/resource-manager/pricing
+  - type: Console
+    url: https://console.cloud.google.com/cloud-resource-manager
+  - type: GettingStarted
+    url: https://cloud.google.com/resource-manager/docs/creating-managing-projects
+  - type: SDKs
+    url: https://cloud.google.com/resource-manager/docs/apis
+  - type: ReleaseNotes
+    url: https://cloud.google.com/resource-manager/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/tasks/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/tasks/pricing
+  - type: Console
+    url: https://console.cloud.google.com/cloudtasks
+  - type: GettingStarted
+    url: https://cloud.google.com/tasks/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/tasks/docs/reference/libraries
+  - type: RateLimits
+    url: https://cloud.google.com/tasks/docs/quotas
+  - type: ReleaseNotes
+    url: https://cloud.google.com/tasks/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/scheduler/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/scheduler/pricing
+  - type: Console
+    url: https://console.cloud.google.com/cloudscheduler
+  - type: GettingStarted
+    url: https://cloud.google.com/scheduler/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/scheduler/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/scheduler/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/text-to-speech/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/text-to-speech/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/texttospeech.googleapis.com
+  - type: GettingStarted
+    url: https://cloud.google.com/text-to-speech/docs/quickstart-protocol
+  - type: SDKs
+    url: https://cloud.google.com/text-to-speech/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/text-to-speech/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/api-gateway/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/api-gateway/pricing
+  - type: Console
+    url: https://console.cloud.google.com/api-gateway
+  - type: GettingStarted
+    url: https://cloud.google.com/api-gateway/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/api-gateway/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/api-gateway/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/workflows/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/workflows/pricing
+  - type: Console
+    url: https://console.cloud.google.com/workflows
+  - type: GettingStarted
+    url: https://cloud.google.com/workflows/docs/quickstart-console
+  - type: SDKs
+    url: https://cloud.google.com/workflows/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/workflows/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/deploy/docs/api/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/deploy/pricing
+  - type: Console
+    url: https://console.cloud.google.com/deploy
+  - type: GettingStarted
+    url: https://cloud.google.com/deploy/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/deploy/docs/api
+  - type: ReleaseNotes
+    url: https://cloud.google.com/deploy/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3-overview
+  - type: Pricing
+    url: https://cloud.google.com/dialogflow/pricing
+  - type: Console
+    url: https://console.cloud.google.com/apis/library/dialogflow.googleapis.com
+  - type: GettingStarted
+    url: https://cloud.google.com/dialogflow/cx/docs/quick/setup
+  - type: SDKs
+    url: https://cloud.google.com/dialogflow/cx/docs/reference
+  - type: ReleaseNotes
+    url: https://cloud.google.com/dialogflow/cx/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/sensitive-data-protection/docs/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/sensitive-data-protection/pricing
+  - type: Console
+    url: https://console.cloud.google.com/security/sensitive-data-protection
+  - type: GettingStarted
+    url: https://cloud.google.com/sensitive-data-protection/docs/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/sensitive-data-protection/docs/reference/libraries
+  - type: ReleaseNotes
+    url: https://cloud.google.com/sensitive-data-protection/docs/release-notes
+  - type: Documentation
+    url: https://cloud.google.com/memorystore/docs/redis/reference/rest
+  - type: Pricing
+    url: https://cloud.google.com/memorystore/docs/redis/pricing
+  - type: Console
+    url: https://console.cloud.google.com/memorystore/redis
+  - type: GettingStarted
+    url: https://cloud.google.com/memorystore/docs/redis/quickstart
+  - type: SDKs
+    url: https://cloud.google.com/memorystore/docs/redis/apis
+  - type: ReleaseNotes
+    url: https://cloud.google.com/memorystore/docs/redis/release-notes
 include:
 - name: Google Cloud API Common Resources
   url: https://cloud.google.com/apis/design/resources
