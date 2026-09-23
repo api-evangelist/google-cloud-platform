@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders Projects API
+  title: Google Cloud Platform Google Cloud Resource Manager…
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -911,32 +911,75 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SetIamPolicyRequest:
+    Status:
       type: object
-      description: Request message for SetIamPolicy method.
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
       properties:
-        policy:
-          $ref: '#/components/schemas/Policy'
-        updateMask:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
           type: string
-          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
+          description: A developer-facing error message in English.
           example: example_value
-      required:
-      - policy
-    SearchProjectsResponse:
-      type: object
-      description: Response message for searching projects.
-      properties:
-        projects:
+        details:
           type: array
-          description: The list of projects matching the search criteria.
+          description: A list of messages that carry the error details.
           items:
-            $ref: '#/components/schemas/Project'
+            type: object
+            additionalProperties: true
           example: []
-        nextPageToken:
+    UndeleteProjectRequest:
+      type: object
+      description: Request message for undeleting a project.
+      properties: {}
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
           type: string
-          description: Pagination token for the next page of results.
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
           example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    Binding:
+      type: object
+      description: Associates members with a role.
+      properties:
+        role:
+          type: string
+          description: 'The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.'
+          examples:
+          - roles/resourcemanager.projectViewer
+        members:
+          type: array
+          description: The identities requesting access. Supports user, serviceAccount, group, and domain members.
+          items:
+            type: string
+          examples:
+          - - user:alice@example.com
+            - serviceAccount:my-sa@project.iam.gserviceaccount.com
+            - group:admins@example.com
+            - domain:example.com
+        condition:
+          $ref: '#/components/schemas/Expr'
     Project:
       type: object
       description: A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google Cloud Platform resources. Projects are the base-level organizing entity and are required to use service-level resources.
@@ -1007,43 +1050,6 @@ components:
           examples:
           - env: production
             team: backend
-    GetIamPolicyRequest:
-      type: object
-      description: Request message for GetIamPolicy method.
-      properties:
-        options:
-          type: object
-          description: Optional options for the request.
-          properties:
-            requestedPolicyVersion:
-              type: integer
-              format: int32
-              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
-          example: example_value
-    UndeleteProjectRequest:
-      type: object
-      description: Request message for undeleting a project.
-      properties: {}
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
     Policy:
       type: object
       description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
@@ -1063,6 +1069,33 @@ components:
           type: string
           format: byte
           description: etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.
+          example: example_value
+    GetIamPolicyRequest:
+      type: object
+      description: Request message for GetIamPolicy method.
+      properties:
+        options:
+          type: object
+          description: Optional options for the request.
+          properties:
+            requestedPolicyVersion:
+              type: integer
+              format: int32
+              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+          example: example_value
+    ListProjectsResponse:
+      type: object
+      description: Response message for listing projects.
+      properties:
+        projects:
+          type: array
+          description: The list of projects under the specified parent.
+          items:
+            $ref: '#/components/schemas/Project'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token to retrieve the next page of results. Empty if there are no more results.
           example: example_value
     Expr:
       type: object
@@ -1084,65 +1117,32 @@ components:
           type: string
           description: An optional string indicating the location of the expression for error reporting.
           example: example_value
-    ListProjectsResponse:
+    SearchProjectsResponse:
       type: object
-      description: Response message for listing projects.
+      description: Response message for searching projects.
       properties:
         projects:
           type: array
-          description: The list of projects under the specified parent.
+          description: The list of projects matching the search criteria.
           items:
             $ref: '#/components/schemas/Project'
           example: []
         nextPageToken:
           type: string
-          description: Pagination token to retrieve the next page of results. Empty if there are no more results.
+          description: Pagination token for the next page of results.
           example: example_value
-    Operation:
+    SetIamPolicyRequest:
       type: object
-      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      description: Request message for SetIamPolicy method.
       properties:
-        name:
+        policy:
+          $ref: '#/components/schemas/Policy'
+        updateMask:
           type: string
-          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
-          example: Example Title
-        metadata:
-          type: object
-          description: Service-specific metadata associated with the operation.
-          additionalProperties: true
+          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
           example: example_value
-        done:
-          type: boolean
-          description: If true, the operation is complete and either error or response is available.
-          example: true
-        error:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          description: The normal response of the operation. Contains the result on success.
-          additionalProperties: true
-          example: example_value
-    Binding:
-      type: object
-      description: Associates members with a role.
-      properties:
-        role:
-          type: string
-          description: 'The role that is assigned to the list of members. Example: roles/resourcemanager.projectViewer.'
-          examples:
-          - roles/resourcemanager.projectViewer
-        members:
-          type: array
-          description: The identities requesting access. Supports user, serviceAccount, group, and domain members.
-          items:
-            type: string
-          examples:
-          - - user:alice@example.com
-            - serviceAccount:my-sa@project.iam.gserviceaccount.com
-            - group:admins@example.com
-            - domain:example.com
-        condition:
-          $ref: '#/components/schemas/Expr'
+      required:
+      - policy
   securitySchemes:
     oauth2:
       type: oauth2

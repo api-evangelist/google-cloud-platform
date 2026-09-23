@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders API
+  title: Google Cloud Platform Google Cloud Resource Manager Folders…
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -786,32 +786,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MoveFolderRequest:
+    Status:
       type: object
-      description: Request message for moving a folder.
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
       properties:
-        destinationParent:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
           type: string
-          description: The resource name of the folder or organization which should be the new parent of the folder.
-          examples:
-          - folders/654321
-          - organizations/987654321
-      required:
-      - destinationParent
-    ListFoldersResponse:
-      type: object
-      description: Response message for listing folders.
-      properties:
-        folders:
-          type: array
-          description: The list of folders under the specified parent.
-          items:
-            $ref: '#/components/schemas/Folder'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
+          description: A developer-facing error message in English.
           example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
     Folder:
       type: object
       description: A folder in the Google Cloud resource hierarchy. Folders can contain projects and other folders, allowing users to group resources and apply policies hierarchically. Folders can be up to 10 levels deep.
@@ -866,40 +860,6 @@ components:
           description: A checksum computed by the server based on the current value of the folder resource.
           readOnly: true
           example: example_value
-    SearchFoldersResponse:
-      type: object
-      description: Response message for searching folders.
-      properties:
-        folders:
-          type: array
-          description: The list of folders matching the search criteria.
-          items:
-            $ref: '#/components/schemas/Folder'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
     UndeleteFolderRequest:
       type: object
       description: Request message for undeleting a folder.
@@ -927,6 +887,46 @@ components:
           type: object
           description: The normal response of the operation. Contains the result on success.
           additionalProperties: true
+          example: example_value
+    MoveFolderRequest:
+      type: object
+      description: Request message for moving a folder.
+      properties:
+        destinationParent:
+          type: string
+          description: The resource name of the folder or organization which should be the new parent of the folder.
+          examples:
+          - folders/654321
+          - organizations/987654321
+      required:
+      - destinationParent
+    SearchFoldersResponse:
+      type: object
+      description: Response message for searching folders.
+      properties:
+        folders:
+          type: array
+          description: The list of folders matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Folder'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    ListFoldersResponse:
+      type: object
+      description: Response message for listing folders.
+      properties:
+        folders:
+          type: array
+          description: The list of folders under the specified parent.
+          items:
+            $ref: '#/components/schemas/Folder'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
           example: example_value
   securitySchemes:
     oauth2:

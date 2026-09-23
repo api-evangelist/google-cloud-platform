@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders Tag Values API
+  title: Google Cloud Platform Google Cloud Resource Manager Tag…
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -21,7 +21,7 @@ security:
 - oauth2:
   - https://www.googleapis.com/auth/cloud-platform.read-only
 tags:
-- name: TagValues
+- name: Tag Values
   description: Manage tag values associated with tag keys. Tag values are the specific labels that can be bound to resources through tag bindings.
 paths:
   /v3/tagValues:
@@ -30,7 +30,7 @@ paths:
       summary: Google Cloud Platform List Tag Values
       description: Lists all tag values for a specified tag key. The caller must have the resourcemanager.tagValues.list permission on the parent tag key.
       tags:
-      - TagValues
+      - Tag Values
       parameters:
       - name: parent
         in: query
@@ -112,7 +112,7 @@ paths:
       summary: Google Cloud Platform Create a Tag Value
       description: Creates a tag value as a child of the specified tag key. The caller must have the resourcemanager.tagValues.create permission on the parent tag key.
       tags:
-      - TagValues
+      - Tag Values
       requestBody:
         required: true
         content:
@@ -203,64 +203,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Operation:
-      type: object
-      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
-      properties:
-        name:
-          type: string
-          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
-          example: Example Title
-        metadata:
-          type: object
-          description: Service-specific metadata associated with the operation.
-          additionalProperties: true
-          example: example_value
-        done:
-          type: boolean
-          description: If true, the operation is complete and either error or response is available.
-          example: true
-        error:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          description: The normal response of the operation. Contains the result on success.
-          additionalProperties: true
-          example: example_value
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
-    ListTagValuesResponse:
-      type: object
-      description: Response message for listing tag values.
-      properties:
-        tagValues:
-          type: array
-          description: The list of tag values.
-          items:
-            $ref: '#/components/schemas/TagValue'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
     TagValue:
       type: object
       description: A tag value, which is a child of a tag key. Tag values are the specific labels that can be attached to resources through tag bindings.
@@ -305,6 +247,64 @@ components:
           type: string
           description: Entity tag for optimistic concurrency control.
           readOnly: true
+          example: example_value
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
+          type: string
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
+          example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    ListTagValuesResponse:
+      type: object
+      description: Response message for listing tag values.
+      properties:
+        tagValues:
+          type: array
+          description: The list of tag values.
+          items:
+            $ref: '#/components/schemas/TagValue'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
           example: example_value
   securitySchemes:
     oauth2:

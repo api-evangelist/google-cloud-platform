@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders Operations API
+  title: Google Cloud Platform Google Cloud Resource Manager…
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -95,6 +95,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
     Operation:
       type: object
       description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
@@ -119,26 +139,6 @@ components:
           description: The normal response of the operation. Contains the result on success.
           additionalProperties: true
           example: example_value
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
   securitySchemes:
     oauth2:
       type: oauth2

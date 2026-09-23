@@ -1,13 +1,7 @@
 {
   "provider": "google-cloud-platform",
   "sources": [
-    "google-cloud-platform-folders-api-openapi.yml",
-    "google-cloud-platform-operations-api-openapi.yml",
-    "google-cloud-platform-organizations-api-openapi.yml",
-    "google-cloud-platform-projects-api-openapi.yml",
-    "google-cloud-platform-tagbindings-api-openapi.yml",
-    "google-cloud-platform-tagkeys-api-openapi.yml",
-    "google-cloud-platform-tagvalues-api-openapi.yml"
+    "_original/cloud-resource-manager-openapi.yml"
   ],
   "outputs": [
     "google-cloud-platform-folders-api-openapi.yml",
@@ -18,18 +12,24 @@
     "google-cloud-platform-tagkeys-api-openapi.yml",
     "google-cloud-platform-tagvalues-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "google-cloud-platform-folders-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-platform-operations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-platform-organizations-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-platform-projects-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-platform-tagbindings-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-platform-tagkeys-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-cloud-platform-tagvalues-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cloud-resource-manager-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: google-cloud-platform-tag-values-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 8 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "google-cloud-platform-folders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-platform-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-platform-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-platform-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-platform-tag-values-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-platform-tagbindings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-cloud-platform-tagkeys-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

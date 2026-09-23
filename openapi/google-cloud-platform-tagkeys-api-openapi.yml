@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders Tag Keys API
+  title: Google Cloud Platform Google Cloud Resource Manager Tag…
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -203,44 +203,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Operation:
+    Status:
       type: object
-      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
       properties:
-        name:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
           type: string
-          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
-          example: Example Title
-        metadata:
-          type: object
-          description: Service-specific metadata associated with the operation.
-          additionalProperties: true
+          description: A developer-facing error message in English.
           example: example_value
-        done:
-          type: boolean
-          description: If true, the operation is complete and either error or response is available.
-          example: true
-        error:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          description: The normal response of the operation. Contains the result on success.
-          additionalProperties: true
-          example: example_value
-    ListTagKeysResponse:
-      type: object
-      description: Response message for listing tag keys.
-      properties:
-        tagKeys:
+        details:
           type: array
-          description: The list of tag keys.
+          description: A list of messages that carry the error details.
           items:
-            $ref: '#/components/schemas/TagKey'
+            type: object
+            additionalProperties: true
           example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
     TagKey:
       type: object
       description: A tag key, used to group tag values. Tag keys define namespaces for tag values that can be attached to resources for organization and policy purposes.
@@ -286,26 +268,44 @@ components:
           description: Entity tag for optimistic concurrency control.
           readOnly: true
           example: example_value
-    Status:
+    Operation:
       type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
       properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
+        name:
           type: string
-          description: A developer-facing error message in English.
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
           example: example_value
-        details:
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
+    ListTagKeysResponse:
+      type: object
+      description: Response message for listing tag keys.
+      properties:
+        tagKeys:
           type: array
-          description: A list of messages that carry the error details.
+          description: The list of tag keys.
           items:
-            type: object
-            additionalProperties: true
+            $ref: '#/components/schemas/TagKey'
           example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

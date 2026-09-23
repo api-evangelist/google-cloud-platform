@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Platform Google Cloud Resource Manager Folders Organizations API
+  title: Google Cloud Platform Google Cloud Resource Manager…
   description: Programmatically manage Google Cloud projects, folders, and organizations. The Cloud Resource Manager API enables you to create, read, update, and delete projects, folders, and organizations in the Google Cloud resource hierarchy. It provides the foundation for organizing and governing Google Cloud resources through a hierarchical structure of organizations, folders, and projects.
   version: v3
   termsOfService: https://cloud.google.com/terms
@@ -366,45 +366,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SetIamPolicyRequest:
-      type: object
-      description: Request message for SetIamPolicy method.
-      properties:
-        policy:
-          $ref: '#/components/schemas/Policy'
-        updateMask:
-          type: string
-          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
-          example: example_value
-      required:
-      - policy
-    SearchOrganizationsResponse:
-      type: object
-      description: Response message for searching organizations.
-      properties:
-        organizations:
-          type: array
-          description: The list of organizations matching the search criteria.
-          items:
-            $ref: '#/components/schemas/Organization'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
-    GetIamPolicyRequest:
-      type: object
-      description: Request message for GetIamPolicy method.
-      properties:
-        options:
-          type: object
-          description: Optional options for the request.
-          properties:
-            requestedPolicyVersion:
-              type: integer
-              format: int32
-              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
-          example: example_value
     Status:
       type: object
       description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
@@ -425,46 +386,6 @@ components:
             type: object
             additionalProperties: true
           example: []
-    Policy:
-      type: object
-      description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
-      properties:
-        version:
-          type: integer
-          format: int32
-          description: Specifies the format of the policy. Valid values are 0, 1, and 3. Version 3 supports conditional role bindings.
-          example: 10
-        bindings:
-          type: array
-          description: Associates a list of members to a role, optionally with a condition.
-          items:
-            $ref: '#/components/schemas/Binding'
-          example: []
-        etag:
-          type: string
-          format: byte
-          description: etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.
-          example: example_value
-    Expr:
-      type: object
-      description: Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.
-      properties:
-        expression:
-          type: string
-          description: 'The CEL expression string. Example: request.time < timestamp("2024-01-01T00:00:00Z").'
-          example: example_value
-        title:
-          type: string
-          description: An optional title for the expression.
-          example: Example Title
-        description:
-          type: string
-          description: An optional description of the expression.
-          example: A sample description.
-        location:
-          type: string
-          description: An optional string indicating the location of the expression for error reporting.
-          example: example_value
     Binding:
       type: object
       description: Associates members with a role.
@@ -539,6 +460,85 @@ components:
           description: A checksum computed by the server based on the current value of the organization resource.
           readOnly: true
           example: example_value
+    Policy:
+      type: object
+      description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
+      properties:
+        version:
+          type: integer
+          format: int32
+          description: Specifies the format of the policy. Valid values are 0, 1, and 3. Version 3 supports conditional role bindings.
+          example: 10
+        bindings:
+          type: array
+          description: Associates a list of members to a role, optionally with a condition.
+          items:
+            $ref: '#/components/schemas/Binding'
+          example: []
+        etag:
+          type: string
+          format: byte
+          description: etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.
+          example: example_value
+    GetIamPolicyRequest:
+      type: object
+      description: Request message for GetIamPolicy method.
+      properties:
+        options:
+          type: object
+          description: Optional options for the request.
+          properties:
+            requestedPolicyVersion:
+              type: integer
+              format: int32
+              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+          example: example_value
+    SearchOrganizationsResponse:
+      type: object
+      description: Response message for searching organizations.
+      properties:
+        organizations:
+          type: array
+          description: The list of organizations matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Organization'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    Expr:
+      type: object
+      description: Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.
+      properties:
+        expression:
+          type: string
+          description: 'The CEL expression string. Example: request.time < timestamp("2024-01-01T00:00:00Z").'
+          example: example_value
+        title:
+          type: string
+          description: An optional title for the expression.
+          example: Example Title
+        description:
+          type: string
+          description: An optional description of the expression.
+          example: A sample description.
+        location:
+          type: string
+          description: An optional string indicating the location of the expression for error reporting.
+          example: example_value
+    SetIamPolicyRequest:
+      type: object
+      description: Request message for SetIamPolicy method.
+      properties:
+        policy:
+          $ref: '#/components/schemas/Policy'
+        updateMask:
+          type: string
+          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
+          example: example_value
+      required:
+      - policy
   securitySchemes:
     oauth2:
       type: oauth2
