@@ -37,11 +37,13 @@ tags:
 - Cloud Computing
 - Infrastructure
 - Platform-as-a-Service
+- A2A
 tags_raw:
 - API Management
 - Cloud Computing
 - Infrastructure
 - Platform as a Service
+- A2A
 apis:
 - aid: google-cloud-platform:google-cloud-platform-folders-api
   name: Google Cloud Platform Folders API
@@ -2997,12 +2999,13 @@ apis:
   baseUrl: https://aiplatform.googleapis.com/v1
   tags:
   - Artificial Intelligence
-  - Machine-Learning
+  - Machine Learning
   - MLOps
   tags_raw:
   - AI
   - Machine Learning
   - MLOps
+  - Machine-Learning
   properties:
   - type: Documentation
     url: https://cloud.google.com/vertex-ai/docs/reference/rest

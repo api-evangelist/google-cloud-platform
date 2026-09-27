@@ -223,6 +223,20 @@ components:
             type: object
             additionalProperties: true
           example: []
+    ListTagKeysResponse:
+      type: object
+      description: Response message for listing tag keys.
+      properties:
+        tagKeys:
+          type: array
+          description: The list of tag keys.
+          items:
+            $ref: '#/components/schemas/TagKey'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
     TagKey:
       type: object
       description: A tag key, used to group tag values. Tag keys define namespaces for tag values that can be attached to resources for organization and policy purposes.
@@ -291,20 +305,6 @@ components:
           type: object
           description: The normal response of the operation. Contains the result on success.
           additionalProperties: true
-          example: example_value
-    ListTagKeysResponse:
-      type: object
-      description: Response message for listing tag keys.
-      properties:
-        tagKeys:
-          type: array
-          description: The list of tag keys.
-          items:
-            $ref: '#/components/schemas/TagKey'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
           example: example_value
   securitySchemes:
     oauth2:

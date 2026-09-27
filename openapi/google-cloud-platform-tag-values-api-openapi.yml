@@ -203,6 +203,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
     TagValue:
       type: object
       description: A tag value, which is a child of a tag key. Tag values are the specific labels that can be attached to resources through tag bindings.
@@ -248,26 +268,6 @@ components:
           description: Entity tag for optimistic concurrency control.
           readOnly: true
           example: example_value
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
     Operation:
       type: object
       description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
