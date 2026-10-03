@@ -911,10 +911,103 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Status:
+      type: object
+      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The status code, which should be an enum value of google.rpc.Code.
+          example: 10
+        message:
+          type: string
+          description: A developer-facing error message in English.
+          example: example_value
+        details:
+          type: array
+          description: A list of messages that carry the error details.
+          items:
+            type: object
+            additionalProperties: true
+          example: []
+    Expr:
+      type: object
+      description: Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.
+      properties:
+        expression:
+          type: string
+          description: 'The CEL expression string. Example: request.time < timestamp("2024-01-01T00:00:00Z").'
+          example: example_value
+        title:
+          type: string
+          description: An optional title for the expression.
+          example: Example Title
+        description:
+          type: string
+          description: An optional description of the expression.
+          example: A sample description.
+        location:
+          type: string
+          description: An optional string indicating the location of the expression for error reporting.
+          example: example_value
+    SearchProjectsResponse:
+      type: object
+      description: Response message for searching projects.
+      properties:
+        projects:
+          type: array
+          description: The list of projects matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Project'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    SetIamPolicyRequest:
+      type: object
+      description: Request message for SetIamPolicy method.
+      properties:
+        policy:
+          $ref: '#/components/schemas/Policy'
+        updateMask:
+          type: string
+          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
+          example: example_value
+      required:
+      - policy
+    GetIamPolicyRequest:
+      type: object
+      description: Request message for GetIamPolicy method.
+      properties:
+        options:
+          type: object
+          description: Optional options for the request.
+          properties:
+            requestedPolicyVersion:
+              type: integer
+              format: int32
+              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
+          example: example_value
     UndeleteProjectRequest:
       type: object
       description: Request message for undeleting a project.
       properties: {}
+    ListProjectsResponse:
+      type: object
+      description: Response message for listing projects.
+      properties:
+        projects:
+          type: array
+          description: The list of projects under the specified parent.
+          items:
+            $ref: '#/components/schemas/Project'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token to retrieve the next page of results. Empty if there are no more results.
+          example: example_value
     Binding:
       type: object
       description: Associates members with a role.
@@ -936,19 +1029,6 @@ components:
             - domain:example.com
         condition:
           $ref: '#/components/schemas/Expr'
-    GetIamPolicyRequest:
-      type: object
-      description: Request message for GetIamPolicy method.
-      properties:
-        options:
-          type: object
-          description: Optional options for the request.
-          properties:
-            requestedPolicyVersion:
-              type: integer
-              format: int32
-              description: The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3.
-          example: example_value
     Policy:
       type: object
       description: An Identity and Access Management (IAM) policy which specifies access controls for Google Cloud resources. A Policy is a collection of bindings that associate members with roles.
@@ -969,18 +1049,6 @@ components:
           format: byte
           description: etag is used for optimistic concurrency control to help prevent simultaneous updates of a policy from overwriting each other.
           example: example_value
-    SetIamPolicyRequest:
-      type: object
-      description: Request message for SetIamPolicy method.
-      properties:
-        policy:
-          $ref: '#/components/schemas/Policy'
-        updateMask:
-          type: string
-          description: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified.
-          example: example_value
-      required:
-      - policy
     Operation:
       type: object
       description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
@@ -1075,74 +1143,6 @@ components:
           examples:
           - env: production
             team: backend
-    Status:
-      type: object
-      description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-          example: 10
-        message:
-          type: string
-          description: A developer-facing error message in English.
-          example: example_value
-        details:
-          type: array
-          description: A list of messages that carry the error details.
-          items:
-            type: object
-            additionalProperties: true
-          example: []
-    ListProjectsResponse:
-      type: object
-      description: Response message for listing projects.
-      properties:
-        projects:
-          type: array
-          description: The list of projects under the specified parent.
-          items:
-            $ref: '#/components/schemas/Project'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token to retrieve the next page of results. Empty if there are no more results.
-          example: example_value
-    SearchProjectsResponse:
-      type: object
-      description: Response message for searching projects.
-      properties:
-        projects:
-          type: array
-          description: The list of projects matching the search criteria.
-          items:
-            $ref: '#/components/schemas/Project'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
-    Expr:
-      type: object
-      description: Represents a textual expression in the Common Expression Language (CEL) syntax. Used for conditional access policies.
-      properties:
-        expression:
-          type: string
-          description: 'The CEL expression string. Example: request.time < timestamp("2024-01-01T00:00:00Z").'
-          example: example_value
-        title:
-          type: string
-          description: An optional title for the expression.
-          example: Example Title
-        description:
-          type: string
-          description: An optional description of the expression.
-          example: A sample description.
-        location:
-          type: string
-          description: An optional string indicating the location of the expression for error reporting.
-          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

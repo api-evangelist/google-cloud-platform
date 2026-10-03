@@ -786,42 +786,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MoveFolderRequest:
-      type: object
-      description: Request message for moving a folder.
-      properties:
-        destinationParent:
-          type: string
-          description: The resource name of the folder or organization which should be the new parent of the folder.
-          examples:
-          - folders/654321
-          - organizations/987654321
-      required:
-      - destinationParent
-    Operation:
-      type: object
-      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
-      properties:
-        name:
-          type: string
-          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
-          example: Example Title
-        metadata:
-          type: object
-          description: Service-specific metadata associated with the operation.
-          additionalProperties: true
-          example: example_value
-        done:
-          type: boolean
-          description: If true, the operation is complete and either error or response is available.
-          example: true
-        error:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          description: The normal response of the operation. Contains the result on success.
-          additionalProperties: true
-          example: example_value
     Status:
       type: object
       description: The Status type defines a logical error model that is suitable for REST APIs. It is used to communicate error details from the API.
@@ -842,6 +806,32 @@ components:
             type: object
             additionalProperties: true
           example: []
+    SearchFoldersResponse:
+      type: object
+      description: Response message for searching folders.
+      properties:
+        folders:
+          type: array
+          description: The list of folders matching the search criteria.
+          items:
+            $ref: '#/components/schemas/Folder'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
+    MoveFolderRequest:
+      type: object
+      description: Request message for moving a folder.
+      properties:
+        destinationParent:
+          type: string
+          description: The resource name of the folder or organization which should be the new parent of the folder.
+          examples:
+          - folders/654321
+          - organizations/987654321
+      required:
+      - destinationParent
     Folder:
       type: object
       description: A folder in the Google Cloud resource hierarchy. Folders can contain projects and other folders, allowing users to group resources and apply policies hierarchically. Folders can be up to 10 levels deep.
@@ -896,24 +886,34 @@ components:
           description: A checksum computed by the server based on the current value of the folder resource.
           readOnly: true
           example: example_value
-    SearchFoldersResponse:
-      type: object
-      description: Response message for searching folders.
-      properties:
-        folders:
-          type: array
-          description: The list of folders matching the search criteria.
-          items:
-            $ref: '#/components/schemas/Folder'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
-          example: example_value
     UndeleteFolderRequest:
       type: object
       description: Request message for undeleting a folder.
       properties: {}
+    Operation:
+      type: object
+      description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
+      properties:
+        name:
+          type: string
+          description: The server-assigned name, which is only unique within the same service. Used to poll for the operation status.
+          example: Example Title
+        metadata:
+          type: object
+          description: Service-specific metadata associated with the operation.
+          additionalProperties: true
+          example: example_value
+        done:
+          type: boolean
+          description: If true, the operation is complete and either error or response is available.
+          example: true
+        error:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          description: The normal response of the operation. Contains the result on success.
+          additionalProperties: true
+          example: example_value
     ListFoldersResponse:
       type: object
       description: Response message for listing folders.

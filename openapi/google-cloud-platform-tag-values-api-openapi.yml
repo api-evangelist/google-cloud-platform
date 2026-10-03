@@ -268,6 +268,20 @@ components:
           description: Entity tag for optimistic concurrency control.
           readOnly: true
           example: example_value
+    ListTagValuesResponse:
+      type: object
+      description: Response message for listing tag values.
+      properties:
+        tagValues:
+          type: array
+          description: The list of tag values.
+          items:
+            $ref: '#/components/schemas/TagValue'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
     Operation:
       type: object
       description: Represents a long-running operation that is the result of a network API call. Many Resource Manager operations are asynchronous and return an Operation that can be polled for status.
@@ -291,20 +305,6 @@ components:
           type: object
           description: The normal response of the operation. Contains the result on success.
           additionalProperties: true
-          example: example_value
-    ListTagValuesResponse:
-      type: object
-      description: Response message for listing tag values.
-      properties:
-        tagValues:
-          type: array
-          description: The list of tag values.
-          items:
-            $ref: '#/components/schemas/TagValue'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
           example: example_value
   securitySchemes:
     oauth2:
