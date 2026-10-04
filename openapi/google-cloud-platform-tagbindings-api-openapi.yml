@@ -215,6 +215,20 @@ components:
             type: object
             additionalProperties: true
           example: []
+    ListTagBindingsResponse:
+      type: object
+      description: Response message for listing tag bindings.
+      properties:
+        tagBindings:
+          type: array
+          description: The list of tag bindings.
+          items:
+            $ref: '#/components/schemas/TagBinding'
+          example: []
+        nextPageToken:
+          type: string
+          description: Pagination token for the next page of results.
+          example: example_value
     TagBinding:
       type: object
       description: A tag binding associates a tag value with a Google Cloud resource. Tag bindings represent the link between organization taxonomy (tag keys and values) and actual cloud resources.
@@ -236,20 +250,6 @@ components:
           type: string
           description: The namespaced name of the tag value in the form {parentNamespace}/{tagKeyShortName}/{tagValueShortName}. Output only.
           readOnly: true
-          example: example_value
-    ListTagBindingsResponse:
-      type: object
-      description: Response message for listing tag bindings.
-      properties:
-        tagBindings:
-          type: array
-          description: The list of tag bindings.
-          items:
-            $ref: '#/components/schemas/TagBinding'
-          example: []
-        nextPageToken:
-          type: string
-          description: Pagination token for the next page of results.
           example: example_value
     Operation:
       type: object
