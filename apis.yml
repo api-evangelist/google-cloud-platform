@@ -3513,6 +3513,12 @@ maintainers:
   email: kin@apievangelist.com
   url: https://apievangelist.com
 common:
+- type: Plans
+  url: plans/google-cloud-platform-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/google-cloud-platform-rate-limits.yml
+- type: FinOps
+  url: finops/google-cloud-platform-finops.yml
 - type: Pricing Calculator
   url: https://cloud.google.com/products/calculator
 - type: MCPServer
