@@ -1,0 +1,15 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://console.cloud.google.com/marketplace
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: google-cloud-platform
+  url: https://console.cloud.google.com/marketplace
+  app_count: null
+  adapter: sweep-cloud-marketplaces.py:unreadable
+  listed: 0
+  status: not-machine-readable (HTTP 200; client-rendered console app, no public listing JSON, sitemap or unauthenticated
+    catalog API)
+edges: []
