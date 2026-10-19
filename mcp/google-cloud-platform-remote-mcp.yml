@@ -1,0 +1,19 @@
+name: Google Cloud CLI remote MCP server
+description: Google Cloud CLI remote MCP server. Remote Model Context Protocol server operated by the provider; 2 tools listed
+  by a live tools/list on 2026-10-18.
+generated: '2026-10-18'
+method: probed
+generator: 'probe (roadmap#958): initialize + tools/list, both 200'
+deployment:
+  mode: remote
+  endpoint: https://cloudcli.googleapis.com/mcp
+  verified: probed
+  probe: live
+  tools: 2
+  checked: '2026-10-18'
+  source: Google's Cloud CLI remote MCP server; its run_bq_command tool reaches BigQuery, which is why google-bigquery points
+    here (roadmap#958)
+  documentation: https://docs.cloud.google.com/mcp/overview
+tools:
+- name: run_gcloud_command
+- name: run_bq_command
