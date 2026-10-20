@@ -19,42 +19,89 @@ servers:
 candidate_tools_source: openapi/cloud-resource-manager-openapi.yml
 candidate_status: candidate
 tools:
-- name: list_projects
-  description: List Google Cloud projects.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.list
-- name: create_project
-  description: Create a Google Cloud project.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.create
-- name: get_project
-  description: Retrieve a project.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.get
-- name: search_projects
-  description: Search projects the caller has access to.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.search
-- name: get_project_iam_policy
-  description: Get the IAM policy for a project.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.getIamPolicy
-- name: set_project_iam_policy
-  description: Set the IAM policy for a project.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.projects.setIamPolicy
-- name: list_folders
-  description: List folders under a parent.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.list
-- name: create_folder
-  description: Create a folder.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.create
-- name: move_folder
-  description: Move a folder to a new parent.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.folders.move
-- name: get_organization
-  description: Retrieve an organization.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.organizations.get
-- name: create_tag_key
-  description: Create a tag key.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.tagKeys.create
-- name: create_tag_binding
-  description: Bind a tag value to a resource.
-  source_operation: openapi/cloud-resource-manager-openapi.yml#cloudresourcemanager.tagBindings.create
+- name: run_gcloud_command
+  description: "Executes a single gcloud CLI command within the user's Google Cloud project.\n\n**CRITICAL\
+    \ SAFETY WARNING (POTENTIALLY DESTRUCTIVE)**: This tool can create, update, or delete Google Cloud\
+    \ resources (e.g., gcloud compute instances delete). It is NOT restricted to read-only commands. Use\
+    \ extreme caution.\n\n**FORBIDDEN COMMANDS**: An agent MUST NOT execute the following gcloud commands\
+    \ (including their alpha/beta variants): `app deploy`, `app instances ssh`, `auth`, `billing`, `components`,\
+    \ `config`, `docker`, `feedback`, `info`, `init`, `meta`, `survey`.\n\n**STRICT EXECUTION RULES**:\n\
+    \n1. You MUST provide the 'project' parameter (i.e. project=\"projects/PROJECT_ID\") when using this\
+    \ tool (it is used for Cloud CLI Execution API enablement check, billing, quota, etc.). This is NOT\
+    \ the same as the --project flag in gcloud commands used to specify the project gcloud operates on.\n\
+    2. Flag Formatting: You MUST always use an '=' sign to separate flag keys from their values for all\
+    \ long options. Correct: `--zone=us-central1-a` or `--project=my-project`. Incorrect: `--zone us-central1-a`\
+    \ or `--project my-project`.\n3. Billing Project: You cannot assume any pre-configured project or\
+    \ billing settings in the execution environment. For non-project scoped commands (e.g., folder or\
+    \ organization level) or specific scenarios like Cloud Storage Requester Pays, you MUST pass the `--billing-project=PROJECT`\
+    \ flag. For project-scoped commands, you MAY additionally specify `--billing-project=PROJECT` to override\
+    \ the quota project, which will take effect for Google Cloud APIs that do not support resource-project-override.\n\
+    4. Project Scope: You SHOULD ALWAYS pass the `--project=PROJECT_ID` flag for project-scoped commands.\
+    \ Do not use it for organization or folder-level commands. If you do not provide a `--project flag`\
+    \ for a project-scoped command, the resource project will default to the project set in the `--billing-project`\
+    \ flag.\n5. If specifying `--billing-project` flag in the gcloud command, ensure that the value is\
+    \ a project ID or a project number. The value MUST NOT be a special value (ie LEGACY, CURRENT_PROJECT,\
+    \ CURRENT_PROJECT_WITH_FALLBACK).\n6. At least one of `--project` or `--billing-project` MUST be specified\
+    \ in the command string.\n7. Asynchronous Operations: For long-running synchronous operations (e.g.,\
+    \ creating a VM or a database), you SHOULD ALWAYS pass the `--async` flag to prevent agent timeouts.\n\
+    8. Log Rate Limiting: When using `gcloud logging read`, you MUST ALWAYS include a `--limit` flag (e.g.,\
+    \ `--limit=100`) to prevent credential and connection timeouts.\n9. Self-Correction: If a command\
+    \ returns an error, analyze stdout and stderr, correct the syntax or flags, and retry in the next\
+    \ iteration. Be aware that stderr is not strictly used for errors and a command may succeed even when\
+    \ stderr has content.\n10. input_files: (Optional) A list of files to be created in the environment\
+    \ before running the command. Each file must have a 'path' (relative to the current directory) and\
+    \ 'contents'. The 'contents' must be plain text representing the file's content. This is useful for\
+    \ commands that read from files (e.g. `gcloud builds submit --config=cloudbuild.yaml --async --project=PROJECT_ID`).\n\
+    \nExample gcloud commands/patterns:\n\n1.  Read Compute Engine instance logs with severity>=ERROR:\
+    \ `gcloud logging read \"severity>=ERROR AND resource.type='gce_instance'\" --limit=10 --order=DESC\
+    \ --project=PROJECT_ID`\n    - Note the use of quotes for the filter expression.\n2.  List all PSC\
+    \ endpoints: `gcloud compute forwarding-rules list --project=PROJECT_ID`\n3.  Describe a PSC endpoint:\
+    \ `gcloud compute forwarding-rules describe FORWARDING_RULE_NAME --region=REGION --project=PROJECT_ID`\n\
+    \    - Note the use of '=' for the --region flag.\n4.  List all clusters: `gcloud container clusters\
+    \ list --project=PROJECT_ID`\n5.  Describe a cluster: `gcloud container clusters describe CLUSTER_NAME\
+    \ --region=REGION --project=PROJECT_ID`\n6.  List compute instances: `gcloud compute instances list\
+    \ --project=PROJECT_ID`\n7.  Get IAM policy for a project: `gcloud projects get-iam-policy PROJECT_ID\
+    \ --project=PROJECT_ID`\n\nResponse strings are formatted for terminal output by default (stdout or\
+    \ stderr). Use --format flag to change the format."
+- name: run_bq_command
+  description: "Runs a single [BigQuery CLI (bq) command](https://docs.cloud.google.com/bigquery/docs/reference/bq-cli-reference).\
+    \ This tool allows you to run any bq command in the user's project, including commands that create,\
+    \ update, or delete Google Cloud resources (i.e., mutations).\n\n**CRITICAL SAFETY WARNING (POTENTIALLY\
+    \ DESTRUCTIVE)**: This tool can create, update, or delete BigQuery resources (e.g., `bq rm`, `bq cancel`,\
+    \ `bq query`). It is NOT restricted to read-only commands. Use extreme caution.\n\n**FORBIDDEN COMMANDS**:\
+    \ An agent MUST NOT execute the following bq commands: `bq init`, `bq pyshell`, `bq shell`.\n\n**STRICT\
+    \ EXECUTION RULES**:\n\n1. At least one of `--project_id` or `--quota_project_id` MUST be specified\
+    \ in the command string.\n2. Project ID vs Quota Project: The --project_id flag specifies the resource\
+    \ project the command operates on (mirrors gcloud's --project flag). The --quota_project_id flag specifies\
+    \ the project charged for billing/quota of the downstream BigQuery API call (mirrors gcloud's `--billing-project`\
+    \ flag). If `--project_id` is specified in the command, it will be used as the billing/quota project.\
+    \ If `--project_id` is not specified OR `--quota_project_id` is additionally specified, the billing/quota\
+    \ project will be the project set in the `--quota_project_id` flag.\n3. Flag Formatting: You MUST\
+    \ always use an '=' sign to separate flag keys from their values for all long options. Correct: `'--project_id=my-project'`\
+    \ or `'--location=us'`. Incorrect: `'--project_id my-project'` or `'--location us'`. Do not use spaces\
+    \ between flags and their values.\n4. No Configuration Defaults: The bq command is executed in a stateless\
+    \ manner; it does not load local configuration files like .bigqueryrc. Therefore, for all regional\
+    \ operations (e.g., creating a dataset or querying a regional dataset), you MUST explicitly specify\
+    \ the `--location` flag (e.g., `--location=us` or `--location=EU`).\n5. Asynchronous Operations: Some\
+    \ commands initiate synchronous long-running operations (e.g., running query jobs). You SHOULD ALWAYS\
+    \ pass the `--nosync` flag for these commands to prevent agent timeouts.\n6. Command Restrictions:\
+    \ You MUST NOT use the following bq commands: `bq init`, `bq pyshell`, `bq shell`. Command piping\
+    \ or chaining is NOT supported.\n7. Self-Correction: If a command returns an error, analyze stdout\
+    \ and stderr, correct the syntax or flags, and retry in the next iteration. Be aware that stderr is\
+    \ not strictly used for errors and a command may succeed even when stderr has content.\n\nExamples\
+    \ of mutating bq commands include: `bq mk`, `bq rm`, `bq update`, `bq insert`, `bq query` (without\
+    \ `--dry_run`), etc.\n   Usage: `RunBq(command=\"bq query --project_id=PROJECT_ID 'SELECT 1'\", project=\"\
+    projects/PROJECT_ID\", input_files=[{\"path\": \"PATH\", \"contents\": \"CONTENTS\"}])`\n   You MUST\
+    \ provide the full bq command as a single string in the 'command' parameter.\n   You MUST provide\
+    \ the 'project' parameter (format: projects/PROJECT_ID) as the API execution project for billing,\
+    \ API enablement, and quota consumption checks.\n\nExample bq commands/patterns:\n\n1.  Run a query:\
+    \ `bq query --use_legacy_sql=false --project_id=PROJECT_ID 'SELECT * FROM `project.dataset.table`\
+    \ LIMIT 10'`\n2.  Create a dataset: `bq mk --dataset --location=us --project_id=PROJECT_ID myDataset`\n\
+    3.  Create a table: `bq mk --table --project_id=PROJECT_ID myDataset.myTable name:string,value:integer`\n\
+    4.  Remove a dataset: `bq rm -f --dataset --project_id=PROJECT_ID myDataset`\n5.  Remove a table:\
+    \ `bq rm -f -t --project_id=PROJECT_ID myDataset.myTable`\n6.  Update table description: `bq update\
+    \ --description=\"New description\" --project_id=PROJECT_ID myDataset.myTable`\n7.  List datasets\
+    \ in a project: `bq ls --datasets=true --project_id=PROJECT_ID`"
 deployment:
   mode: unclear
   verified: searched
@@ -90,3 +137,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 2
