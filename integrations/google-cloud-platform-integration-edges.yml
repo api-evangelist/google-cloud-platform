@@ -2,6 +2,8 @@ generated: '2026-10-13'
 method: searched
 checked:
 - https://console.cloud.google.com/marketplace
+- https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions
+- https://www.raycast.com/api/v1/store_listings
 marketplace_apps:
 - marketplace: own
   channel: partner-built
@@ -12,4 +14,63 @@ marketplace_apps:
   listed: 0
   status: not-machine-readable (HTTP 200; client-rendered console app, no public listing JSON, sitemap or unauthenticated
     catalog API)
-edges: []
+edges:
+- partner_name: Raycast
+  partner: raycast
+  partner_match: domain
+  partner_url: https://www.raycast.com
+  partner_domain: raycast.com
+  type: marketplace
+  marketplace: raycast-store
+  channel: connector-listing
+  relationship: connector-coverage
+  evidence: https://www.raycast.com/klaa97/gcp-search
+  app: Google Cloud Platform Search
+  category: Raycast Store extension (community wrapper)
+  listing_count: 2
+  contract_reference:
+    register: Raycast Store (raycast/extensions monorepo + store_listings JSON)
+    spec_file: null
+    role: raycast-community-wrapper
+    builder: community
+    authors:
+    - klaa97
+    - pin-yi
+    matched_domain: google.com
+    matched_by: domain+name-among-holders
+    monorepo_commit: 84f9ac51336a8c69f70974a75bc067c0feae3658
+    listings:
+    - title: Google Cloud Platform Search
+      store_url: https://www.raycast.com/klaa97/gcp-search
+      installs: 2735
+      categories: []
+      source: https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions/google-cloud-platform-search/
+      author: klaa97
+    - title: Google Cloud Platform IP Search
+      store_url: https://www.raycast.com/pin-yi/gcp-ip-search
+      installs: 33
+      categories:
+      - Developer Tools
+      - Productivity
+      - Web
+      source: https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions/gcp-ip-search/
+      author: pin-yi
+    categories:
+    - Developer Tools
+    - Productivity
+    - Web
+    identity_note: the extension's own source calls a host on the product's domain AND its title / package name
+      passes partner_link's name check; built by Raycast community developers, not the vendor
+    signal_note: 'coverage: Raycast''s store reaches the product through community-built extensions; one edge per
+      (product, store); install / listing counts are context, never counted'
+    detected_by: sweep-raycast-store-extensions.py
+    detected: '2026-10-22'
+  detected_by: sweep-raycast-store-extensions.py
+  first_seen: '2026-10-22'
+  apps:
+  - Google Cloud Platform Search
+  - Google Cloud Platform IP Search
+  direction: partner-built
+source:
+- https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions
+- https://www.raycast.com/api/v1/store_listings
