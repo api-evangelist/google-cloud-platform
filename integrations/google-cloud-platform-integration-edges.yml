@@ -6,6 +6,7 @@ checked:
 - https://www.raycast.com/api/v1/store_listings
 - https://www.bestpractices.dev/en/projects.json
 - https://www.bestpractices.dev/en/projects.json?page=N
+- chef-software/integrations/chef-software-integration-edges.yml
 marketplace_apps:
 - marketplace: own
   channel: partner-built
@@ -113,6 +114,34 @@ edges:
     detected: '2026-10-22'
   detected_by: sweep-openssf-best-practices-badges.py
   first_seen: '2026-10-22'
+- partner_name: Chef Software (chef-supermarket)
+  partner: chef-software
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: chef-supermarket
+  evidence: https://supermarket.chef.io/cookbooks/google-cloud
+  mirror_of: chef-software/integrations/chef-software-integration-edges.yml
+  apps:
+  - google-cloud
+  - google-gauth
+  - google-gcompute
+  - google-gcontainer
+  - google-gdns
+  - google-giam
+  - google-glogging
+  - google-gpubsub
+  - google-gresourcemanager
+  - google-gspanner
+  - google-gsql
+  - google-gstorage
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Chef cookbook)
 source:
 - https://github.com/raycast/extensions/tree/84f9ac51336a8c69f70974a75bc067c0feae3658/extensions
 - https://www.raycast.com/api/v1/store_listings
